@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject gmb;
     void Start()
     {
         
@@ -14,5 +14,12 @@ public class player : MonoBehaviour
     void Update()
     {
         
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       if (gmb==null)
+        {
+
+        }
     }
 }
