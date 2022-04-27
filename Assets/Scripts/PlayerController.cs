@@ -14,11 +14,16 @@ public class PlayerController : MonoBehaviour
     public float hor;
     public float ver;
 
+    public GameObject playerObject;
+    float angle;
+    Quaternion targetRotation;
+
     public float gravitMod = 2;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerObject = GameObject.FindGameObjectWithTag("playerObject");
         canJump = false;
         rb = GetComponent<Rigidbody>();
 
@@ -26,22 +31,15 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
-
-    void FixedUpdate()
-    {
-
-
-
-    }
-
     private void Update()
     {
         hor = Input.GetAxisRaw("Horizontal");
         ver = Input.GetAxisRaw("Vertical");
 
         Movement();
-        //Rotate();
+        CalculateDirection();
+        Rotate();
+        
 
 
     }
@@ -76,21 +74,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void CalculateDirection()
+    {
+        angle = Mathf.Atan2(hor, ver);
+        angle = Mathf.Rad2Deg * angle;
 
+    }
 
-    //void Rotate()
-    //{
+    void Rotate()
+    {
+        targetRotation = Quaternion.Euler(0, angle, 0);
+        playerObject.transform.rotation = Quaternion.Slerp(playerObject.transform.rotation, targetRotation, speed * Time.deltaTime);
+    }
 
-    //    {
-    //        if (Input.GetKey(KeyCode.A))
-    //        {
-    //            transform.Rotate(new Vector3(0f, -rotation, 0f) * Time.deltaTime);
-    //        }
-
-    //        if (Input.GetKey(KeyCode.D))
-    //        {
-    //            transform.Rotate(new Vector3(0f, rotation, 0f) * Time.deltaTime);
-    //        }
-    //    }
-    //}
+    
 }
