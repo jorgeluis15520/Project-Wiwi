@@ -6,14 +6,16 @@ public class PlayerController : MonoBehaviour
 {
     [HideInInspector] public Rigidbody rb;
 
+    //Movement
     public float speed;
     public float jumpForce;
     public bool canJump;
 
-    //public float rotation;
+    //Rotate
     public float hor;
     public float ver;
-
+    public float horRot;
+    public float verRot;
     public GameObject playerObject;
     float angle;
     Quaternion targetRotation;
@@ -37,11 +39,12 @@ public class PlayerController : MonoBehaviour
         ver = Input.GetAxisRaw("Vertical");
 
         Movement();
-        CalculateDirection();
-        Rotate();
-        
 
-
+        if (!Input.GetKey("e")) //Si no se esta presionando la tecla E, el personaje podra rotar
+        {
+            CalculateDirection();
+            Rotate();
+        }
     }
 
     void Movement()
@@ -76,7 +79,12 @@ public class PlayerController : MonoBehaviour
 
     void CalculateDirection()
     {
-        angle = Mathf.Atan2(hor, ver);
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))) //guarda la ultima rotación hecha
+        {
+            verRot = ver;
+            horRot = hor;
+        }
+        angle = Mathf.Atan2(horRot, verRot);
         angle = Mathf.Rad2Deg * angle;
 
     }
