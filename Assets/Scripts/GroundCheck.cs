@@ -9,7 +9,11 @@ public class GroundCheck : MonoBehaviour
 
     private void OnTriggerStay(Collider other) //Si el trigger entra contacto con un collider, el personaje puede saltar
     {
-        playerController.canJump = true;
+
+        if (other.CompareTag("Floor"))
+        {
+            playerController.canJump = true;
+        }
 
     }
 
