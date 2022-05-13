@@ -9,25 +9,47 @@ public class PlayerController : MonoBehaviour
     //Movement
     public float speed;
     public float jumpForce;
-    public bool canJump;
+    public bool groundCheck;
+    public bool canJumpcheck;
 
     //Rotate
-    public float hor;
-    public float ver;
-    public float horRot;
-    public float verRot;
+    private float hor;
+    private float ver;
+    private float horRot;
+    private float verRot;
     public GameObject playerObject;
     float angle;
     Quaternion targetRotation;
+
+    //Agacharse;
+    public CapsuleCollider colUp;
+    public CapsuleCollider colDown;
+    public GameObject head;
+    public HeadCheck headCheck;
+    public bool isCrouch;
+
+
+    //animation
+    public Animator anim;
+
+    public float velocidadInicial;
+    public float velocidadAgachado;
+    public float velocidadCorrer;
 
     public float gravitMod = 2;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerObject = GameObject.FindGameObjectWithTag("playerObject");
-        canJump = false;
+
+
+        groundCheck = false;
         rb = GetComponent<Rigidbody>();
+
+        velocidadInicial = speed;
+        velocidadAgachado = speed * 0.5f;
+        velocidadCorrer = speed * 1.5f;
+
 
         Physics.gravity *= gravitMod; //Modificador de la gravedad
     }
@@ -38,12 +60,44 @@ public class PlayerController : MonoBehaviour
         hor = Input.GetAxisRaw("Horizontal");
         ver = Input.GetAxisRaw("Vertical");
 
-        Movement();
+        anim.SetFloat("speed", speed);
+        anim.SetFloat("VelX", hor);
+        anim.SetFloat("VelY", ver);
 
+        Movement();
         if (!Input.GetKey("e")) //Si no se esta presionando la tecla E, el personaje podra rotar
         {
             CalculateDirection();
             Rotate();
+        }
+
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            anim.SetBool("agachado", true);
+            speed = velocidadAgachado;
+            canJumpcheck = false;
+
+            colDown.enabled = true;
+            colUp.enabled = false;
+
+            head.SetActive(true);
+            isCrouch = true;
+        }
+
+        else if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            if (headCheck.CountColission <= 0)
+            {
+                anim.SetBool("agachado", false);
+                speed = velocidadInicial;
+                canJumpcheck = true;
+
+                head.SetActive(false);
+                colDown.enabled = false;
+                colUp.enabled = true;
+                isCrouch = false;
+            }
+
         }
     }
 
@@ -57,18 +111,18 @@ public class PlayerController : MonoBehaviour
             rb.MovePosition(transform.position + dir * speed * Time.deltaTime);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift)) //Si se mantiene presionado Shift, la velocidad sera de 40
+        if (Input.GetKeyDown(KeyCode.LeftShift)) //Si se mantiene presionado Shift, la velocidad cambia
         {
-            speed = 35f;
+            speed = velocidadCorrer;
 
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift)) //Al soltar el boton Shift, la velocidad volvera a ser 20
+        if (Input.GetKeyUp(KeyCode.LeftShift)) //Al soltar el boton Shift
         {
-            speed = 20f;
+            speed = velocidadInicial;
 
         }
 
-        if (canJump)
+        if (groundCheck && canJumpcheck)
         {
             if (Input.GetKeyDown(KeyCode.Space)) //Al presionar espacio, el personaje saltara de acuerdo al jumpForce
             {
@@ -95,5 +149,10 @@ public class PlayerController : MonoBehaviour
         playerObject.transform.rotation = Quaternion.Slerp(playerObject.transform.rotation, targetRotation, speed * Time.deltaTime);
     }
 
-    
+    private void OnAnimatorMove()
+    {
+        targetRotation = Quaternion.Euler(0, angle, 0);
+        playerObject.transform.rotation = Quaternion.Slerp(playerObject.transform.rotation, targetRotation, speed * Time.deltaTime);
+    }
+
 }
