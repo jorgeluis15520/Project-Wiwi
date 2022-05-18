@@ -8,9 +8,14 @@ public class PlayerController : MonoBehaviour
 
     //Movement
     public float speed;
-    public float jumpForce;
-    public bool groundCheck;
-    public bool canJumpcheck;
+    /*public float jumpForce;
+      public bool groundCheck;
+      public bool canJumpcheck;*/
+    public float jumpspeed;
+    bool DetectFloor = false;
+    public float RaycastDetect;
+
+
 
     //Rotate
     private float hor;
@@ -43,7 +48,7 @@ public class PlayerController : MonoBehaviour
     {
 
 
-        groundCheck = false;
+        DetectFloor = false;
         rb = GetComponent<Rigidbody>();
 
         velocidadInicial = speed;
@@ -57,6 +62,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        Jump();
+        Vector3 Floor = transform.TransformDirection(Vector3.down);
+        Debug.DrawRay(transform.position, Floor * RaycastDetect);
         hor = Input.GetAxisRaw("Horizontal");
         ver = Input.GetAxisRaw("Vertical");
 
@@ -75,7 +83,7 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("agachado", true);
             speed = velocidadAgachado;
-            canJumpcheck = false;
+            DetectFloor = false;
 
             colDown.enabled = true;
             colUp.enabled = false;
@@ -90,7 +98,7 @@ public class PlayerController : MonoBehaviour
             {
                 anim.SetBool("agachado", false);
                 speed = velocidadInicial;
-                canJumpcheck = true;
+                DetectFloor = true;
 
                 head.SetActive(false);
                 colDown.enabled = false;
@@ -122,13 +130,20 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (groundCheck && canJumpcheck)
+      /*if (groundCheck && canJumpcheck)
         {
             if (Input.GetKeyDown(KeyCode.Space)) //Al presionar espacio, el personaje saltara de acuerdo al jumpForce
             {
                 rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+                anim.SetBool("Jump", true);
             }
+            anim.SetBool("Inwall", true);
+
         }
+        else
+        {
+            FallingDown();
+        }*/
     }
 
     void CalculateDirection()
@@ -154,5 +169,45 @@ public class PlayerController : MonoBehaviour
         targetRotation = Quaternion.Euler(0, angle, 0);
         playerObject.transform.rotation = Quaternion.Slerp(playerObject.transform.rotation, targetRotation, speed * Time.deltaTime);
     }
+    /*public void FallingDown()
+      {
+          anim.SetBool("Inwall", false);
+          anim.SetBool("Jump", false);
 
-}
+      }*/
+    public void Jump()
+    {
+        Vector3 Floor = transform.TransformDirection(Vector3.down);
+        
+        if (Physics.Raycast(transform.position, Floor, RaycastDetect))
+        {
+            DetectFloor = true;
+
+            
+
+        }
+        else
+        {
+            DetectFloor = false;
+
+
+            
+        }
+        if (Input.GetButtonDown("Jump") && DetectFloor)
+        {
+           rb.AddForce(new Vector3(0, jumpspeed, 0), ForceMode.Impulse);
+            anim.SetBool("Jump", true);
+            
+
+        }
+        else
+        {
+            anim.SetBool("Inwall", false);
+            anim.SetBool("Jump", false);
+        }
+        
+
+    }
+  }
+
+
