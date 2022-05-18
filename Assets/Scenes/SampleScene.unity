@@ -4456,6 +4456,7 @@ MonoBehaviour:
   DetectFloor: 0
   RaycastDetect: 10
   canJump: 0
+  canRun: 0
   cam: {fileID: 0}
   co: {fileID: 0}
   rotation_speed: 0
@@ -8117,6 +8118,7 @@ MonoBehaviour:
   DetectFloor: 0
   RaycastDetect: 0.1
   canJump: 0
+  canRun: 0
   cam: {fileID: 0}
   co: {fileID: 0}
   rotation_speed: 0
@@ -8340,12 +8342,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  speed: 10
+  speed: 5
   groundCheck: {fileID: 1130865519}
   jumpspeed: 25
   DetectFloor: 0
   RaycastDetect: -0.2
   canJump: 0
+  canRun: 0
   cam: {fileID: 963194227}
   co: {fileID: 283017077}
   rotation_speed: 5
@@ -8386,9 +8389,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.2937622
-  m_Height: 1.9228516
+  m_Height: 1.8885107
   m_Direction: 1
-  m_Center: {x: -0.012008667, y: 0.9307637, z: 0.11385727}
+  m_Center: {x: -0.012008667, y: 0.94793415, z: 0.11385727}
 --- !u!4 &5901452233530538508
 Transform:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public bool DetectFloor = false;
     public float RaycastDetect;
     public bool canJump;
+    public bool canRun;
 
     //camera
 
@@ -51,9 +52,9 @@ public class PlayerController : MonoBehaviour
     public float gravitMod = 2;
 
     private CapsuleCollider cap;
-    private  float startHeigh;
+    private float startHeigh;
     private float starPosY;
-    
+
     private float heighCollider = 1.47f;
     private float positionY = 0.75f;
 
@@ -71,21 +72,17 @@ public class PlayerController : MonoBehaviour
 
         velocidadInicial = speed;
         velocidadAgachado = speed * 0.5f;
-        velocidadCorrer = speed * 1.5f;
+        velocidadCorrer = speed * 2f; ;
 
 
         Physics.gravity *= gravitMod; //Modificador de la gravedad
     }
-    private void FixedUpdate()
-    {
-        
-    }
+
 
     private void Update()
     {
-        
 
-        Jump();
+
         Vector3 Floor = transform.TransformDirection(Vector3.down);
         Debug.DrawRay(transform.position, Floor * RaycastDetect);
         hor = Input.GetAxisRaw("Horizontal");
@@ -96,6 +93,8 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("VelY", ver);
 
         Movement();
+        Run();
+        Jump();
         //if (!Input.GetKey("e")) //Si no se esta presionando la tecla E, el personaje podra rotar
         //{
         //    CalculateDirection();
@@ -128,7 +127,7 @@ public class PlayerController : MonoBehaviour
 
         transform.position += move * Time.deltaTime;
 
-        
+
         //if (hor != 0.0f || ver != 0.0f) //Si el valor de ver y hor no es igual a cero, el player se movera de acuerdo al vector y velocidad; 
         //{
         //    Vector3 dir = transform.forward * ver + transform.right * hor;
@@ -136,9 +135,9 @@ public class PlayerController : MonoBehaviour
         //    rb.MovePosition(transform.position + dir * speed * Time.deltaTime);
         //}
 
-        //if (Input.GetKeyDown(KeyCode.LeftShift)) //Si se mantiene presionado Shift, la velocidad cambia
+        //if (Input.GetKey(KeyCode.LeftShift)) //Si se mantiene presionado Shift, la velocidad cambia
         //{
-        //    speed = velocidadCorrer;
+        //    speed = velocidadAgachado;
 
         //}
         //if (Input.GetKeyUp(KeyCode.LeftShift)) //Al soltar el boton Shift
@@ -163,6 +162,19 @@ public class PlayerController : MonoBehaviour
           }*/
     }
 
+    void Run()
+    {
+        if (Input.GetKey(KeyCode.LeftShift) && canRun) //Si se mantiene presionado Shift, la velocidad cambia
+        {
+            speed = velocidadCorrer;
+
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift)) //Al soltar el boton Shift
+        {
+            speed = velocidadInicial;
+
+        }
+    }
     void CalculateDirection()
     {
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))) //guarda la ultima rotación hecha
@@ -175,11 +187,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void Rotate()
-    {
-        targetRotation = Quaternion.Euler(0, angle, 0);
-        playerObject.transform.rotation = Quaternion.Slerp(playerObject.transform.rotation, targetRotation, speed * Time.deltaTime);
-    }
+    //void Rotate()
+    //{
+    //    targetRotation = Quaternion.Euler(0, angle, 0);
+    //    playerObject.transform.rotation = Quaternion.Slerp(playerObject.transform.rotation, targetRotation, speed * Time.deltaTime);
+    //}
 
     //private void OnAnimatorMove()
     //{
@@ -195,20 +207,20 @@ public class PlayerController : MonoBehaviour
     public void Jump()
     {
         Vector3 Floor = transform.TransformDirection(Vector3.down);
-        
+
         if (Physics.Raycast(groundCheck.transform.position, groundCheck.transform.up * RaycastDetect))
         {
             DetectFloor = true;
         }
         else
         {
-            DetectFloor = false;    
+            DetectFloor = false;
         }
 
 
         if (DetectFloor)
         {
-            canJump = true;    
+            canJump = true;
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
@@ -224,20 +236,22 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("Inwall", false);
             anim.SetBool("Jump", false);
         }
-        
+
     }
 
-    public void Crouch() 
+    public void Crouch()
     {
 
         if (Physics.Raycast(head.transform.position, head.transform.up * headRay))
         {
             headCheck++;
-
+            isCrouch = true;
         }
         else
         {
             headCheck = 0;
+            headCheck--;
+            isCrouch = false;
         }
 
         if (Input.GetKey(KeyCode.LeftControl))
@@ -248,30 +262,34 @@ public class PlayerController : MonoBehaviour
             isCrouch = true;
             cap.height = heighCollider;
             cap.center = new Vector3(cap.center.x, positionY, cap.center.z);
+            canRun = false;
         }
-        else if (Input.GetKeyUp(KeyCode.LeftControl) && isCrouch)
+        else
         {
-            if (headCheck == 0)
+
+            if (headCheck <= 0)
             {
                 anim.SetBool("agachado", false);
                 speed = velocidadInicial;
                 DetectFloor = true;
                 cap.height = startHeigh;
                 cap.center = new Vector3(cap.center.x, starPosY, cap.center.z);
+                canRun = true;
+                //isCrouch = false;
             }
 
-            isCrouch = false;
+            //isCrouch = false;
         }
 
-        if (!isCrouch && headCheck == 0)
-        {
-            anim.SetBool("agachado", false);
-            speed = velocidadInicial;
-            DetectFloor = true;
-            isCrouch = false;
-            cap.height = startHeigh;
-            cap.center = new Vector3(cap.center.x, starPosY, cap.center.z);
-        }
+        //if (/*!isCrouch && */headCheck <= 0)
+        //{
+        //    anim.SetBool("agachado", false);
+        //    speed = velocidadInicial;
+        //    DetectFloor = true;
+        //    isCrouch = false;
+        //    cap.height = startHeigh;
+        //    cap.center = new Vector3(cap.center.x, starPosY, cap.center.z);
+        //}
 
     }
 
