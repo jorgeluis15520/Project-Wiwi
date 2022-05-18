@@ -11,12 +11,13 @@ public class PlayerController : MonoBehaviour
     /*public float jumpForce;
       public bool groundCheck;
       public bool canJumpcheck;*/
-    public GameObject groundCheck;
     public float jumpspeed;
     public bool DetectFloor = false;
     public float RaycastDetect;
     public bool canJump;
     public bool canRun;
+    public GameObject groundCheck;
+    public LayerMask Mask;
 
     //camera
 
@@ -94,14 +95,17 @@ public class PlayerController : MonoBehaviour
 
         Movement();
         Run();
+        CheckGround();
         Jump();
+
+        Crouch();
+
+         
         //if (!Input.GetKey("e")) //Si no se esta presionando la tecla E, el personaje podra rotar
         //{
         //    CalculateDirection();
         //    Rotate();
         //}
-
-        Crouch();
     }
 
     void Movement()
@@ -127,13 +131,6 @@ public class PlayerController : MonoBehaviour
 
         transform.position += move * Time.deltaTime;
 
-
-        //if (hor != 0.0f || ver != 0.0f) //Si el valor de ver y hor no es igual a cero, el player se movera de acuerdo al vector y velocidad; 
-        //{
-        //    Vector3 dir = transform.forward * ver + transform.right * hor;
-
-        //    rb.MovePosition(transform.position + dir * speed * Time.deltaTime);
-        //}
 
         //if (Input.GetKey(KeyCode.LeftShift)) //Si se mantiene presionado Shift, la velocidad cambia
         //{
@@ -161,7 +158,22 @@ public class PlayerController : MonoBehaviour
               FallingDown();
           }*/
     }
+    void CheckGround()
+    {
+        Vector3 dwn = transform.TransformDirection(Vector3.down);
+        RaycastHit hit;
 
+        //Debug.DrawRay(transform.position, Vector3.down * RaycastDetect, Color.red);
+
+        if (Physics.Raycast(groundCheck.transform.position,dwn, out hit, RaycastDetect) && hit.collider.CompareTag("Floor"))
+        {
+            canJump = true;
+        }
+        else
+        {
+            canJump = false;
+        }
+    }
     void Run()
     {
         if (Input.GetKey(KeyCode.LeftShift) && canRun) //Si se mantiene presionado Shift, la velocidad cambia
@@ -187,17 +199,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    //void Rotate()
-    //{
-    //    targetRotation = Quaternion.Euler(0, angle, 0);
-    //    playerObject.transform.rotation = Quaternion.Slerp(playerObject.transform.rotation, targetRotation, speed * Time.deltaTime);
-    //}
-
-    //private void OnAnimatorMove()
-    //{
-    //    targetRotation = Quaternion.Euler(0, angle, 0);
-    //    playerObject.transform.rotation = Quaternion.Slerp(playerObject.transform.rotation, targetRotation, speed * Time.deltaTime);
-    //}
     /*public void FallingDown()
       {
           anim.SetBool("Inwall", false);
@@ -206,35 +207,12 @@ public class PlayerController : MonoBehaviour
       }*/
     public void Jump()
     {
-        Vector3 Floor = transform.TransformDirection(Vector3.down);
-
-        if (Physics.Raycast(groundCheck.transform.position, groundCheck.transform.up * RaycastDetect))
-        {
-            DetectFloor = true;
-        }
-        else
-        {
-            DetectFloor = false;
-        }
-
-
-        if (DetectFloor)
-        {
-            canJump = true;
-        }
-
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             anim.SetBool("Jump", true);
             anim.SetBool("Inwall", true);
             rb.AddForce(new Vector3(0, jumpspeed, 0), ForceMode.Impulse);
-        }
 
-        if (!DetectFloor)
-        {
-            canJump = false;
-            anim.SetBool("Inwall", false);
-            anim.SetBool("Jump", false);
         }
 
     }
@@ -297,7 +275,7 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(head.transform.position, head.transform.up * headRay);
-        Gizmos.DrawRay(groundCheck.transform.position, groundCheck.transform.up * RaycastDetect);
+        Gizmos.DrawRay(transform.position, Vector3.down * RaycastDetect);
     }
 }
 
