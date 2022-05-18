@@ -11,9 +11,11 @@ public class PlayerController : MonoBehaviour
     /*public float jumpForce;
       public bool groundCheck;
       public bool canJumpcheck;*/
+    public GameObject groundCheck;
     public float jumpspeed;
-    bool DetectFloor = false;
+    public bool DetectFloor = false;
     public float RaycastDetect;
+    public bool canJump;
 
 
 
@@ -27,11 +29,10 @@ public class PlayerController : MonoBehaviour
     Quaternion targetRotation;
 
     //Agacharse;
-    public CapsuleCollider colUp;
-    public CapsuleCollider colDown;
-    public GameObject head;
-    public HeadCheck headCheck;
+    public float headRay;
+    public float headCheck;
     public bool isCrouch;
+    public GameObject head;
 
 
     //animation
@@ -43,10 +44,21 @@ public class PlayerController : MonoBehaviour
 
     public float gravitMod = 2;
 
+    private CapsuleCollider cap;
+    private  float startHeigh;
+    private float starPosY;
+    
+    private float heighCollider = 1.47f;
+    private float positionY = 0.75f;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        cap = GetComponent<CapsuleCollider>();
+        Vector3 pos = cap.center;
+        headCheck = 0;
+        startHeigh = cap.height;
+        starPosY = pos.y;
 
         DetectFloor = false;
         rb = GetComponent<Rigidbody>();
@@ -62,6 +74,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        
+
         Jump();
         Vector3 Floor = transform.TransformDirection(Vector3.down);
         Debug.DrawRay(transform.position, Floor * RaycastDetect);
@@ -79,34 +93,7 @@ public class PlayerController : MonoBehaviour
             Rotate();
         }
 
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            anim.SetBool("agachado", true);
-            speed = velocidadAgachado;
-            DetectFloor = false;
-
-            colDown.enabled = true;
-            colUp.enabled = false;
-
-            head.SetActive(true);
-            isCrouch = true;
-        }
-
-        else if (Input.GetKeyUp(KeyCode.LeftControl))
-        {
-            if (headCheck.CountColission <= 0)
-            {
-                anim.SetBool("agachado", false);
-                speed = velocidadInicial;
-                DetectFloor = true;
-
-                head.SetActive(false);
-                colDown.enabled = false;
-                colUp.enabled = true;
-                isCrouch = false;
-            }
-
-        }
+        Crouch();
     }
 
     void Movement()
@@ -179,35 +166,91 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 Floor = transform.TransformDirection(Vector3.down);
         
-        if (Physics.Raycast(transform.position, Floor, RaycastDetect))
+        if (Physics.Raycast(groundCheck.transform.position, groundCheck.transform.up * RaycastDetect))
         {
             DetectFloor = true;
-
-            
-
         }
         else
         {
-            DetectFloor = false;
-
-
-            
+            DetectFloor = false;    
         }
-        if (Input.GetButtonDown("Jump") && DetectFloor)
+
+
+        if (DetectFloor)
         {
-           rb.AddForce(new Vector3(0, jumpspeed, 0), ForceMode.Impulse);
+            canJump = true;    
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        {
             anim.SetBool("Jump", true);
-            
-
+            anim.SetBool("Inwall", true);
+            rb.AddForce(new Vector3(0, jumpspeed, 0), ForceMode.Impulse);
         }
-        else
+
+        if (!DetectFloor)
         {
+            canJump = false;
             anim.SetBool("Inwall", false);
             anim.SetBool("Jump", false);
         }
         
+    }
+
+    public void Crouch() 
+    {
+
+        if (Physics.Raycast(head.transform.position, head.transform.up * headRay))
+        {
+            headCheck++;
+
+        }
+        else
+        {
+            headCheck = 0;
+        }
+
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            anim.SetBool("agachado", true);
+            speed = velocidadAgachado;
+            DetectFloor = false;
+            isCrouch = true;
+            cap.height = heighCollider;
+            cap.center = new Vector3(cap.center.x, positionY, cap.center.z);
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftControl) && isCrouch)
+        {
+            if (headCheck == 0)
+            {
+                anim.SetBool("agachado", false);
+                speed = velocidadInicial;
+                DetectFloor = true;
+                cap.height = startHeigh;
+                cap.center = new Vector3(cap.center.x, starPosY, cap.center.z);
+            }
+
+            isCrouch = false;
+        }
+
+        if (!isCrouch && headCheck == 0)
+        {
+            anim.SetBool("agachado", false);
+            speed = velocidadInicial;
+            DetectFloor = true;
+            isCrouch = false;
+            cap.height = startHeigh;
+            cap.center = new Vector3(cap.center.x, starPosY, cap.center.z);
+        }
 
     }
-  }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(head.transform.position, head.transform.up * headRay);
+        Gizmos.DrawRay(groundCheck.transform.position, groundCheck.transform.up * RaycastDetect);
+    }
+}
 
 
