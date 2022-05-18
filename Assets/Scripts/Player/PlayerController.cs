@@ -17,7 +17,13 @@ public class PlayerController : MonoBehaviour
     public float RaycastDetect;
     public bool canJump;
 
+    //camera
 
+    public Camera cam;
+    public CameraOrbital co;
+    private Vector3 camFwd;
+
+    public float rotation_speed;
 
     //Rotate
     private float hor;
@@ -70,7 +76,10 @@ public class PlayerController : MonoBehaviour
 
         Physics.gravity *= gravitMod; //Modificador de la gravedad
     }
-
+    private void FixedUpdate()
+    {
+        
+    }
 
     private void Update()
     {
@@ -87,50 +96,71 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("VelY", ver);
 
         Movement();
-        if (!Input.GetKey("e")) //Si no se esta presionando la tecla E, el personaje podra rotar
-        {
-            CalculateDirection();
-            Rotate();
-        }
+        //if (!Input.GetKey("e")) //Si no se esta presionando la tecla E, el personaje podra rotar
+        //{
+        //    CalculateDirection();
+        //    Rotate();
+        //}
 
         Crouch();
     }
 
     void Movement()
     {
+        camFwd = Vector3.Scale(cam.transform.forward, new Vector3(1, 1, 1)).normalized;
+        Vector3 camFlatFwd = Vector3.Scale(cam.transform.forward, new Vector3(1, 0, 1)).normalized;
+        Vector3 flatRight = new Vector3(cam.transform.right.x, 0, cam.transform.right.z);
 
-        if (hor != 0.0f || ver != 0.0f) //Si el valor de ver y hor no es igual a cero, el player se movera de acuerdo al vector y velocidad; 
-        {
-            Vector3 dir = transform.forward * ver + transform.right * hor;
+        Vector3 m_CharForward = Vector3.Scale(camFlatFwd, new Vector3(1, 0, 1)).normalized;
+        Vector3 m_CharRight = Vector3.Scale(flatRight, new Vector3(1, 0, 1)).normalized;
 
-            rb.MovePosition(transform.position + dir * speed * Time.deltaTime);
-        }
+        float w_speed;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift)) //Si se mantiene presionado Shift, la velocidad cambia
-        {
-            speed = velocidadCorrer;
+        Vector3 move = Vector3.zero;
 
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift)) //Al soltar el boton Shift
-        {
-            speed = velocidadInicial;
+        w_speed = speed;
 
-        }
+        move = ver * m_CharForward * w_speed + hor * m_CharRight * speed;
 
-      /*if (groundCheck && canJumpcheck)
-        {
-            if (Input.GetKeyDown(KeyCode.Space)) //Al presionar espacio, el personaje saltara de acuerdo al jumpForce
-            {
-                rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
-                anim.SetBool("Jump", true);
-            }
-            anim.SetBool("Inwall", true);
+        //cam.transform.position += move * Time.deltaTime;
 
-        }
-        else
-        {
-            FallingDown();
-        }*/
+        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, move, rotation_speed, 0.0f));
+
+        transform.position += move * Time.deltaTime;
+
+        
+        //if (hor != 0.0f || ver != 0.0f) //Si el valor de ver y hor no es igual a cero, el player se movera de acuerdo al vector y velocidad; 
+        //{
+        //    Vector3 dir = transform.forward * ver + transform.right * hor;
+
+        //    rb.MovePosition(transform.position + dir * speed * Time.deltaTime);
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.LeftShift)) //Si se mantiene presionado Shift, la velocidad cambia
+        //{
+        //    speed = velocidadCorrer;
+
+        //}
+        //if (Input.GetKeyUp(KeyCode.LeftShift)) //Al soltar el boton Shift
+        //{
+        //    speed = velocidadInicial;
+
+        //}
+
+        /*if (groundCheck && canJumpcheck)
+          {
+              if (Input.GetKeyDown(KeyCode.Space)) //Al presionar espacio, el personaje saltara de acuerdo al jumpForce
+              {
+                  rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+                  anim.SetBool("Jump", true);
+              }
+              anim.SetBool("Inwall", true);
+
+          }
+          else
+          {
+              FallingDown();
+          }*/
     }
 
     void CalculateDirection()
@@ -151,11 +181,11 @@ public class PlayerController : MonoBehaviour
         playerObject.transform.rotation = Quaternion.Slerp(playerObject.transform.rotation, targetRotation, speed * Time.deltaTime);
     }
 
-    private void OnAnimatorMove()
-    {
-        targetRotation = Quaternion.Euler(0, angle, 0);
-        playerObject.transform.rotation = Quaternion.Slerp(playerObject.transform.rotation, targetRotation, speed * Time.deltaTime);
-    }
+    //private void OnAnimatorMove()
+    //{
+    //    targetRotation = Quaternion.Euler(0, angle, 0);
+    //    playerObject.transform.rotation = Quaternion.Slerp(playerObject.transform.rotation, targetRotation, speed * Time.deltaTime);
+    //}
     /*public void FallingDown()
       {
           anim.SetBool("Inwall", false);
