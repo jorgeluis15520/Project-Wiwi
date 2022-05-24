@@ -151,11 +151,15 @@ public class PlayerController : MonoBehaviour
         {
             canJump = true;
             DetectFloor = true;
+            anim.SetBool("Inwall", true);
+            anim.SetBool("Jump", false);
         }
         else
         {
             canJump = false;
             DetectFloor = false;
+            anim.SetBool("Inwall", false);
+
         }
     }
     void Run()
@@ -186,7 +190,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             anim.SetBool("Jump", true);
-            anim.SetBool("Inwall", true);
+           
             rb.AddForce(new Vector3(0, jumpspeed, 0), ForceMode.Impulse);
 
         }
@@ -208,7 +212,7 @@ public class PlayerController : MonoBehaviour
             isCrouch = false;
         }
 
-        if (Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetKey(KeyCode.LeftControl) && canJump)
         {
             anim.SetBool("agachado", true);
             speed = velocidadAgachado;
