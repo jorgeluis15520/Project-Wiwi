@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
     //inventario
 
     public bool haveKey;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -81,6 +82,8 @@ public class PlayerController : MonoBehaviour
         velocidadInicial = speed;
         velocidadAgachado = speed * 0.5f;
         velocidadCorrer = speed * 2f; ;
+        
+        
 
 
         Physics.gravity *= gravitMod; //Modificador de la gravedad
@@ -139,6 +142,7 @@ public class PlayerController : MonoBehaviour
 
         transform.position += move * Time.deltaTime;
 
+        
     }
     void CheckGround()
     {
