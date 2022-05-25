@@ -8,6 +8,7 @@ TagManager:
   - Object
   - Floor
   - Item
+  - Door
   layers:
   - Default
   - TransparentFX
