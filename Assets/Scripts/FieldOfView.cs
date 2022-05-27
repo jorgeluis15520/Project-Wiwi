@@ -8,13 +8,20 @@ public class FieldOfView : MonoBehaviour
     [Range(0, 360)]
     public float viewAngle;
 
+    public float alertRadius;
+    [Range(0, 360)]
+
     public LayerMask targetMask;
     public LayerMask obstacleMask;
+    public LayerMask objectsMask;
 
     [HideInInspector]
     public List<Transform> visibleTargets = new List<Transform>();
 
-    public Transform player;
+    public List<Transform> alertTargets = new List<Transform>();
+
+    public Transform targetPlayer;
+    public Transform targetObject;
 
     // Start is called before the first frame update
     void Start()
@@ -40,8 +47,12 @@ public class FieldOfView : MonoBehaviour
     void FindVisibleTargets()
     {
         visibleTargets.Clear();
-        player = null;
+        alertTargets.Clear();
+        targetPlayer = null;
+        targetObject = null;
+
         Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
+        Collider[] targetsInAlertRadius = Physics.OverlapSphere(transform.position, alertRadius, objectsMask);
 
         for (int i = 0; i < targetsInViewRadius.Length; i++)
         {
@@ -54,8 +65,28 @@ public class FieldOfView : MonoBehaviour
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
                     visibleTargets.Add(target);
-                    player = target;
+                    targetPlayer = target;
                 }
+            }
+        }
+
+        if (targetPlayer == null)
+        {
+            for (int i = 0; i < targetsInAlertRadius.Length; i++)
+            {
+                Transform target = targetsInAlertRadius[i].transform;
+                Vector3 dirToTarget = (target.position - transform.position).normalized;
+                float dstToTarget = Vector3.Distance(transform.position, target.position);
+
+                alertTargets.Add(target);
+
+                Objects obj = target.GetComponent<Objects>();
+
+                if (obj.active)
+                {
+                    targetObject = target;
+                }
+
             }
         }
     }

@@ -64,7 +64,20 @@ public class PlayerController : MonoBehaviour
     //inventario
 
     public bool haveKey;
-    
+
+
+    public LayerMask layerMask;
+    public bool wallChek;
+    public float climbSpeed;
+    public float rayDistance;
+    private bool isClimbing = false;
+
+
+    public Transform headTop;
+    public Transform spine;
+    public bool grabBorder;
+
+    private Transform grabTransform;
 
     // Start is called before the first frame update
     void Start()
@@ -103,14 +116,21 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("VelX", hor);
         anim.SetFloat("VelY", ver);
 
-        Movement();
+        if (!isClimbing)
+        {
+            Movement();
+        }
+
         Crouch();
         Run();
         CheckGround();
         Jump();
+        CheckWall();
+        CheckLedge();
+        Climb();
 
-        
-
+        anim.SetBool("Climbing", isClimbing);
+        anim.SetBool("UpLedge", grabBorder);
          
         //if (!Input.GetKey("e")) //Si no se esta presionando la tecla E, el personaje podra rotar
         //{
@@ -155,6 +175,7 @@ public class PlayerController : MonoBehaviour
         {
             canJump = true;
             DetectFloor = true;
+            rb.useGravity = true;
             anim.SetBool("Inwall", true);
             anim.SetBool("Jump", false);
         }
@@ -245,11 +266,62 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    void CheckWall()
+    {
+        RaycastHit hit;
+
+
+        if (Physics.Raycast(spine.position, spine.forward, out hit, rayDistance, layerMask))
+        {
+            wallChek = true;
+        }
+        else
+        {
+            wallChek = false;
+        }
+    }
+
+    void CheckLedge()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(headTop.position, headTop.forward, out hit, rayDistance, layerMask))
+        {
+            grabBorder = false;
+        }
+        else
+        {
+            if (wallChek)
+            {
+                grabBorder = true;
+            }
+        }
+    }
+
+    void Climb()
+    {
+
+        if (Input.GetKey(KeyCode.W) && wallChek && !grabBorder)
+        {
+            rb.useGravity = false;
+            isClimbing = true;
+            transform.Translate(Vector3.up * climbSpeed * Time.deltaTime);
+        }
+
+        if (Input.GetKeyUp(KeyCode.W) && isClimbing && wallChek)
+        {
+            rb.useGravity = true;
+            isClimbing = false;
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(head.transform.position, head.transform.up * headRay);
         Gizmos.DrawRay(transform.position, Vector3.down * RaycastDetect);
+        Gizmos.DrawRay(spine.position, spine.forward * rayDistance);
+        Gizmos.DrawRay(headTop.position, headTop.forward * rayDistance);
     }
 }
 

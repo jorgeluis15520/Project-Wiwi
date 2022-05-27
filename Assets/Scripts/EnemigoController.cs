@@ -10,6 +10,9 @@ public class EnemigoController : MonoBehaviour
     public float speedRotation;
     
     public Transform targetPlayer;
+    public Transform targetObject;
+    FieldOfView fov;
+
     
     // Start is called before the first frame update
     void Start()
@@ -20,11 +23,18 @@ public class EnemigoController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        targetPlayer = GetComponent<FieldOfView>().player;
+        fov = GetComponent<FieldOfView>();
 
-        if (targetPlayer == null)
+        targetPlayer = fov.targetPlayer;
+        targetObject = fov.targetObject;
+
+        if (fov.targetPlayer == null && fov.targetObject == null)
         {
             Move();
+        }
+        else if(fov.targetPlayer == null && fov.targetObject != null)
+        {
+            FollowObject();
         }
         else
         {
@@ -38,7 +48,7 @@ public class EnemigoController : MonoBehaviour
 
         float dist = Vector3.Distance(transform.position, wayPoints[currentPoint].position);
 
-        if (dist <= 1)
+        if (dist <= 1f)
         {
             currentPoint++;
 
@@ -64,5 +74,23 @@ public class EnemigoController : MonoBehaviour
 
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speedRotation * Time.deltaTime);
         transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+    }
+
+    void FollowObject()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(targetObject.position.x, transform.position.y, targetObject.position.z), speed * Time.deltaTime);
+
+        var dir = targetObject.position - transform.position;
+        var rotation = Quaternion.LookRotation(dir);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speedRotation * Time.deltaTime);
+        transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+
+        float dis = Vector3.Distance(transform.position, targetObject.position);
+
+        if (dis <= 2f)
+        {
+            targetObject.GetComponent<Objects>().active = false;
+        }
     }
 }
