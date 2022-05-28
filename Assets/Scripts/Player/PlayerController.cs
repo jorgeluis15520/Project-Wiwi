@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour
     public float jumpspeed;
     public bool DetectFloor = false;
     public float RaycastDetect;
-    public bool canJump;
-    public bool canRun;
+    private bool canJump;
+    private bool canRun;
     public GameObject groundCheck;
     public LayerMask Mask;
 
@@ -120,9 +120,12 @@ public class PlayerController : MonoBehaviour
         {
             Movement();
         }
-
+       
         Crouch();
-        Run();
+        if (anim.GetBool("Inwall"))
+        {
+            Run();
+        }
         CheckGround();
         Jump();
         CheckWall();
@@ -131,7 +134,6 @@ public class PlayerController : MonoBehaviour
 
         anim.SetBool("Climbing", isClimbing);
         anim.SetBool("UpLedge", grabBorder);
-         
         //if (!Input.GetKey("e")) //Si no se esta presionando la tecla E, el personaje podra rotar
         //{
         //    CalculateDirection();
@@ -156,13 +158,11 @@ public class PlayerController : MonoBehaviour
 
         move = ver * m_CharForward * w_speed + hor * m_CharRight * speed;
 
-        //cam.transform.position += move * Time.deltaTime;
 
         transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, move, rotation_speed, 0.0f));
 
         transform.position += move * Time.deltaTime;
 
-        
     }
     void CheckGround()
     {
@@ -184,6 +184,7 @@ public class PlayerController : MonoBehaviour
             canJump = false;
             DetectFloor = false;
             anim.SetBool("Inwall", false);
+            anim.SetBool("isRunning", false);
 
         }
     }
@@ -192,22 +193,17 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) && canRun && headCheck <= 0) //Si se mantiene presionado Shift, la velocidad cambia
         {
             speed = velocidadCorrer;
+            anim.SetBool("isRunning", true);
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift)) //Al soltar el boton Shift
         {
             speed = velocidadInicial;
+            anim.SetBool("isRunning", false);
         }
-    }
-    void CalculateDirection()
-    {
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))) //guarda la ultima rotación hecha
+        else if (!Input.GetKey(KeyCode.LeftShift))
         {
-            verRot = ver;
-            horRot = hor;
+            anim.SetBool("isRunning", false);
         }
-        angle = Mathf.Atan2(horRot, verRot);
-        angle = Mathf.Rad2Deg * angle;
-
     }
 
     public void Jump()
@@ -215,11 +211,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             anim.SetBool("Jump", true);
-           
+            anim.SetBool("isRunning", false);
             rb.AddForce(new Vector3(0, jumpspeed, 0), ForceMode.Impulse);
 
         }
-
     }
 
     public void Crouch()
@@ -314,7 +309,23 @@ public class PlayerController : MonoBehaviour
             isClimbing = false;
         }
     }
+    //void CalculateDirection()
+    //{
+    //    if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))) //guarda la ultima rotación hecha
+    //    {
+    //        verRot = ver;
+    //        horRot = hor;
+    //    }
+    //    angle = Mathf.Atan2(horRot, verRot);
+    //    angle = Mathf.Rad2Deg * angle;
 
+    //}
+
+    //void Rotate()
+    //{
+    //    targetRotation = Quaternion.Euler(0, angle, 0);
+    //    playerObject.transform.rotation = Quaternion.Slerp(playerObject.transform.rotation, targetRotation, speed * Time.deltaTime);
+    //}
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

@@ -6,7 +6,7 @@ public class PushandPullObjects : MonoBehaviour
 {
     public GameObject handPoint; //punto desde donde se empujara
 
-    private GameObject pickedObject = null; //referencia para verificar si se esta empujando un objeto
+    public GameObject pickedObject = null; //referencia para verificar si se esta empujando un objeto
     
 
     void Update()
