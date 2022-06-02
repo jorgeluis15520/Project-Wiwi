@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     public float velocidadAgachado;
     public float velocidadCorrer;
 
-    public float gravitMod = 2;
+    //public float gravitMod = 2;
 
     private CapsuleCollider cap;
     private float startHeigh;
@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
         
 
 
-        Physics.gravity *= gravitMod; //Modificador de la gravedad
+        /*Physics.gravity *= gravitMod;*/ //Modificador de la gravedad
     }
 
 
@@ -219,8 +219,12 @@ public class PlayerController : MonoBehaviour
 
     public void Crouch()
     {
+        RaycastHit hit;
 
-        if (Physics.Raycast(head.transform.position, head.transform.up * headRay))
+        //(Physics.Raycast(head.transform.position, head.transform.up * headRay))
+
+
+        if (Physics.Raycast(head.transform.position, head.transform.up, out hit, headRay))
         {
             headCheck++;
             isCrouch = true;

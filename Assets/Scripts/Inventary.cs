@@ -12,6 +12,11 @@ public class Inventary : MonoBehaviour
     public Image invImage;
     public bool activeInv;
 
+    //coleccionables
+    public static bool haveCollect1 = false;
+    public static bool haveCollect2 = false;
+    public static bool haveCollect3 = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +72,24 @@ public class Inventary : MonoBehaviour
 
                 }
             }
+        }
+
+        if (coll.CompareTag("Collect1"))
+        {
+            haveCollect1 = true;
+            Destroy(coll.gameObject);
+        }
+
+        if (coll.CompareTag("Collect2"))
+        {
+            haveCollect2 = true;
+            Destroy(coll.gameObject);
+        }
+
+        if (coll.CompareTag("Collect3"))
+        {
+            haveCollect3 = true;
+            Destroy(coll.gameObject);
         }
 
         if (coll.CompareTag("Door") && playerController.haveKey)

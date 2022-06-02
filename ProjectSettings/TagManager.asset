@@ -9,6 +9,9 @@ TagManager:
   - Floor
   - Item
   - Door
+  - Collect1
+  - Collect2
+  - Collect3
   layers:
   - Default
   - TransparentFX
