@@ -8,20 +8,16 @@ public class Objects : MonoBehaviour
 
     public bool active;
 
+    public AudioClip clip;
+    public AudioSource audioSource;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.CompareTag("Player"))
         {
             active = true;
-        }
-    }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.transform.CompareTag("Player"))
-        {
-            //active = false;
+            audioSource.PlayOneShot(clip);
         }
     }
 }

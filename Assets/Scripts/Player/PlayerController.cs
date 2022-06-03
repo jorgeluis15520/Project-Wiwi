@@ -171,7 +171,7 @@ public class PlayerController : MonoBehaviour
 
         
 
-        if (Physics.Raycast(groundCheck.transform.position,dwn, out hit, RaycastDetect) && hit.collider.CompareTag("Floor"))
+        if (Physics.Raycast(groundCheck.transform.position,dwn, out hit, RaycastDetect, Mask))
         {
             canJump = true;
             DetectFloor = true;
