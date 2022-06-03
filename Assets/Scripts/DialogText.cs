@@ -18,7 +18,7 @@ public class DialogText : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("playerObject"))
+        if (other.gameObject.CompareTag("Player"))
         {
             Text.SetActive(true);
         }
@@ -26,7 +26,7 @@ public class DialogText : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("playerObject"))
+        if (other.gameObject.CompareTag("Player"))
         {
             Text.SetActive(false);
         }
