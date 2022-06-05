@@ -13,6 +13,9 @@ public class Inventary : MonoBehaviour
     public bool activeInv;
 
     //coleccionables
+    public RawImage blockCollect1;
+    public RawImage blockCollect2;
+    public RawImage blockCollect3;
     public static bool haveCollect1 = false;
     public static bool haveCollect2 = false;
     public static bool haveCollect3 = false;
@@ -41,6 +44,21 @@ public class Inventary : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return) && !activeInv)
         {
             startFadeOut();
+        }
+
+        if (!haveCollect1)
+        {
+            blockCollect1.enabled = false;
+        }
+
+        if (!haveCollect2)
+        {
+            blockCollect2.enabled = false;
+        }
+
+        if (!haveCollect3)
+        {
+            blockCollect3.enabled = false;
         }
     }
 

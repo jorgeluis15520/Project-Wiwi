@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
+using TMPro;
 public class Manager : MonoBehaviour
 {
     public static bool isPause = false;
@@ -15,18 +18,34 @@ public class Manager : MonoBehaviour
     public GameObject coleccionable3Panel;
     public  bool isMainMenu = true;
 
-    
+    //Opciones
+    public GameObject opcionesMenuPanel;
+    public Slider slider;
+    public float sliderValue;
+
+    public TMP_Dropdown resolucionesDropDown;
+    Resolution[] resoluciones;
 
     private void Start()
     {
+
+        
+      
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
         if (sceneName == "SampleScene" && isMainMenu)
         {
-            Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            Time.timeScale = 0f;
+            slider.value = PlayerPrefs.GetFloat("volumenAudio", 0.5f);
+            AudioListener.volume = slider.value;
+
         }
+
+        CheckResolution();
+
+        
     }
 
     private void Update()
@@ -160,4 +179,57 @@ public class Manager : MonoBehaviour
             coleccionablePanel.SetActive(true);
         }
     }
+
+    public void Opciones()
+    {
+        mainMenuPanel.SetActive(false);
+        opcionesMenuPanel.SetActive(true);
+    }
+    public void BackMainMenu()
+    {
+        mainMenuPanel.SetActive(true);
+        opcionesMenuPanel.SetActive(false);
+    }
+
+    public void ChangeSlider(float valor)
+    {
+        sliderValue = valor;
+        PlayerPrefs.SetFloat("volumenAudio", sliderValue);
+        AudioListener.volume = slider.value;
+        
+    }
+
+    public void CheckResolution()
+    {
+        resoluciones = Screen.resolutions;
+        resolucionesDropDown.ClearOptions();
+        List<string> opciones = new List<string>();
+        int resolucionActual = 0;
+
+        for(int i = 0; i<resoluciones.Length; i++)
+        {
+            string opcion = resoluciones[i].width + "x" + resoluciones[i].height;
+            opciones.Add(opcion);
+
+            if(resoluciones[i].width == Screen.currentResolution.width && resoluciones[i].height == Screen.currentResolution.height)
+            {
+                resolucionActual = i;
+            }
+        }
+
+        resolucionesDropDown.AddOptions(opciones);
+        resolucionesDropDown.value = resolucionActual;
+        resolucionesDropDown.RefreshShownValue();
+
+        resolucionesDropDown.value = PlayerPrefs.GetInt("numeroResolucion", 0);
+    }
+    
+    public void CambiarResolucion(int indiceResolucion)
+    {
+        PlayerPrefs.SetInt("numeroResolucion", resolucionesDropDown.value);
+
+        Resolution resolucion = resoluciones[indiceResolucion];
+        Screen.SetResolution(resolucion.width, resolucion.height, Screen.fullScreen);
+    }
+
 }
