@@ -23,14 +23,13 @@ public class Manager : MonoBehaviour
     public Slider slider;
     public float sliderValue;
 
+
+    public Toggle toggle;
     public TMP_Dropdown resolucionesDropDown;
     Resolution[] resoluciones;
 
     private void Start()
     {
-
-        
-      
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
         if (sceneName == "SampleScene" && isMainMenu)
@@ -43,8 +42,22 @@ public class Manager : MonoBehaviour
 
         }
 
-        CheckResolution();
+        if (sceneName != "Credits")
+        {
+            CheckResolution();
+        }
 
+        if (sceneName != "Credits" && Screen.fullScreen)
+        {
+            toggle.isOn = true;
+        }
+
+        else if (sceneName != "Credits" && !Screen.fullScreen)
+        {
+            toggle.isOn = false;
+        }
+
+       
         
     }
 
@@ -208,7 +221,7 @@ public class Manager : MonoBehaviour
 
         for(int i = 0; i<resoluciones.Length; i++)
         {
-            string opcion = resoluciones[i].width + "x" + resoluciones[i].height;
+            string opcion = resoluciones[i].width + "x" + resoluciones[i].height + " @ " + resoluciones[i].refreshRate + "hz"; ;
             opciones.Add(opcion);
 
             if(resoluciones[i].width == Screen.currentResolution.width && resoluciones[i].height == Screen.currentResolution.height)
@@ -224,6 +237,11 @@ public class Manager : MonoBehaviour
         resolucionesDropDown.value = PlayerPrefs.GetInt("numeroResolucion", 0);
     }
     
+    public void ActivarPantallaCompleta(bool pantallaCompleta)
+    {
+        Screen.fullScreen = pantallaCompleta;
+    }
+
     public void CambiarResolucion(int indiceResolucion)
     {
         PlayerPrefs.SetInt("numeroResolucion", resolucionesDropDown.value);
