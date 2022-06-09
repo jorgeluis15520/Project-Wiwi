@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     //camera
 
     public Camera cam;
-    public CameraOrbital co;
+    //public CameraOrbital co;
     private Vector3 camFwd;
 
     public float rotation_speed;
@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-
+        CheckGround();
 
         Vector3 Floor = transform.TransformDirection(Vector3.down);
         Debug.DrawRay(transform.position, Floor * RaycastDetect);
@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
         {
             Run();
         }
-        CheckGround();
+        
         Jump();
         CheckWall();
         CheckLedge();

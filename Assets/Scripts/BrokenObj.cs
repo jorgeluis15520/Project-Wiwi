@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BrokenObk : MonoBehaviour
+public class BrokenObj : MonoBehaviour
 {
     public MeshFilter vase;
     public MeshFilter vaseBroken;
