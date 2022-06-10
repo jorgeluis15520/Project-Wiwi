@@ -26,8 +26,8 @@ TagManager:
   - Interactable
   - Floor
   - Objects
-  - 
-  - 
+  - Border
+  - Climbable Walls
   - 
   - 
   - 

@@ -98,9 +98,6 @@ public class Manager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         isMainMenu = false;
-        //Time.timeScale = 1f;
-        //isPause = false;
-        //isMainMenu = false;
     }
 
     public void ExitGame()

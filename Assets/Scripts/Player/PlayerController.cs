@@ -6,11 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     [HideInInspector] public Rigidbody rb;
 
-    //Movement
+    [Header("Movement")]
     public float speed;
-    /*public float jumpForce;
-      public bool groundCheck;
-      public bool canJumpcheck;*/
     public float jumpspeed;
     public bool DetectFloor = false;
     public float RaycastDetect;
@@ -18,66 +15,49 @@ public class PlayerController : MonoBehaviour
     private bool canRun;
     public GameObject groundCheck;
     public LayerMask Mask;
-
-
-
-    //camera
-
-    public Camera cam;
-    //public CameraOrbital co;
-    private Vector3 camFwd;
-
-    public float rotation_speed;
-
-    //Rotate
     private float hor;
     private float ver;
-    private float horRot;
-    private float verRot;
-    public GameObject playerObject;
-    float angle;
-    Quaternion targetRotation;
 
-    //Agacharse;
+    [Header("Camera")]
+    public Camera cam;
+    private Vector3 camFwd;
+    public float rotation_speed;
+
+
+    [Header("Crouch")]
     public float headRay;
     public float headCheck;
     public bool isCrouch;
     public GameObject head;
+    private CapsuleCollider cap;
+    private float startHeigh;
+    private float starPosY;
+    private float heighCollider = 1.47f;
+    private float positionY = 0.75f;
 
-
-    //animation
+    [Header("Animation")]
     public Animator anim;
 
     public float velocidadInicial;
     public float velocidadAgachado;
     public float velocidadCorrer;
 
-    //public float gravitMod = 2;
-
-    private CapsuleCollider cap;
-    private float startHeigh;
-    private float starPosY;
-
-    private float heighCollider = 1.47f;
-    private float positionY = 0.75f;
-
-    //inventario
-
+    [Header("Inventary")]
     public bool haveKey;
 
-
+    [Header("Climb")]
+    public Transform spine;
     public LayerMask layerMask;
     public bool wallChek;
     public float climbSpeed;
-    public float rayDistance;
+    public float checkDistance;
     private bool isClimbing = false;
 
-
+    [Header("Up Ledge")]
     public Transform headTop;
-    public Transform spine;
-    public bool grabBorder;
-
-    private Transform grabTransform;
+    public Vector3 rayDistance;
+    public bool checkBorder;
+    public LayerMask borderMask;
 
     // Start is called before the first frame update
     void Start()
@@ -94,12 +74,7 @@ public class PlayerController : MonoBehaviour
 
         velocidadInicial = speed;
         velocidadAgachado = speed * 0.5f;
-        velocidadCorrer = speed * 2f; ;
-        
-        
-
-
-        /*Physics.gravity *= gravitMod;*/ //Modificador de la gravedad
+        velocidadCorrer = speed * 2f;
     }
 
 
@@ -133,12 +108,7 @@ public class PlayerController : MonoBehaviour
         Climb();
 
         anim.SetBool("Climbing", isClimbing);
-        anim.SetBool("UpLedge", grabBorder);
-        //if (!Input.GetKey("e")) //Si no se esta presionando la tecla E, el personaje podra rotar
-        //{
-        //    CalculateDirection();
-        //    Rotate();
-        //}
+
     }
 
     void Movement()
@@ -190,12 +160,12 @@ public class PlayerController : MonoBehaviour
     }
     void Run()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && canRun && headCheck <= 0) //Si se mantiene presionado Shift, la velocidad cambia
+        if (Input.GetKey(KeyCode.LeftShift) && canRun && headCheck <= 0) 
         {
             speed = velocidadCorrer;
             anim.SetBool("isRunning", true);
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift)) //Al soltar el boton Shift
+        else if (Input.GetKeyUp(KeyCode.LeftShift)) 
         {
             speed = velocidadInicial;
             anim.SetBool("isRunning", false);
@@ -220,9 +190,6 @@ public class PlayerController : MonoBehaviour
     public void Crouch()
     {
         RaycastHit hit;
-
-        //(Physics.Raycast(head.transform.position, head.transform.up * headRay))
-
 
         if (Physics.Raycast(head.transform.position, head.transform.up, out hit, headRay))
         {
@@ -269,8 +236,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
 
-
-        if (Physics.Raycast(spine.position, spine.forward, out hit, rayDistance, layerMask))
+        if (Physics.Raycast(spine.position, spine.forward, out hit, checkDistance, layerMask))
         {
             wallChek = true;
         }
@@ -282,25 +248,15 @@ public class PlayerController : MonoBehaviour
 
     void CheckLedge()
     {
-        RaycastHit hit;
+        checkBorder = Physics.CheckBox(headTop.position, rayDistance, headTop.rotation, borderMask);
 
-        if (Physics.Raycast(headTop.position, headTop.forward, out hit, rayDistance, layerMask))
-        {
-            grabBorder = false;
-        }
-        else
-        {
-            if (wallChek)
-            {
-                grabBorder = true;
-            }
-        }
+        anim.SetBool("UpLedge", checkBorder);
     }
 
     void Climb()
     {
 
-        if (Input.GetKey(KeyCode.W) && wallChek && !grabBorder)
+        if (Input.GetKey(KeyCode.W) && wallChek && !checkBorder)
         {
             rb.useGravity = false;
             isClimbing = true;
@@ -313,30 +269,14 @@ public class PlayerController : MonoBehaviour
             isClimbing = false;
         }
     }
-    //void CalculateDirection()
-    //{
-    //    if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))) //guarda la ultima rotación hecha
-    //    {
-    //        verRot = ver;
-    //        horRot = hor;
-    //    }
-    //    angle = Mathf.Atan2(horRot, verRot);
-    //    angle = Mathf.Rad2Deg * angle;
 
-    //}
-
-    //void Rotate()
-    //{
-    //    targetRotation = Quaternion.Euler(0, angle, 0);
-    //    playerObject.transform.rotation = Quaternion.Slerp(playerObject.transform.rotation, targetRotation, speed * Time.deltaTime);
-    //}
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(head.transform.position, head.transform.up * headRay);
         Gizmos.DrawRay(transform.position, Vector3.down * RaycastDetect);
-        Gizmos.DrawRay(spine.position, spine.forward * rayDistance);
-        Gizmos.DrawRay(headTop.position, headTop.forward * rayDistance);
+        Gizmos.DrawRay(spine.position, spine.forward * checkDistance);
+        Gizmos.DrawWireCube(headTop.position, rayDistance);
     }
 }
 
