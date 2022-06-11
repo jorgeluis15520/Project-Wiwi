@@ -28,6 +28,9 @@ public class Manager : MonoBehaviour
     public TMP_Dropdown resolucionesDropDown;
     Resolution[] resoluciones;
 
+    //audio
+    public AudioSource audioMenu;
+
     private void Start()
     {
         Scene currentScene = SceneManager.GetActiveScene();
@@ -39,7 +42,6 @@ public class Manager : MonoBehaviour
             Time.timeScale = 0f;
             slider.value = PlayerPrefs.GetFloat("volumenAudio", 0.5f);
             AudioListener.volume = slider.value;
-
         }
 
         if (sceneName != "Credits")
@@ -57,14 +59,24 @@ public class Manager : MonoBehaviour
             toggle.isOn = false;
         }
 
-       
-        
+        if (isMainMenu)
+        {
+            audioMenu.Play();
+
+        }
+
     }
 
     private void Update()
     {
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
+        
+
+        if (!isMainMenu)
+        {
+            audioMenu.Stop();
+        }
 
         if (!isMainMenu && sceneName != "Credits")
         {
