@@ -46,17 +46,34 @@ public class Inventary : MonoBehaviour
             startFadeOut();
         }
 
+        CheckCollects();
+    }
+
+    public void CheckCollects()
+    {
         if (!haveCollect1)
+        {
+            blockCollect1.enabled = true;
+        }
+        else if(haveCollect1)
         {
             blockCollect1.enabled = false;
         }
 
         if (!haveCollect2)
         {
+            blockCollect2.enabled = true;
+        }
+        else if (haveCollect2)
+        {
             blockCollect2.enabled = false;
         }
 
         if (!haveCollect3)
+        {
+            blockCollect3.enabled = true;
+        }
+        else if (haveCollect3)
         {
             blockCollect3.enabled = false;
         }

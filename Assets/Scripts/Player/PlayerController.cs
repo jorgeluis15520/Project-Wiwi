@@ -80,34 +80,38 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        CheckGround();
-
-        Vector3 Floor = transform.TransformDirection(Vector3.down);
-        Debug.DrawRay(transform.position, Floor * RaycastDetect);
-        hor = Input.GetAxisRaw("Horizontal");
-        ver = Input.GetAxisRaw("Vertical");
-
-        anim.SetFloat("speed", speed);
-        anim.SetFloat("VelX", hor);
-        anim.SetFloat("VelY", ver);
-
-        if (!isClimbing)
+        if(Manager.isPause == false)
         {
-            Movement();
-        }
-       
-        Crouch();
-        if (anim.GetBool("Inwall"))
-        {
-            Run();
+            CheckGround();
+
+            Vector3 Floor = transform.TransformDirection(Vector3.down);
+            Debug.DrawRay(transform.position, Floor * RaycastDetect);
+            hor = Input.GetAxisRaw("Horizontal");
+            ver = Input.GetAxisRaw("Vertical");
+
+            anim.SetFloat("speed", speed);
+            anim.SetFloat("VelX", hor);
+            anim.SetFloat("VelY", ver);
+
+            if (!isClimbing)
+            {
+                Movement();
+            }
+
+            Crouch();
+            if (anim.GetBool("Inwall"))
+            {
+                Run();
+            }
+
+            Jump();
+            CheckWall();
+            CheckLedge();
+            Climb();
+
+            anim.SetBool("Climbing", isClimbing);
         }
         
-        Jump();
-        CheckWall();
-        CheckLedge();
-        Climb();
-
-        anim.SetBool("Climbing", isClimbing);
 
     }
 

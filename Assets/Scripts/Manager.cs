@@ -29,13 +29,13 @@ public class Manager : MonoBehaviour
     Resolution[] resoluciones;
 
     //audio
-    public AudioSource audioMenu;
+    //public AudioSource audioMenu;
 
     private void Start()
     {
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
-        if (sceneName == "SampleScene" && isMainMenu)
+        if (sceneName == "Tutorial" && isMainMenu)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -59,11 +59,10 @@ public class Manager : MonoBehaviour
             toggle.isOn = false;
         }
 
-        if (isMainMenu)
-        {
-            audioMenu.Play();
-
-        }
+        //if (isMainMenu)
+        //{
+        //    audioMenu.Play();
+        //}
 
     }
 
@@ -73,16 +72,16 @@ public class Manager : MonoBehaviour
         string sceneName = currentScene.name;
         
 
-        if (!isMainMenu)
-        {
-            audioMenu.Stop();
-        }
+        //if (!isMainMenu)
+        //{
+        //    audioMenu.Stop();
+        //}
 
         if (!isMainMenu && sceneName != "Credits")
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (isPause)
+                if (isPause && isMainMenu)
                 {
                     ResumeGame();
                 }
@@ -97,7 +96,7 @@ public class Manager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                SceneManager.LoadScene("SampleScene");
+                SceneManager.LoadScene("Tutorial");
             }
         }
     }
@@ -124,6 +123,7 @@ public class Manager : MonoBehaviour
         isPause = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        isMainMenu = false;
     }
 
     public void PauseGame()
@@ -133,10 +133,11 @@ public class Manager : MonoBehaviour
         isPause = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        isMainMenu = true;
     }
     public void Menu()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Tutorial");
         isMainMenu = true;
     }
     public void Credits()
