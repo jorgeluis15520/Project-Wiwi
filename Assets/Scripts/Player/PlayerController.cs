@@ -100,26 +100,28 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat("speed", speed);
             anim.SetFloat("VelX", hor);
             anim.SetFloat("VelY", ver);
+
+            CheckLedge();
+
+            if (!isClimbing)
+            {
+                Movement();
+            }
+
+            Crouch();
+            if (anim.GetBool("Inwall"))
+            {
+                Run();
+            }
+
+            Jump();
+            CheckWall();
+            Climb();
+            UpLedge();
+            anim.SetBool("Climbing", isClimbing);
         }
 
-        CheckLedge();
-
-        if (!isClimbing)
-        {
-            Movement();
-        }
        
-        Crouch();
-        if (anim.GetBool("Inwall"))
-        {
-            Run();
-        }
-        
-        Jump();
-        CheckWall();
-        Climb();
-        UpLedge();
-        anim.SetBool("Climbing", isClimbing);
     }
 
     void Movement()
