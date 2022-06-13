@@ -48,16 +48,24 @@ public class PlayerController : MonoBehaviour
     [Header("Climb")]
     public Transform spine;
     public LayerMask layerMask;
-    public bool wallChek;
+    public Vector3 bodyRayDistance;
+    public bool climbWallCheck;
     public float climbSpeed;
     public float checkDistance;
     private bool isClimbing = false;
 
     [Header("Up Ledge")]
     public Transform headTop;
-    public Vector3 rayDistance;
+    public Vector3 ledgeRayDistance;
     public bool checkBorder;
+    public bool wallCheck;
     public LayerMask borderMask;
+    private float upTimer;
+    public float upSpeed;
+    public bool isClimbLedge;
+    public float upDuration;
+    public Transform toUp;
+
 
     // Start is called before the first frame update
     void Start()
@@ -80,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(Manager.isPause == false)
+        if (Manager.isPause == false)
         {
             CheckGround();
 
@@ -92,27 +100,26 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat("speed", speed);
             anim.SetFloat("VelX", hor);
             anim.SetFloat("VelY", ver);
+        }
 
-            if (!isClimbing)
-            {
-                Movement();
-            }
+        CheckLedge();
 
-            Crouch();
-            if (anim.GetBool("Inwall"))
-            {
-                Run();
-            }
-
-            Jump();
-            CheckWall();
-            CheckLedge();
-            Climb();
-
-            anim.SetBool("Climbing", isClimbing);
+        if (!isClimbing)
+        {
+            Movement();
+        }
+       
+        Crouch();
+        if (anim.GetBool("Inwall"))
+        {
+            Run();
         }
         
-
+        Jump();
+        CheckWall();
+        Climb();
+        UpLedge();
+        anim.SetBool("Climbing", isClimbing);
     }
 
     void Movement()
@@ -238,36 +245,35 @@ public class PlayerController : MonoBehaviour
 
     void CheckWall()
     {
-        RaycastHit hit;
-
-        if (Physics.Raycast(spine.position, spine.forward, out hit, checkDistance, layerMask))
-        {
-            wallChek = true;
-        }
-        else
-        {
-            wallChek = false;
-        }
+        
     }
 
     void CheckLedge()
     {
-        checkBorder = Physics.CheckBox(headTop.position, rayDistance, headTop.rotation, borderMask);
+        wallCheck = Physics.CheckBox(spine.position, bodyRayDistance, spine.rotation, borderMask);
+        checkBorder = Physics.CheckBox(headTop.position, ledgeRayDistance, headTop.rotation, borderMask);
+    }
 
-        anim.SetBool("UpLedge", checkBorder);
+    void UpLedge()
+    {
+        if (!checkBorder && wallCheck)
+        {
+            anim.SetBool("UpLedge", checkBorder);
+        }
     }
 
     void Climb()
     {
+        climbWallCheck = Physics.CheckBox(spine.position, bodyRayDistance, spine.rotation, layerMask);
 
-        if (Input.GetKey(KeyCode.W) && wallChek && !checkBorder)
+        if (Input.GetKey(KeyCode.W) && climbWallCheck && !checkBorder)
         {
             rb.useGravity = false;
             isClimbing = true;
             transform.Translate(Vector3.up * climbSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKeyUp(KeyCode.W) && isClimbing && wallChek)
+        if (Input.GetKeyUp(KeyCode.W) && climbWallCheck && wallCheck)
         {
             rb.useGravity = true;
             isClimbing = false;
@@ -279,9 +285,10 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawRay(head.transform.position, head.transform.up * headRay);
         Gizmos.DrawRay(transform.position, Vector3.down * RaycastDetect);
-        Gizmos.DrawRay(spine.position, spine.forward * checkDistance);
-        Gizmos.DrawWireCube(headTop.position, rayDistance);
+        Gizmos.DrawWireCube(headTop.position, bodyRayDistance);
+        Gizmos.DrawWireCube(spine.position, ledgeRayDistance);
     }
+
 }
 
 
