@@ -1359,7 +1359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 899285920}
   m_Layer: 0
-  m_Name: 2 (1)
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1622,6 +1622,7 @@ MonoBehaviour:
   - {fileID: 1107563671}
   - {fileID: 1678755974}
   - {fileID: 2095014312}
+  - {fileID: 899285920}
   currentPoint: 0
   computerActive: 0
   urnActive: 0
