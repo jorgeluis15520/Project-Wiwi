@@ -12,10 +12,12 @@ public class BrokenObj : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip BrokenSound;
     private BoxCollider colliderObj;
+    private Rigidbody RBD;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         colliderObj = GetComponent<BoxCollider>();
+        RBD = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -30,10 +32,12 @@ public class BrokenObj : MonoBehaviour
         {
             //vase.GetComponent<MeshFilter>();
             //vase.mesh = vaseBroken.mesh;}
-
+           
             audioSource.PlayOneShot(BrokenSound);
-            KeyCreate();
-            GameObject Piece1;
+            Debug.Log("OLA");
+            
+            
+            /*GameObject Piece1;
             Piece1= Instantiate(PieceBroken[0], transform.position, Quaternion.identity);
             GameObject Piece2;
             Piece2 = Instantiate(PieceBroken[1], transform.position, Quaternion.identity);
@@ -41,11 +45,14 @@ public class BrokenObj : MonoBehaviour
             Piece3 = Instantiate(PieceBroken[2], transform.position, Quaternion.identity);
             GameObject Piece4;
             Piece4 = Instantiate(PieceBroken[3], transform.position, Quaternion.identity);
+            colliderObj.isTrigger = true;*/
+            PieceBroken[0].SetActive(true);
+            PieceBroken[1].SetActive(true);
+            PieceBroken[2].SetActive(true);
+            PieceBroken[3].SetActive(true);
+            key.SetActive(true);
             colliderObj.isTrigger = true;
-
-            audioSource.PlayOneShot(BrokenSound);
-            
-           Urna1.SetActive(false);
+            Urna1.SetActive(false);
         }
     }
     public void KeyCreate()
@@ -54,4 +61,5 @@ public class BrokenObj : MonoBehaviour
         KeyDrop = Instantiate(key, transform.position, Quaternion.identity);
 
     }
+   
 }

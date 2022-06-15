@@ -14,6 +14,7 @@ TagManager:
   - Collect3
   - Zone1
   - Zone2
+  - Object2
   layers:
   - Default
   - TransparentFX

@@ -20,10 +20,11 @@ public class PlayerController : MonoBehaviour
 
     [Header("Pushing")]
     public GameObject Hand;
-    public GameObject HandCollider;
+   // public GameObject HandCollider;
     public float HandRay;
     private GameObject pickedObject = null;
     public GameObject handPush;
+    public GameObject handPush2;
     public bool isPushing;
  //   public float forcePush;
     
@@ -134,7 +135,16 @@ public class PlayerController : MonoBehaviour
             UpLedge();
             anim.SetBool("Climbing", isClimbing);
             push();
+            push2();
             
+            if (isPushing)
+            {
+                speed = VelocityPushing;
+            }
+            else if (!isPushing && !canRun && !isCrouch)
+            {
+                speed = velocidadInicial;
+            }
           
         }
 
@@ -195,7 +205,7 @@ public class PlayerController : MonoBehaviour
             speed = velocidadCorrer;
             anim.SetBool("isRunning", true);
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        else if (Input.GetKeyUp(KeyCode.LeftShift) && !isPushing)
         {
             speed = velocidadInicial;
             anim.SetBool("isRunning", false);
@@ -224,15 +234,16 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.E)) //al soltar la tecla E el personaje dejara de empujar y jalar objetos
             {
                 speed = velocidadInicial;
-                pickedObject.GetComponent<Rigidbody>().useGravity = true;
-                pickedObject.GetComponent<Rigidbody>().isKinematic = false;
+                //pickedObject.GetComponent<Rigidbody>().useGravity = true;
+               // pickedObject.GetComponent<Rigidbody>().isKinematic = false;
 
                 pickedObject.gameObject.transform.SetParent(null);
                 pickedObject = null;
                 anim.SetBool("isPushing", false);
-                HandCollider.SetActive(false);
+                
                 canRun = true;
                 canJump = true;
+                isCrouch = true;
                 isPushing = false;
                 
             }
@@ -246,18 +257,71 @@ public class PlayerController : MonoBehaviour
                 {
                     isPushing = true;
                     speed = VelocityPushing;
-                    Debug.Log("Empujando");
+                    
                     anim.SetBool("isPushing", true);
-                    HandCollider.SetActive(true);
-                    hit.transform.gameObject.GetComponent<Rigidbody>().useGravity = false;
-                    hit.transform.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                    //HandCollider.SetActive(true);
+                   // hit.transform.gameObject.GetComponent<Rigidbody>().useGravity = false;
+                   // hit.transform.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                    
                     hit.transform.position = handPush.transform.position;
                     hit.transform.SetParent(handPush.gameObject.transform);
+                    pickedObject = hit.transform.gameObject;
                     canRun = false;
                     canJump = false;
-                    pickedObject = hit.transform.gameObject;
+                    isCrouch = false;
+                  
                     
                    
+                }
+            }
+        }
+    }
+    public void push2()
+    {
+
+        if (pickedObject != null)
+        {
+            if (Input.GetKeyUp(KeyCode.E)) //al soltar la tecla E el personaje dejara de empujar y jalar objetos
+            {
+                speed = velocidadInicial;
+               //pickedObject.GetComponent<Rigidbody>().useGravity = true;
+                //pickedObject.GetComponent<Rigidbody>().isKinematic = false;
+
+                pickedObject.gameObject.transform.SetParent(null);
+                pickedObject = null;
+                anim.SetBool("isPushing", false);
+
+                canRun = true;
+                canJump = true;
+                isCrouch = true;
+                isPushing = false;
+
+            }
+        }
+        RaycastHit hit;
+        if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, HandRay))
+        {
+            if (hit.transform.gameObject.CompareTag("Object2"))
+            {
+                if (Input.GetKey(KeyCode.E) && pickedObject == null && canJump)
+                {
+                    isPushing = true;
+                    speed = VelocityPushing;
+
+                    anim.SetBool("isPushing", true);
+                    //HandCollider.SetActive(true);
+                   // hit.transform.gameObject.GetComponent<Rigidbody>().useGravity = false;
+                    //hit.transform.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
+                    hit.transform.position = handPush2.transform.position;
+                    hit.transform.SetParent(handPush2.gameObject.transform);
+                    pickedObject = hit.transform.gameObject;
+                    canRun = false;
+                    canJump = false;
+                    isCrouch = false;
+
+
+
                 }
             }
         }
