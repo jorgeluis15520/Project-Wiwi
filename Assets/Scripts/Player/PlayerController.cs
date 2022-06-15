@@ -11,12 +11,24 @@ public class PlayerController : MonoBehaviour
     public float jumpspeed;
     public bool DetectFloor = false;
     public float RaycastDetect;
-    private bool canJump;
-    private bool canRun;
+    public bool canJump;
+    public bool canRun;
     public GameObject groundCheck;
     public LayerMask Mask;
     private float hor;
     private float ver;
+
+    [Header("Pushing")]
+    public GameObject Hand;
+    public GameObject HandCollider;
+    public float HandRay;
+    private GameObject pickedObject = null;
+    public GameObject handPush;
+    public bool isPushing;
+ //   public float forcePush;
+    
+
+
 
     [Header("Camera")]
     public Camera cam;
@@ -41,6 +53,7 @@ public class PlayerController : MonoBehaviour
     public float velocidadInicial;
     public float velocidadAgachado;
     public float velocidadCorrer;
+    public float VelocityPushing;
 
     [Header("Inventary")]
     public bool haveKey;
@@ -83,6 +96,7 @@ public class PlayerController : MonoBehaviour
         velocidadInicial = speed;
         velocidadAgachado = speed * 0.5f;
         velocidadCorrer = speed * 2f;
+        VelocityPushing = speed * 0.2f;
     }
 
 
@@ -115,13 +129,16 @@ public class PlayerController : MonoBehaviour
             }
 
             Jump();
-            CheckWall();
+
             Climb();
             UpLedge();
             anim.SetBool("Climbing", isClimbing);
+            push();
+            
+          
         }
 
-       
+
     }
 
     void Movement()
@@ -152,9 +169,9 @@ public class PlayerController : MonoBehaviour
         Vector3 dwn = transform.TransformDirection(Vector3.down);
         RaycastHit hit;
 
-        
 
-        if (Physics.Raycast(groundCheck.transform.position,dwn, out hit, RaycastDetect, Mask))
+
+        if (Physics.Raycast(groundCheck.transform.position, dwn, out hit, RaycastDetect, Mask))
         {
             canJump = true;
             DetectFloor = true;
@@ -173,12 +190,12 @@ public class PlayerController : MonoBehaviour
     }
     void Run()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && canRun && headCheck <= 0) 
+        if (Input.GetKey(KeyCode.LeftShift) && canRun && headCheck <= 0 && !isPushing)
         {
             speed = velocidadCorrer;
             anim.SetBool("isRunning", true);
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift)) 
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = velocidadInicial;
             anim.SetBool("isRunning", false);
@@ -191,12 +208,58 @@ public class PlayerController : MonoBehaviour
 
     public void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        if (Input.GetKeyDown(KeyCode.Space) && canJump && !isPushing) 
         {
             anim.SetBool("Jump", true);
             anim.SetBool("isRunning", false);
             rb.AddForce(new Vector3(0, jumpspeed, 0), ForceMode.Impulse);
 
+        }
+    }
+    public void push()
+    {
+      
+        if (pickedObject != null)
+        {
+            if (Input.GetKeyUp(KeyCode.E)) //al soltar la tecla E el personaje dejara de empujar y jalar objetos
+            {
+                speed = velocidadInicial;
+                pickedObject.GetComponent<Rigidbody>().useGravity = true;
+                pickedObject.GetComponent<Rigidbody>().isKinematic = false;
+
+                pickedObject.gameObject.transform.SetParent(null);
+                pickedObject = null;
+                anim.SetBool("isPushing", false);
+                HandCollider.SetActive(false);
+                canRun = true;
+                canJump = true;
+                isPushing = false;
+                
+            }
+        }
+        RaycastHit hit;
+        if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, HandRay))
+        {
+            if (hit.transform.gameObject.CompareTag("Object"))
+            {
+                if (Input.GetKey(KeyCode.E) && pickedObject == null && canJump)
+                {
+                    isPushing = true;
+                    speed = VelocityPushing;
+                    Debug.Log("Empujando");
+                    anim.SetBool("isPushing", true);
+                    HandCollider.SetActive(true);
+                    hit.transform.gameObject.GetComponent<Rigidbody>().useGravity = false;
+                    hit.transform.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                    hit.transform.position = handPush.transform.position;
+                    hit.transform.SetParent(handPush.gameObject.transform);
+                    canRun = false;
+                    canJump = false;
+                    pickedObject = hit.transform.gameObject;
+                    
+                   
+                }
+            }
         }
     }
 
@@ -220,7 +283,7 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("agachado", true);
             speed = velocidadAgachado;
-            
+
             isCrouch = true;
             cap.height = heighCollider;
             cap.center = new Vector3(cap.center.x, positionY, cap.center.z);
@@ -233,22 +296,19 @@ public class PlayerController : MonoBehaviour
             {
                 anim.SetBool("agachado", false);
                 speed = velocidadInicial;
-               
+
                 cap.height = startHeigh;
                 cap.center = new Vector3(cap.center.x, starPosY, cap.center.z);
                 canRun = true;
-               
+
             }
 
-            
+
         }
 
     }
 
-    void CheckWall()
-    {
-        
-    }
+
 
     void CheckLedge()
     {
@@ -289,8 +349,30 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawRay(transform.position, Vector3.down * RaycastDetect);
         Gizmos.DrawWireCube(headTop.position, bodyRayDistance);
         Gizmos.DrawWireCube(spine.position, ledgeRayDistance);
+        Gizmos.DrawRay(Hand.transform.position, Hand.transform.forward * HandRay);
     }
 
+  
+    /*public void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Object"))
+        {
+            Debug.Log("CHALEX");
+            Rigidbody rgbd = collision.collider.attachedRigidbody;
+            if (rgbd != null)
+            {
+                Vector3 forceDirection = collision.gameObject.transform.position - transform.position;
+                forceDirection.y = 0;
+                forceDirection.Normalize();
+                rgbd.AddForceAtPosition(forceDirection * forcePush, transform.position, ForceMode.Impulse);
+
+            }
+        }
+
+    }*/
+    
+
 }
+
 
 
