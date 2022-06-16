@@ -20,6 +20,9 @@ public class Inventary : MonoBehaviour
     public static bool haveCollect2 = false;
     public static bool haveCollect3 = false;
 
+    //Items
+    public static bool haveItem = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -87,7 +90,7 @@ public class Inventary : MonoBehaviour
             {
                 if (objects[i].GetComponent<Image>().enabled == false)
                 {
-                    playerController.haveKey = true;
+                    haveItem = true;
                     objects[i].GetComponent<Image>().enabled = true;
                     objects[i].GetComponent<Image>().sprite = coll.GetComponent<Image>().sprite;
 
@@ -127,10 +130,11 @@ public class Inventary : MonoBehaviour
             Destroy(coll.gameObject);
         }
 
-        if (coll.CompareTag("Door") && playerController.haveKey)
+        if (coll.CompareTag("Door") && haveItem)
         {
             objects[0].GetComponent<Image>().sprite = null;
             objects[0].GetComponent<Image>().enabled = false;
+            haveItem = false;
         }
     }
 

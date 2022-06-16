@@ -56,8 +56,8 @@ public class PlayerController : MonoBehaviour
     public float velocidadCorrer;
     public float VelocityPushing;
 
-    [Header("Inventary")]
-    public bool haveKey;
+    //[Header("Inventary")]
+    //public bool haveKey;
 
     [Header("Climb")]
     public Transform spine;
@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        haveKey = false;
+        //haveKey = false;
         cap = GetComponent<CapsuleCollider>();
         Vector3 pos = cap.center;
         headCheck = 0;
