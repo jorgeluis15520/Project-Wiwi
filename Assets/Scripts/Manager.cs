@@ -26,7 +26,7 @@ public class Manager : MonoBehaviour
 
     public Toggle toggle;
     public TMP_Dropdown resolutionsDropDown;
-    Resolution[] resolutions;
+    private Resolution[] resolutions;
 
     //audio
     //public AudioSource audioMenu;
