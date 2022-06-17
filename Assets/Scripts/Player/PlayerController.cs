@@ -77,11 +77,10 @@ public class PlayerController : MonoBehaviour
     public float ledgeRayDistance;
     public bool checkBorder;
     public LayerMask borderMask;
-    public float upSpeed;
     public bool isClimbLedge;
-    public float upDuration;
     public Transform toUp;
-
+    private Vector3 pos;
+    private bool once = false;
 
     // Start is called before the first frame update
     void Start()
@@ -120,7 +119,7 @@ public class PlayerController : MonoBehaviour
 
             DetectWalls();
 
-            if (!isClimbing)
+            if (!isClimbing && !isClimbLedge)
             {
                 Movement();
             }
@@ -131,13 +130,12 @@ public class PlayerController : MonoBehaviour
                 Run();
             }
 
-            Jump();
-
             Climb();
             UpLedge();
             Push();
             Push2();
-            
+            Jump();
+
             if (isPushing)
             {
                 speed = speedPushing;
@@ -219,7 +217,7 @@ public class PlayerController : MonoBehaviour
 
     public void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canJump && !isPushing) 
+        if (Input.GetKeyDown(KeyCode.Space) && canJump && !isPushing && !isClimbLedge) 
         {
             anim.SetBool("Jump", true);
             anim.SetBool("isRunning", false);
@@ -404,7 +402,39 @@ public class PlayerController : MonoBehaviour
     {
         if (checkBorder && wallCheck)
         {
-            anim.SetBool("UpLedge", checkBorder);
+            anim.SetBool("UpLedge", true);
+            isClimbLedge = true;
+            if (!once)
+            {
+                pos = toUp.position;
+                once = true;
+            }
+
+            StartCoroutine(ClimbLedge(transform.position, pos));
+        }
+
+        if (transform.position == pos)
+        {
+            anim.SetBool("UpLedge", false);
+            rb.useGravity = true;
+        }
+    }
+
+    IEnumerator ClimbLedge(Vector3 start, Vector3 target)
+    {
+        float timer = 0;
+        while (transform.position != target)
+        {
+            rb.useGravity = false;
+            transform.position = Vector3.Lerp(start, target, timer / 1.8f);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = target;
+        if (transform.position == target)
+        {
+            isClimbLedge = false;
+            once = false;
         }
     }
 
