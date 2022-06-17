@@ -8,20 +8,20 @@ public class PlayerController : MonoBehaviour
 
     [Header("Movement")]
     public float speed;
-    public float jumpspeed;
-    public bool DetectFloor = false;
-    public float RaycastDetect;
+    public float jumpForce;
+    public bool detectFloor = false;
+    public float raycastDetect;
     public bool canJump;
     public bool canRun;
     public GameObject groundCheck;
-    public LayerMask Mask;
+    public LayerMask mask;
     private float hor;
     private float ver;
 
     [Header("Pushing")]
-    public GameObject Hand;
+    public GameObject hand;
    // public GameObject HandCollider;
-    public float HandRay;
+    public float handRay;
     private GameObject pickedObject = null;
     public GameObject handPush;
     public GameObject handPush2;
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     [Header("Camera")]
     public Camera cam;
     private Vector3 camFwd;
-    public float rotation_speed;
+    public float rotationSpeed;
 
 
     [Header("Crouch")]
@@ -51,10 +51,10 @@ public class PlayerController : MonoBehaviour
     [Header("Animation")]
     public Animator anim;
 
-    public float velocidadInicial;
-    public float velocidadAgachado;
-    public float velocidadCorrer;
-    public float VelocityPushing;
+    public float speedInitial;
+    public float speedCrouch;
+    public float speedRun;
+    public float speedPushing;
 
     //[Header("Inventary")]
     //public bool haveKey;
@@ -91,13 +91,13 @@ public class PlayerController : MonoBehaviour
         startHeigh = cap.height;
         starPosY = pos.y;
 
-        DetectFloor = false;
+        detectFloor = false;
         rb = GetComponent<Rigidbody>();
 
-        velocidadInicial = speed;
-        velocidadAgachado = speed * 0.5f;
-        velocidadCorrer = speed * 2f;
-        VelocityPushing = speed * 0.2f;
+        speedInitial = speed;
+        speedCrouch = speed * 0.5f;
+        speedRun = speed * 2f;
+        speedPushing = speed * 0.2f;
     }
 
 
@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
             CheckGround();
 
             Vector3 Floor = transform.TransformDirection(Vector3.down);
-            Debug.DrawRay(transform.position, Floor * RaycastDetect);
+            Debug.DrawRay(transform.position, Floor * raycastDetect);
             hor = Input.GetAxisRaw("Horizontal");
             ver = Input.GetAxisRaw("Vertical");
 
@@ -134,16 +134,16 @@ public class PlayerController : MonoBehaviour
             Climb();
             UpLedge();
             anim.SetBool("Climbing", isClimbing);
-            push();
-            push2();
+            Push();
+            Push2();
             
             if (isPushing)
             {
-                speed = VelocityPushing;
+                speed = speedPushing;
             }
             else if (!isPushing && !canRun && !isCrouch)
             {
-                speed = velocidadInicial;
+                speed = speedInitial;
             }
           
         }
@@ -169,7 +169,7 @@ public class PlayerController : MonoBehaviour
         move = ver * m_CharForward * w_speed + hor * m_CharRight * speed;
 
 
-        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, move, rotation_speed, 0.0f));
+        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, move, rotationSpeed, 0.0f));
 
         transform.position += move * Time.deltaTime;
 
@@ -181,10 +181,10 @@ public class PlayerController : MonoBehaviour
 
 
 
-        if (Physics.Raycast(groundCheck.transform.position, dwn, out hit, RaycastDetect, Mask))
+        if (Physics.Raycast(groundCheck.transform.position, dwn, out hit, raycastDetect, mask))
         {
             canJump = true;
-            DetectFloor = true;
+            detectFloor = true;
             rb.useGravity = true;
             anim.SetBool("Inwall", true);
             anim.SetBool("Jump", false);
@@ -192,7 +192,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             canJump = false;
-            DetectFloor = false;
+            detectFloor = false;
             anim.SetBool("Inwall", false);
             anim.SetBool("isRunning", false);
 
@@ -202,12 +202,12 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift) && canRun && headCheck <= 0 && !isPushing)
         {
-            speed = velocidadCorrer;
+            speed = speedRun;
             anim.SetBool("isRunning", true);
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift) && !isPushing)
         {
-            speed = velocidadInicial;
+            speed = speedInitial;
             anim.SetBool("isRunning", false);
         }
         else if (!Input.GetKey(KeyCode.LeftShift))
@@ -222,20 +222,20 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("Jump", true);
             anim.SetBool("isRunning", false);
-            rb.AddForce(new Vector3(0, jumpspeed, 0), ForceMode.Impulse);
+            rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
 
         }
     }
-    public void push()
+    public void Push()
     {
       
         if (pickedObject != null)
         {
             if (Input.GetKeyUp(KeyCode.E)) //al soltar la tecla E el personaje dejara de empujar y jalar objetos
             {
-                speed = velocidadInicial;
+                speed = speedInitial;
                 pickedObject.GetComponent<Rigidbody>().useGravity = true;
-               pickedObject.GetComponent<Rigidbody>().isKinematic = false;
+                pickedObject.GetComponent<Rigidbody>().isKinematic = false;
 
                 pickedObject.gameObject.transform.SetParent(null);
                 pickedObject = null;
@@ -249,14 +249,14 @@ public class PlayerController : MonoBehaviour
             }
         }
         RaycastHit hit;
-        if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, HandRay))
+        if (Physics.Raycast(hand.transform.position, hand.transform.forward, out hit, handRay))
         {
             if (hit.transform.gameObject.CompareTag("Object"))
             {
                 if (Input.GetKey(KeyCode.E) && pickedObject == null && canJump)
                 {
                     isPushing = true;
-                    speed = VelocityPushing;
+                    speed = speedPushing;
                     
                     anim.SetBool("isPushing", true);
                     //HandCollider.SetActive(true);
@@ -276,14 +276,14 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    public void push2()
+    public void Push2()
     {
 
         if (pickedObject != null)
         {
             if (Input.GetKeyUp(KeyCode.E)) //al soltar la tecla E el personaje dejara de empujar y jalar objetos
             {
-                speed = velocidadInicial;
+                speed = speedInitial;
                pickedObject.GetComponent<Rigidbody>().useGravity = true;
                 pickedObject.GetComponent<Rigidbody>().isKinematic = false;
 
@@ -299,14 +299,14 @@ public class PlayerController : MonoBehaviour
             }
         }
         RaycastHit hit;
-        if (Physics.Raycast(Hand.transform.position, Hand.transform.forward, out hit, HandRay))
+        if (Physics.Raycast(hand.transform.position, hand.transform.forward, out hit, handRay))
         {
             if (hit.transform.gameObject.CompareTag("Object2"))
             {
                 if (Input.GetKey(KeyCode.E) && pickedObject == null && canJump)
                 {
                     isPushing = true;
-                    speed = VelocityPushing;
+                    speed = speedPushing;
 
                     anim.SetBool("isPushing", true);
                     //HandCollider.SetActive(true);
@@ -346,7 +346,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl) && canJump)
         {
             anim.SetBool("agachado", true);
-            speed = velocidadAgachado;
+            speed = speedCrouch;
 
             isCrouch = true;
             cap.height = heighCollider;
@@ -359,7 +359,7 @@ public class PlayerController : MonoBehaviour
             if (headCheck <= 0)
             {
                 anim.SetBool("agachado", false);
-                speed = velocidadInicial;
+                speed = speedInitial;
 
                 cap.height = startHeigh;
                 cap.center = new Vector3(cap.center.x, starPosY, cap.center.z);
@@ -410,10 +410,10 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(head.transform.position, head.transform.up * headRay);
-        Gizmos.DrawRay(transform.position, Vector3.down * RaycastDetect);
+        Gizmos.DrawRay(transform.position, Vector3.down * raycastDetect);
         Gizmos.DrawWireCube(headTop.position, bodyRayDistance);
         Gizmos.DrawWireCube(spine.position, ledgeRayDistance);
-        Gizmos.DrawRay(Hand.transform.position, Hand.transform.forward * HandRay);
+        Gizmos.DrawRay(hand.transform.position, hand.transform.forward * handRay);
     }
 
   

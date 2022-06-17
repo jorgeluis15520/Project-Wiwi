@@ -12,21 +12,21 @@ public class Manager : MonoBehaviour
     public string sceneName;
     public GameObject pauseMenuPanel;
     public GameObject mainMenuPanel;
-    public GameObject coleccionablePanel;
-    public GameObject coleccionable1Panel;
-    public GameObject coleccionable2Panel;
-    public GameObject coleccionable3Panel;
+    public GameObject collectablePanel;
+    public GameObject collectable1Panel;
+    public GameObject collectable2Panel;
+    public GameObject collectable3Panel;
     public  bool isMainMenu = true;
 
     //Opciones
-    public GameObject opcionesMenuPanel;
+    public GameObject optionsMenuPanel;
     public Slider slider;
     public float sliderValue;
 
 
     public Toggle toggle;
-    public TMP_Dropdown resolucionesDropDown;
-    Resolution[] resoluciones;
+    public TMP_Dropdown resolutionsDropDown;
+    Resolution[] resolutions;
 
     //audio
     //public AudioSource audioMenu;
@@ -147,71 +147,71 @@ public class Manager : MonoBehaviour
         isMainMenu = false;
     }
 
-    public void ColeccionablePanel()
+    public void CollectablePanel()
     {
         pauseMenuPanel.SetActive(false);
-        coleccionablePanel.SetActive(true);
+        collectablePanel.SetActive(true);
     }
 
     public void BackPauseMenu()
     {
-        coleccionablePanel.SetActive(false);
+        collectablePanel.SetActive(false);
         pauseMenuPanel.SetActive(true);
     }
 
-    public void Coleccionable1()
+    public void Collectable1()
     {
         if (Inventary.haveCollect1)
         {
-            coleccionable1Panel.SetActive(true);
-            coleccionablePanel.SetActive(false);
+            collectable1Panel.SetActive(true);
+            collectablePanel.SetActive(false);
         }
     }
-    public void Coleccionable2()
+    public void Collectable2()
     {
         if (Inventary.haveCollect2)
         {
-            coleccionable2Panel.SetActive(true);
-            coleccionablePanel.SetActive(false);
+            collectable2Panel.SetActive(true);
+            collectablePanel.SetActive(false);
         }
     }
-    public void Coleccionable3()
+    public void Collectable3()
     {
         if (Inventary.haveCollect3)
         {
-            coleccionable3Panel.SetActive(true);
-            coleccionablePanel.SetActive(false);
+            collectable3Panel.SetActive(true);
+            collectablePanel.SetActive(false);
         }
     }
 
-    public void BacktoColeccionablePanel()
+    public void BacktoCollectablePanel()
     {
-        if(coleccionable1Panel.activeSelf == true)
+        if(collectable1Panel.activeSelf == true)
         {
-            coleccionable1Panel.SetActive(false);
-            coleccionablePanel.SetActive(true);
+            collectable1Panel.SetActive(false);
+            collectablePanel.SetActive(true);
         }
-        if (coleccionable2Panel.activeSelf == true)
+        if (collectable2Panel.activeSelf == true)
         {
-            coleccionable2Panel.SetActive(false);
-            coleccionablePanel.SetActive(true);
+            collectable2Panel.SetActive(false);
+            collectablePanel.SetActive(true);
         }
-        if (coleccionable3Panel.activeSelf == true)
+        if (collectable3Panel.activeSelf == true)
         {
-            coleccionable3Panel.SetActive(false);
-            coleccionablePanel.SetActive(true);
+            collectable3Panel.SetActive(false);
+            collectablePanel.SetActive(true);
         }
     }
 
-    public void Opciones()
+    public void Options()
     {
         mainMenuPanel.SetActive(false);
-        opcionesMenuPanel.SetActive(true);
+        optionsMenuPanel.SetActive(true);
     }
     public void BackMainMenu()
     {
         mainMenuPanel.SetActive(true);
-        opcionesMenuPanel.SetActive(false);
+        optionsMenuPanel.SetActive(false);
     }
 
     public void ChangeSlider(float valor)
@@ -224,40 +224,40 @@ public class Manager : MonoBehaviour
 
     public void CheckResolution()
     {
-        resoluciones = Screen.resolutions;
-        resolucionesDropDown.ClearOptions();
-        List<string> opciones = new List<string>();
-        int resolucionActual = 0;
+        resolutions = Screen.resolutions;
+        resolutionsDropDown.ClearOptions();
+        List<string> options = new List<string>();
+        int resolutionActual = 0;
 
-        for(int i = 0; i<resoluciones.Length; i++)
+        for(int i = 0; i<resolutions.Length; i++)
         {
-            string opcion = resoluciones[i].width + "x" + resoluciones[i].height + " @ " + resoluciones[i].refreshRate + "hz"; ;
-            opciones.Add(opcion);
+            string option = resolutions[i].width + "x" + resolutions[i].height + " @ " + resolutions[i].refreshRate + "hz"; ;
+            options.Add(option);
 
-            if(resoluciones[i].width == Screen.currentResolution.width && resoluciones[i].height == Screen.currentResolution.height)
+            if(resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
             {
-                resolucionActual = i;
+                resolutionActual = i;
             }
         }
 
-        resolucionesDropDown.AddOptions(opciones);
-        resolucionesDropDown.value = resolucionActual;
-        resolucionesDropDown.RefreshShownValue();
+        resolutionsDropDown.AddOptions(options);
+        resolutionsDropDown.value = resolutionActual;
+        resolutionsDropDown.RefreshShownValue();
 
-        resolucionesDropDown.value = PlayerPrefs.GetInt("numeroResolucion", 0);
+        resolutionsDropDown.value = PlayerPrefs.GetInt("numberResolution", 0);
     }
     
-    public void ActivarPantallaCompleta(bool pantallaCompleta)
+    public void ActiveFullScreen(bool fullScreen)
     {
-        Screen.fullScreen = pantallaCompleta;
+        Screen.fullScreen = fullScreen;
     }
 
-    public void CambiarResolucion(int indiceResolucion)
+    public void ChangeResolution(int indexResolution)
     {
-        PlayerPrefs.SetInt("numeroResolucion", resolucionesDropDown.value);
+        PlayerPrefs.SetInt("numberResolution", resolutionsDropDown.value);
 
-        Resolution resolucion = resoluciones[indiceResolucion];
-        Screen.SetResolution(resolucion.width, resolucion.height, Screen.fullScreen);
+        Resolution resolution = resolutions[indexResolution];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
 }
