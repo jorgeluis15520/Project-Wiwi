@@ -81,6 +81,8 @@ public class PlayerController : MonoBehaviour
     public Transform toUp;
     private Vector3 pos;
     private bool once = false;
+    private bool isDying = false;
+    public static bool isDeath;
 
     // Start is called before the first frame update
     void Start()
@@ -104,7 +106,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Manager.isPause == false)
+        if (Manager.isPause == false && !isDying)
         {
             CheckGround();
 
@@ -481,6 +483,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private IEnumerator DeathAnim()
+    {
+        rb.isKinematic = true;
+        isDying = true;
+        anim.SetBool("isDeath", true);
+        yield return new WaitForSeconds(4.5f);
+        isDeath = true;  
+    }
+
+    public void Death()
+    {
+        StartCoroutine("DeathAnim");
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -499,7 +514,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-  
+    
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            Death();
+        }
+    }
+
     /*public void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Object"))
@@ -517,7 +541,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }*/
-    
+
 
 }
 

@@ -17,6 +17,8 @@ TagManager:
   - Object2
   - Rope
   - Wall
+  - Grill
+  - Enemy
   layers:
   - Default
   - TransparentFX

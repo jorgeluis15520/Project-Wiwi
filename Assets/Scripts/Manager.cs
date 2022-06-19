@@ -9,15 +9,15 @@ public class Manager : MonoBehaviour
 {
     public static bool isPause = false;
     private Scene currentScene;
-    public string sceneName;
+    private string sceneName;
     public GameObject pauseMenuPanel;
     public GameObject mainMenuPanel;
     public GameObject collectablePanel;
     public GameObject collectable1Panel;
     public GameObject collectable2Panel;
     public GameObject collectable3Panel;
+    public GameObject deathPanel;
     public  bool isMainMenu = true;
-
     //Opciones
     public GameObject optionsMenuPanel;
     public Slider slider;
@@ -34,7 +34,7 @@ public class Manager : MonoBehaviour
     private void Start()
     {
         Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
+        sceneName = currentScene.name;
         if (sceneName == "Tutorial" && isMainMenu)
         {
             Cursor.lockState = CursorLockMode.None;
@@ -43,6 +43,8 @@ public class Manager : MonoBehaviour
             slider.value = PlayerPrefs.GetFloat("volumenAudio", 0.5f);
             AudioListener.volume = slider.value;
         }
+
+        
 
         if (sceneName != "Credits")
         {
@@ -58,6 +60,7 @@ public class Manager : MonoBehaviour
         {
             toggle.isOn = false;
         }
+       
 
         //if (isMainMenu)
         //{
@@ -68,6 +71,7 @@ public class Manager : MonoBehaviour
 
     private void Update()
     {
+
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
         
@@ -99,6 +103,9 @@ public class Manager : MonoBehaviour
                 SceneManager.LoadScene("Tutorial");
             }
         }
+
+      
+        Death();
     }
 
     public void StartGame()
@@ -184,6 +191,17 @@ public class Manager : MonoBehaviour
         }
     }
 
+    public void Death()
+    {
+        if(PlayerController.isDeath == true)
+        {
+            deathPanel.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        
+    }
+
     public void BacktoCollectablePanel()
     {
         if(collectable1Panel.activeSelf == true)
@@ -221,6 +239,24 @@ public class Manager : MonoBehaviour
         AudioListener.volume = slider.value;
         
     }
+
+    public void RestartLevel()
+    {
+        PlayerController.isDeath = false;
+        deathPanel.SetActive(false);
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+    }
+
+    public void PrincipalMenu()
+    {
+        PlayerController.isDeath = false;
+        deathPanel.SetActive(false);
+        SceneManager.LoadScene("Tutorial");
+    }
+
 
     public void CheckResolution()
     {

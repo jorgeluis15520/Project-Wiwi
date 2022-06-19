@@ -136,6 +136,12 @@ public class Inventary : MonoBehaviour
             objects[0].GetComponent<Image>().enabled = false;
             haveItem = false;
         }
+        if (coll.CompareTag("Grill") && haveItem)
+        {
+            objects[0].GetComponent<Image>().sprite = null;
+            objects[0].GetComponent<Image>().enabled = false;
+            haveItem = false;
+        }
     }
 
     IEnumerator FadeIn()
