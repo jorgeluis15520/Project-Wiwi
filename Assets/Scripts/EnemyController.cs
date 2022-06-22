@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -11,16 +12,19 @@ public class EnemyController : MonoBehaviour
     public float runSpeed;
     public float speedRotation;
     private float speed;
-    
+    private NavMeshAgent nav;
     public Transform targetPlayer;
     public Transform targetObject;
     FieldOfView fov;
+    private bool isFollowPlayer = false;
+    private bool isFollowObjetc = false;
 
     private AudioSource audioSource;
     public AudioClip detectSound;
     public AudioClip stepSound;
     private bool detect = false;
     private float timer;
+    private float timer2;
 
     private Animator anim;
     // Start is called before the first frame update
@@ -29,6 +33,7 @@ public class EnemyController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         transform.LookAt(new Vector3(wayPoints[currentPoint].position.x, transform.position.y, wayPoints[currentPoint].position.z));
+        nav = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -72,12 +77,12 @@ public class EnemyController : MonoBehaviour
     void Move()
     {
         anim.SetBool("Run", false);
-        speed = walkSpeed;
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(wayPoints[currentPoint].position.x, transform.position.y, wayPoints[currentPoint].position.z), speed * Time.deltaTime);
+        nav.speed = walkSpeed;
+        nav.destination = wayPoints[currentPoint].position;
 
         float dist = Vector3.Distance(transform.position, wayPoints[currentPoint].position);
 
-        if (dist <= 1f)
+        if (dist <= 2f)
         {
             currentPoint++;
 
@@ -97,22 +102,28 @@ public class EnemyController : MonoBehaviour
 
     void FollowPLayer()
     {
+        isFollowPlayer = true;
         anim.SetBool("Run", true);
-        speed = runSpeed;
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(targetPlayer.position.x, transform.position.y, targetPlayer.position.z), speed * Time.deltaTime);
-
+        nav.speed = runSpeed;
+        nav.destination = targetPlayer.position;
         var dir = targetPlayer.position - transform.position;
         var rotation = Quaternion.LookRotation(dir);
 
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speedRotation * Time.deltaTime);
         transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+
+        if (isFollowObjetc)
+        {
+            targetObject.GetComponent<Objects>().active = false;
+        }
     }
 
     void FollowObject()
     {
         anim.SetBool("Run", true);
-        speed = runSpeed;
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(targetObject.position.x, transform.position.y, targetObject.position.z), speed * Time.deltaTime);
+        nav.speed = runSpeed;
+        nav.destination = targetObject.position;
+        isFollowObjetc = true;
 
         var dir = targetObject.position - transform.position;
         var rotation = Quaternion.LookRotation(dir);
@@ -122,9 +133,15 @@ public class EnemyController : MonoBehaviour
 
         float dis = Vector3.Distance(transform.position, targetObject.position);
 
-        if (dis <= 2f)
+        if (dis <= 3f)
+        {
+            timer2 += Time.deltaTime; 
+        }
+
+        if (timer>=3f)
         {
             targetObject.GetComponent<Objects>().active = false;
+            timer = 0;
         }
     }
     public void Step()
