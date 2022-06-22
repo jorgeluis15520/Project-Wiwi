@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 2b70754c8f87c44488f9b7d4f22cf01b
+guid: 30f5936bb85730e41a0f7619e3b0f372
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
-      74: -8286031006616475834
-    second: Agacharse
+      74: 1827226128182048838
+    second: Take 001
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -91,7 +91,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.04
+    globalScale: 0.0004
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 1
