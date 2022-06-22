@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: d19973d4a2764ff42b67551d1d4611dd
+guid: 727238c17e18b4948845735f45bf4954
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
-      74: 6086194085485904224
-    second: Caida
+      74: 1827226128182048838
+    second: Take 001
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -38,7 +38,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.04
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -56,8 +56,8 @@ ModelImporter:
     weldVertices: 1
     bakeAxisConversion: 0
     preserveHierarchy: 0
-    skinWeightsMode: 1
-    maxBonesPerVertex: 35
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
     minBoneWeight: 0.001
     optimizeBones: 1
     meshOptimizationFlags: -1
@@ -91,16 +91,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.0004
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 0e0c41ef263d6094fb63fb76cdd2f790, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 1
+  animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 

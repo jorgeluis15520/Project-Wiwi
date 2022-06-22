@@ -512,6 +512,8 @@ public class PlayerController : MonoBehaviour
         {
             Gizmos.DrawWireCube(headTop.position + headTop.forward * HIT.distance, headTop.lossyScale);
         }
+        Gizmos.DrawWireCube(body.position + body.forward * HIT.distance, body.lossyScale);
+        Gizmos.DrawWireCube(headTop.position + headTop.forward * HIT.distance, headTop.lossyScale);
     }
 
     

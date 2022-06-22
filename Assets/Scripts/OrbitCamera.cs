@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraOrbital : MonoBehaviour
+public class OrbitCamera : MonoBehaviour
 {
     [SerializeField]
     private Transform FollowCam;
@@ -19,20 +19,20 @@ public class CameraOrbital : MonoBehaviour
         Vector3 rot = transform.localRotation.eulerAngles;
         rotY = rot.y;
         rotX = rot.x;
-        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
         PlayerFollow();
-        CamaraController();
+        CameraController();
+        Cursor.lockState = CursorLockMode.Locked;
     }
     public void PlayerFollow()
     {
         transform.position = Vector3.MoveTowards(transform.position, FollowCam.position, VelCamera * Time.deltaTime);
     } 
-    public void CamaraController()
+    public void CameraController()
     {
         mousex = Input.GetAxis("Mouse X");
         mousez = Input.GetAxis("Mouse Y");
