@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
         speedInitial = speed;
         speedCrouch = speed * 0.5f;
-        speedRun = speed * 2f;
+        speedRun = speed * 5f;
         speedPushing = speed * 0.2f;
     }
 

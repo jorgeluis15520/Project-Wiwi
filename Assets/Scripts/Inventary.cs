@@ -27,27 +27,28 @@ public class Inventary : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Color c = invImage.color;
-        c.a = 0f;
-        invImage.color = c;
+        //Color c = invImage.color;
+        //c.a = 0f;
+        //invImage.color = c;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            activeInv = !activeInv;
-        }
-        if (Input.GetKeyDown(KeyCode.Return) && activeInv)
-        {
-            startFading();
-        }
-        if (Input.GetKeyDown(KeyCode.Return) && !activeInv)
-        {
-            startFadeOut();
-        }
+        activeInv = true;
+        //if (Input.GetKeyDown(KeyCode.Return))
+        //{
+        //    activeInv = !activeInv;
+        //}
+        //if (Input.GetKeyDown(KeyCode.Return) && activeInv)
+        //{
+        // startFading();
+        
+        //if (Input.GetKeyDown(KeyCode.Return) && !activeInv)
+        //{
+        //    startFadeOut();
+        //}
 
         CheckCollects();
     }

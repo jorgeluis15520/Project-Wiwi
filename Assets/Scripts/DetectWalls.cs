@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class DetectWalls : MonoBehaviour
 {
-    private float minDistance = 1;
-    private float Maxdistance = 5;
+    private float minDistance = 0.3f;
+    private float Maxdistance = 0.7f;
     private float SlowCam = 10;
     private float distance;
+    public float rayDistance;
     Vector3 Direction;
     void Start()
     {
@@ -27,7 +28,7 @@ public class DetectWalls : MonoBehaviour
         RaycastHit hit;
         if (Physics.Linecast(transform.parent.position, posCamera, out hit))
         {
-            distance = Mathf.Clamp(hit.distance * 0.85f, minDistance, Maxdistance);
+            distance = Mathf.Clamp(hit.distance * rayDistance, minDistance, Maxdistance);
         }
         else
         {
