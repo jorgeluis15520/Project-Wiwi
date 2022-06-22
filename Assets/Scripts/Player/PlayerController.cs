@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour
             }
 
             Climb();
-            UpLedge();
+           // UpLedge();
             Push();
             Push2();
             Jump();
