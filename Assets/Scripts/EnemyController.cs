@@ -19,14 +19,18 @@ public class EnemyController : MonoBehaviour
     FieldOfView fov;
     private bool isFollowPlayer = false;
     private bool isFollowObjetc = false;
+    private bool isFollowPosition = false;
 
     private AudioSource audioSource;
     public AudioClip detectSound;
     public AudioClip stepSound;
     private bool detect = false;
     private float timer;
-    private float timer2;
+    public float timer2;
+    public float timer3;
     private Animator anim;
+    public Vector3 pos;
+    private bool once = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,21 +45,32 @@ public class EnemyController : MonoBehaviour
     {
         fov = GetComponent<FieldOfView>();
 
-        targetPlayer = fov.targetPlayer;
-        targetObject = fov.targetObject;
-        lastPosition = fov.lastPosition;
+        if (fov.targetPlayer != null)
+        {
+            targetPlayer = fov.targetPlayer;
+            once = false;
+        }
 
-        if (targetPlayer == null && targetObject == null && lastPosition==null)
+        targetObject = fov.targetObject;
+
+        if (targetPlayer != null && !once)
+        {
+            lastPosition = targetPlayer;
+            pos = lastPosition.position;
+            once = true;
+        }
+
+        if (targetPlayer == null && targetObject == null && lastPosition == null)
         {
             Move();
             detect = false;
         }
-        else if(targetPlayer == null && targetObject != null && lastPosition ==null)
+        else if (targetPlayer == null && targetObject != null && lastPosition != null)
         {
             FollowObject();
             detect = false;
         }
-        else
+        else if (targetPlayer !=null && targetObject == null && lastPosition == null)
         {
             FollowPLayer();
 
@@ -67,8 +82,20 @@ public class EnemyController : MonoBehaviour
 
             timer += Time.deltaTime;
         }
+        else
+        {
+            FollowLastPosition();
 
-        if (detect && timer>=5f)
+            if (!detect)
+            {
+                audioSource.PlayOneShot(detectSound);
+                detect = true;
+            }
+
+            timer += Time.deltaTime;
+        }
+
+        if (detect && timer >= 5f)
         {
             audioSource.PlayOneShot(detectSound);
             timer = 0;
@@ -106,23 +133,8 @@ public class EnemyController : MonoBehaviour
         isFollowPlayer = true;
         anim.SetBool("Run", true);
         nav.speed = runSpeed;
-
-        if (lastPosition == null)
-        {
-            nav.destination = targetPlayer.position;
-        }
-        else
-        {
-            nav.destination = lastPosition.position;
-
-            float dis = Vector3.Distance(transform.position, lastPosition.position);
-
-            if (dis <= 0.1f)
-            {
-                lastPosition = null;
-                fov.targetPlayer = null;
-            }
-        }
+        nav.destination = targetPlayer.position;
+        lastPosition = targetPlayer;
 
         var dir = targetPlayer.position - transform.position;
         var rotation = Quaternion.LookRotation(dir);
@@ -156,11 +168,40 @@ public class EnemyController : MonoBehaviour
             timer2 += Time.deltaTime; 
         }
 
-        if (timer>=3f)
+        if (timer2 >=3f)
         {
             targetObject.GetComponent<Objects>().active = false;
             fov.targetObject = null;
-            timer = 0;
+            timer2 = 0;
+        }
+    }
+
+    void FollowLastPosition()
+    {
+        isFollowPosition = true;
+        anim.SetBool("Run", true);
+        nav.speed = runSpeed;
+        nav.destination = pos;
+
+        var dir = lastPosition.position - transform.position;
+        var rotation = Quaternion.LookRotation(dir);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speedRotation * Time.deltaTime);
+        transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+
+        float dis = Vector3.Distance(transform.position, pos);
+
+        if (dis <= 0.1f)
+        {
+            timer3 += Time.deltaTime;
+        }
+
+        if (timer3 >= 3f)
+        {
+            lastPosition = null;
+            targetPlayer = null;
+            pos = Vector3.zero;
+            timer3 = 0;
         }
     }
     public void Step()
