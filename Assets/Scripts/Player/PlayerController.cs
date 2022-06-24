@@ -311,7 +311,7 @@ public class PlayerController : MonoBehaviour
                     anim.SetBool("isPushing", true);
                     //HandCollider.SetActive(true);
                    hit.transform.gameObject.GetComponent<Rigidbody>().useGravity = false;
-                   // hit.transform.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                    hit.transform.gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
                     hit.transform.position = handPush2.transform.position;
                     hit.transform.SetParent(handPush2.gameObject.transform);
