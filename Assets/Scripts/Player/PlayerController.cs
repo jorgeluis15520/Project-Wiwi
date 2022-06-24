@@ -45,8 +45,8 @@ public class PlayerController : MonoBehaviour
     private CapsuleCollider cap;
     private float startHeigh;
     private float starPosY;
-    private float heighCollider = 1.47f;
-    private float positionY = 0.75f;
+    public float heighCollider;
+    public float positionY;
 
     [Header("Animation")]
     public Animator anim;
@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
         speedInitial = speed;
         speedCrouch = speed * 0.5f;
-        speedRun = speed * 5f;
+        speedRun = speed * 2f;
         speedPushing = speed * 0.2f;
     }
 
@@ -127,13 +127,13 @@ public class PlayerController : MonoBehaviour
             }
 
             Crouch();
-            if (anim.GetBool("Inwall"))
+            if (anim.GetBool("Grounded"))
             {
                 Run();
             }
 
             Climb();
-           // UpLedge();
+            UpLedge();
             Push();
             Push2();
             Jump();
@@ -146,7 +146,6 @@ public class PlayerController : MonoBehaviour
             {
                 speed = speedInitial;
             }
-          
         }
 
 
@@ -187,14 +186,14 @@ public class PlayerController : MonoBehaviour
             canJump = true;
             detectFloor = true;
             rb.useGravity = true;
-            anim.SetBool("Inwall", true);
+            anim.SetBool("Grounded", true);
             anim.SetBool("Jump", false);
         }
         else
         {
             canJump = false;
             detectFloor = false;
-            anim.SetBool("Inwall", false);
+            anim.SetBool("Grounded", false);
             anim.SetBool("isRunning", false);
 
         }
@@ -346,7 +345,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftControl) && canJump)
         {
-            anim.SetBool("agachado", true);
+            anim.SetBool("isCrouching", true);
             speed = speedCrouch;
 
             isCrouch = true;
@@ -359,7 +358,7 @@ public class PlayerController : MonoBehaviour
 
             if (headCheck <= 0)
             {
-                anim.SetBool("agachado", false);
+                anim.SetBool("isCrouching", false);
                 speed = speedInitial;
 
                 cap.height = startHeigh;

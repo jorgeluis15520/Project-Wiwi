@@ -13,18 +13,19 @@ public class FieldOfView : MonoBehaviour
     public LayerMask obstacleMask;
     public LayerMask objectsMask;
 
-    [HideInInspector]
     public List<Transform> visibleTargets = new List<Transform>();
 
     public List<Transform> alertTargets = new List<Transform>();
 
     public Transform targetPlayer;
     public Transform targetObject;
+    public Transform lastPosition;
+    private bool once = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("FindTargetsWithDelay", .2f);
+        StartCoroutine("FindTargetsWithDelay", 0.2f);
     }
 
     IEnumerator FindTargetsWithDelay(float delay)
@@ -33,6 +34,11 @@ public class FieldOfView : MonoBehaviour
         {
             yield return new WaitForSeconds(delay);
             FindVisibleTargets();
+
+            if (targetPlayer != null)
+            {
+                lastPosition = targetPlayer;
+            }
         }
     }
 

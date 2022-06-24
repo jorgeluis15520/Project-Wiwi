@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
     private NavMeshAgent nav;
     public Transform targetPlayer;
     public Transform targetObject;
+    public Transform lastPosition;
     FieldOfView fov;
     private bool isFollowPlayer = false;
     private bool isFollowObjetc = false;
@@ -25,7 +26,6 @@ public class EnemyController : MonoBehaviour
     private bool detect = false;
     private float timer;
     private float timer2;
-
     private Animator anim;
     // Start is called before the first frame update
     void Start()
@@ -43,13 +43,14 @@ public class EnemyController : MonoBehaviour
 
         targetPlayer = fov.targetPlayer;
         targetObject = fov.targetObject;
+        lastPosition = fov.lastPosition;
 
-        if (targetPlayer == null && targetObject == null)
+        if (targetPlayer == null && targetObject == null && lastPosition==null)
         {
             Move();
             detect = false;
         }
-        else if(targetPlayer == null && targetObject != null)
+        else if(targetPlayer == null && targetObject != null && lastPosition ==null)
         {
             FollowObject();
             detect = false;
@@ -82,7 +83,7 @@ public class EnemyController : MonoBehaviour
 
         float dist = Vector3.Distance(transform.position, wayPoints[currentPoint].position);
 
-        if (dist <= 2f)
+        if (dist <= 0.1f)
         {
             currentPoint++;
 
@@ -105,7 +106,24 @@ public class EnemyController : MonoBehaviour
         isFollowPlayer = true;
         anim.SetBool("Run", true);
         nav.speed = runSpeed;
-        nav.destination = targetPlayer.position;
+
+        if (lastPosition == null)
+        {
+            nav.destination = targetPlayer.position;
+        }
+        else
+        {
+            nav.destination = lastPosition.position;
+
+            float dis = Vector3.Distance(transform.position, lastPosition.position);
+
+            if (dis <= 0.1f)
+            {
+                lastPosition = null;
+                fov.targetPlayer = null;
+            }
+        }
+
         var dir = targetPlayer.position - transform.position;
         var rotation = Quaternion.LookRotation(dir);
 
@@ -133,7 +151,7 @@ public class EnemyController : MonoBehaviour
 
         float dis = Vector3.Distance(transform.position, targetObject.position);
 
-        if (dis <= 3f)
+        if (dis <= 0.1f)
         {
             timer2 += Time.deltaTime; 
         }
@@ -141,6 +159,7 @@ public class EnemyController : MonoBehaviour
         if (timer>=3f)
         {
             targetObject.GetComponent<Objects>().active = false;
+            fov.targetObject = null;
             timer = 0;
         }
     }
