@@ -10,12 +10,14 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip[] audioPlayer;
     [SerializeField] private AudioClip[] audioUi;
     [SerializeField] private AudioClip[] audioPantallas;
-    private AudioSource audioControl;
+    private static AudioSource audioControl;
 
+   
     private void Awake()
     {
         audioControl = GetComponent<AudioSource>();
     }
+
     public void SeleccionAudioBoss (int indice, float volumen)
     {
         audioControl.PlayOneShot(audioBoss[indice], volumen);
@@ -41,6 +43,24 @@ public class AudioManager : MonoBehaviour
         audioControl.PlayOneShot(audioUi[0], 0.5f);
     }
     public void SelectedButton()
+    {
+        audioControl.PlayOneShot(audioUi[1], 0.5f);
+    }
+    public void Lighter()
+    {
+        audioControl.PlayOneShot(audioObjects[13], 0.5f);
+    }
+
+    public void GrabObject()
+    {
+        audioControl.PlayOneShot(audioUi[2], 0.5f);
+    }
+
+    public void Death()
+    {
+        audioControl.PlayOneShot(audioPlayer[1], 0.5f);
+    }
+    public void ScreenDeath()
     {
         audioControl.PlayOneShot(audioUi[1], 0.5f);
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorAnimations : MonoBehaviour
 {
     public Animator anim;
-    public AudioClip door_Open;
+    public AudioClip doorOpen;
     public AudioSource audSource;
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class DoorAnimations : MonoBehaviour
    
     public void DoorAudio()
     {
-        audSource.PlayOneShot(door_Open);
+        audSource.PlayOneShot(doorOpen);
         
     }
 

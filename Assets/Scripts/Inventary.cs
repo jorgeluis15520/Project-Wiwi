@@ -22,6 +22,7 @@ public class Inventary : MonoBehaviour
 
     //Items
     public static bool haveItem = false;
+    public AudioManager audioManager;
 
 
     // Start is called before the first frame update
@@ -86,8 +87,8 @@ public class Inventary : MonoBehaviour
             blockCollect3.enabled = false;
         }
     }
-
-    private void OnCollisionEnter(Collision coll)
+  
+    private void OnTriggerEnter(Collider coll)
     {
         if (coll.gameObject.CompareTag("Item"))
         {
@@ -98,20 +99,16 @@ public class Inventary : MonoBehaviour
                     haveItem = true;
                     objects[i].GetComponent<Image>().enabled = true;
                     objects[i].GetComponent<Image>().sprite = coll.gameObject.GetComponent<Image>().sprite;
-
-                    if (activeInv)
-                    {
-                        starfadingkey();
-                    }
-                    if (!activeInv)
-                    {
-                        Color c = objects[i].GetComponent<Image>().color;
-                        c.a = 0f;
-                        objects[i].GetComponent<Image>().color = c;
-                    }
-
+                    audioManager.GrabObject();
+                    starfadingkey();
                     Destroy(coll.gameObject);
                     break;
+                    //if (!activeInv)
+                    //{
+                    //    Color c = objects[i].GetComponent<Image>().color;
+                    //    c.a = 0f;
+                    //    objects[i].GetComponent<Image>().color = c;
+                    //}
 
                 }
             }
