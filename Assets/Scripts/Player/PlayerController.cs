@@ -188,6 +188,8 @@ public class PlayerController : MonoBehaviour
             rb.useGravity = true;
             anim.SetBool("Grounded", true);
             anim.SetBool("Jump", false);
+            anim.SetBool("Climbing", false);
+
         }
         else
         {
@@ -434,6 +436,7 @@ public class PlayerController : MonoBehaviour
         transform.position = target;
         if (transform.position == target)
         {
+            isClimbing = false;
             isClimbLedge = false;
             once = false;
         }
