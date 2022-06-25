@@ -27,6 +27,8 @@ public class Inventary : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        var item = GameObject.Find("Items");
+        objects.Add(item);
         //Color c = invImage.color;
         //c.a = 0f;
         //invImage.color = c;
@@ -35,6 +37,8 @@ public class Inventary : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
 
         activeInv = true;
         //if (Input.GetKeyDown(KeyCode.Return))
@@ -83,9 +87,9 @@ public class Inventary : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider coll)
+    private void OnCollisionEnter(Collision coll)
     {
-        if (coll.CompareTag("Item"))
+        if (coll.gameObject.CompareTag("Item"))
         {
             for (int i = 0; i < objects.Count; i++)
             {
@@ -93,7 +97,7 @@ public class Inventary : MonoBehaviour
                 {
                     haveItem = true;
                     objects[i].GetComponent<Image>().enabled = true;
-                    objects[i].GetComponent<Image>().sprite = coll.GetComponent<Image>().sprite;
+                    objects[i].GetComponent<Image>().sprite = coll.gameObject.GetComponent<Image>().sprite;
 
                     if (activeInv)
                     {
@@ -113,31 +117,31 @@ public class Inventary : MonoBehaviour
             }
         }
 
-        if (coll.CompareTag("Collect1"))
+        if (coll.gameObject.CompareTag("Collect1"))
         {
             haveCollect1 = true;
             Destroy(coll.gameObject);
         }
 
-        if (coll.CompareTag("Collect2"))
+        if (coll.gameObject.CompareTag("Collect2"))
         {
             haveCollect2 = true;
             Destroy(coll.gameObject);
         }
 
-        if (coll.CompareTag("Collect3"))
+        if (coll.gameObject.CompareTag("Collect3"))
         {
             haveCollect3 = true;
             Destroy(coll.gameObject);
         }
 
-        if (coll.CompareTag("Door") && haveItem)
+        if (coll.gameObject.CompareTag("Door") && haveItem)
         {
             objects[0].GetComponent<Image>().sprite = null;
             objects[0].GetComponent<Image>().enabled = false;
             haveItem = false;
         }
-        if (coll.CompareTag("Grill") && haveItem)
+        if (coll.gameObject.CompareTag("Grill") && haveItem)
         {
             objects[0].GetComponent<Image>().sprite = null;
             objects[0].GetComponent<Image>().enabled = false;
