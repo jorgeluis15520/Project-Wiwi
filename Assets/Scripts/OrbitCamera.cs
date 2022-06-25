@@ -26,7 +26,7 @@ public class OrbitCamera : MonoBehaviour
     {
         PlayerFollow();
         CameraController();
-        Cursor.lockState = CursorLockMode.Locked;
+      
     }
     public void PlayerFollow()
     {

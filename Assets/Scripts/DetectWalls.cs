@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DetectWalls : MonoBehaviour
 {
-    private float minDistance = 0.3f;
+    private float minDistance = 0.4f;
     private float Maxdistance = 0.7f;
     private float SlowCam = 10;
     private float distance;
