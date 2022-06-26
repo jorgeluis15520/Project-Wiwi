@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Animation")]
     public Animator anim;
-
+    public AudioManager audioManager;
     public float speedInitial;
     public float speedCrouch;
     public float speedRun;
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Manager.isPause == false && !isDying)
+        if (Manager.isPause == false && !isDying && Manager.isMainMenu==false)
         {
             CheckGround();
 
@@ -115,7 +115,6 @@ public class PlayerController : MonoBehaviour
             hor = Input.GetAxisRaw("Horizontal");
             ver = Input.GetAxisRaw("Vertical");
 
-            anim.SetFloat("speed", speed);
             anim.SetFloat("VelX", hor);
             anim.SetFloat("VelY", ver);
 
@@ -489,9 +488,11 @@ public class PlayerController : MonoBehaviour
     {
         rb.isKinematic = true;
         isDying = true;
+        audioManager.Death();
         anim.SetBool("isDeath", true);
         yield return new WaitForSeconds(4.5f);
-        isDeath = true;  
+        isDeath = true;
+        audioManager.ScreenDeath();
     }
 
     public void Death()

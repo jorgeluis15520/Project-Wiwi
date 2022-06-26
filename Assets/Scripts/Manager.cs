@@ -17,7 +17,7 @@ public class Manager : MonoBehaviour
     public GameObject collectable2Panel;
     public GameObject collectable3Panel;
     public GameObject deathPanel;
-    public  bool isMainMenu = true;
+    public static bool isMainMenu = true;
     //Opciones
     public GameObject optionsMenuPanel;
     public Slider slider;
