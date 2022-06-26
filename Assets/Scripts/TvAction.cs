@@ -1,14 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine;  
+using UnityEngine.Playables;
+
 
 public class TvAction : MonoBehaviour
 {
     public GameObject Video;
     public bool InArea;
+    public PlayableDirector Cm;
+   
+    
+    
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -20,6 +26,8 @@ public class TvAction : MonoBehaviour
             {
 
                 Video.SetActive(true);
+                Cm.Play();
+                
             }
         }
     }
@@ -30,7 +38,8 @@ public class TvAction : MonoBehaviour
         {
             InArea = true;
 
-
+            
         }
     }
+
 }

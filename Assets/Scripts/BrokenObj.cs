@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class BrokenObj : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class BrokenObj : MonoBehaviour
     public AudioClip BrokenSound;
     private BoxCollider colliderObj;
     private Rigidbody RBD;
+    public PlayableDirector Cm;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -30,22 +33,13 @@ public class BrokenObj : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Floor"))
         {
-            //vase.GetComponent<MeshFilter>();
-            //vase.mesh = vaseBroken.mesh;}
+        
            
             audioSource.PlayOneShot(BrokenSound);
             Debug.Log("OLA");
             
             
-            /*GameObject Piece1;
-            Piece1= Instantiate(PieceBroken[0], transform.position, Quaternion.identity);
-            GameObject Piece2;
-            Piece2 = Instantiate(PieceBroken[1], transform.position, Quaternion.identity);
-            GameObject Piece3;
-            Piece3 = Instantiate(PieceBroken[2], transform.position, Quaternion.identity);
-            GameObject Piece4;
-            Piece4 = Instantiate(PieceBroken[3], transform.position, Quaternion.identity);
-            colliderObj.isTrigger = true;*/
+           
             PieceBroken[0].SetActive(true);
             PieceBroken[1].SetActive(true);
             PieceBroken[2].SetActive(true);
@@ -53,6 +47,7 @@ public class BrokenObj : MonoBehaviour
             key.SetActive(true);
             colliderObj.isTrigger = true;
             Urna1.SetActive(false);
+            Cm.Play();
         }
     }
     public void KeyCreate()
