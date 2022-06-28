@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
     public bool climbWallCheck;
     public float climbSpeed;
     public float climbRopeSpeed;
-    private bool isClimbing = false;
+    public bool isClimbing = false;
     private RaycastHit HIT;
 
     [Header("Up Ledge")]
@@ -135,7 +135,11 @@ public class PlayerController : MonoBehaviour
             UpLedge();
             Push();
             Push2();
-            Jump();
+
+            if (!isClimbing)
+            {
+                Jump();
+            }
 
             if (isPushing)
             {
@@ -428,7 +432,7 @@ public class PlayerController : MonoBehaviour
         while (transform.position != target)
         {
             rb.useGravity = false;
-            transform.position = Vector3.Lerp(start, target, timer / 1.8f);
+            transform.position = Vector3.Lerp(start, target, timer / 1f);
             timer += Time.deltaTime;
             yield return null;
         }

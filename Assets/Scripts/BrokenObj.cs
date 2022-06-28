@@ -33,13 +33,7 @@ public class BrokenObj : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Floor"))
         {
-        
-           
             audioSource.PlayOneShot(BrokenSound);
-            Debug.Log("OLA");
-            
-            
-           
             PieceBroken[0].SetActive(true);
             PieceBroken[1].SetActive(true);
             PieceBroken[2].SetActive(true);

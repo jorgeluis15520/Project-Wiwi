@@ -9,9 +9,7 @@ public class TvAction : MonoBehaviour
     public GameObject Video;
     public bool InArea;
     public PlayableDirector Cm;
-   
-    
-    
+
     void Start()
     {
        
@@ -37,8 +35,14 @@ public class TvAction : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             InArea = true;
+        }
+    }
 
-            
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            InArea = false;
         }
     }
 
