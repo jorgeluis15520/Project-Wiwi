@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
     {
         audioControl = GetComponent<AudioSource>();
     }
+    
 
     public void SeleccionAudioBoss (int indice, float volumen)
     {
@@ -63,6 +64,14 @@ public class AudioManager : MonoBehaviour
     public void ScreenDeath()
     {
         audioControl.PlayOneShot(audioUi[1], 0.5f);
+    }
+    public void Rack()
+    {
+        audioControl.PlayOneShot(audioEnemy[1], 1f); 
+    }
+    public void Tv()
+    {
+        audioControl.PlayOneShot(audioUi[0], 0.5f);
     }
 }
 

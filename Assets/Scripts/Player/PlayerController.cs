@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public GameObject handPush;
     public GameObject handPush2;
     public bool isPushing;
- //   public float forcePush;
+ //public float forcePush;
     
 
 
@@ -239,8 +239,8 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.E)) //al soltar la tecla E el personaje dejara de empujar y jalar objetos
             {
                 speed = speedInitial;
-                pickedObject.GetComponent<Rigidbody>().useGravity = true;
-                pickedObject.GetComponent<Rigidbody>().isKinematic = false;
+                //pickedObject.GetComponent<Rigidbody>().useGravity = true;
+                //pickedObject.GetComponent<Rigidbody>().isKinematic = false;
 
                 pickedObject.gameObject.transform.SetParent(null);
                 pickedObject = null;
@@ -265,8 +265,8 @@ public class PlayerController : MonoBehaviour
                     
                     anim.SetBool("isPushing", true);
                     //HandCollider.SetActive(true);
-                  hit.transform.gameObject.GetComponent<Rigidbody>().useGravity = false;
-                   hit.transform.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                //  hit.transform.gameObject.GetComponent<Rigidbody>().useGravity = false;
+                   //hit.transform.gameObject.GetComponent<Rigidbody>().isKinematic = true;
                     
                     hit.transform.position = handPush.transform.position;
                     hit.transform.SetParent(handPush.gameObject.transform);
@@ -289,8 +289,8 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.E)) //al soltar la tecla E el personaje dejara de empujar y jalar objetos
             {
                 speed = speedInitial;
-               pickedObject.GetComponent<Rigidbody>().useGravity = true;
-                pickedObject.GetComponent<Rigidbody>().isKinematic = false;
+              // pickedObject.GetComponent<Rigidbody>().useGravity = true;
+                //pickedObject.GetComponent<Rigidbody>().isKinematic = false;
 
                 pickedObject.gameObject.transform.SetParent(null);
                 pickedObject = null;
@@ -315,8 +315,8 @@ public class PlayerController : MonoBehaviour
 
                     anim.SetBool("isPushing", true);
                     //HandCollider.SetActive(true);
-                   hit.transform.gameObject.GetComponent<Rigidbody>().useGravity = false;
-                    hit.transform.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                  // hit.transform.gameObject.GetComponent<Rigidbody>().useGravity = false;
+                   // hit.transform.gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
                     hit.transform.position = handPush2.transform.position;
                     hit.transform.SetParent(handPush2.gameObject.transform);

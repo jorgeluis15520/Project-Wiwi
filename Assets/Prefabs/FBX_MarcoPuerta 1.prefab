@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 8077604702181533298}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 77.08, y: -0.00000023841858, z: 125.935394}
-  m_LocalScale: {x: 10, y: 10, z: 7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 652118410362382468}
@@ -154,19 +154,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ae1bc2a3c4c02844c82bf1e9cba9be81, type: 3}
   m_PrefabInstance: {fileID: 1046650683326533487}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &470655798368433039
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 164129124239290942}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.30894262, y: 0.26263085, z: 0.28133246}
-  m_Center: {x: 0.86388296, y: 1.099644, z: -0.04033462}
 --- !u!65 &470655798368433035
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -180,6 +167,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0144634, y: 2.2815058, z: 0.10066665}
   m_Center: {x: 0.5111222, y: 1.1407529, z: 0.049998086}
+--- !u!65 &470655798368433039
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164129124239290942}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.30894262, y: 0.26263085, z: 0.28133246}
+  m_Center: {x: 0.86388296, y: 1.099644, z: -0.04033462}
 --- !u!82 &470655798368433034
 AudioSource:
   m_ObjectHideFlags: 0
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 470655798368433032}
-  door_Open: {fileID: 8300000, guid: ea9313ff373d88a4abf3374b579c9310, type: 3}
+  doorOpen: {fileID: 0}
   audSource: {fileID: 470655798368433034}
 --- !u!4 &652118410362382468 stripped
 Transform:

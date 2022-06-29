@@ -9,6 +9,7 @@ public class TvAction : MonoBehaviour
     public GameObject Video;
     public bool InArea;
     public PlayableDirector Cm;
+    public AudioManager AudioM;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class TvAction : MonoBehaviour
 
                 Video.SetActive(true);
                 Cm.Play();
+                AudioM.Tv();
                 
             }
         }

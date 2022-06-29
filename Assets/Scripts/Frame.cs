@@ -5,6 +5,8 @@ using UnityEngine;
 public class Frame : MonoBehaviour
 {
     public GameObject actionFrame;
+    public AudioManager AudioM;
+    public BoxCollider collider;
     void Start()
     {
         
@@ -19,10 +21,26 @@ public class Frame : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            collider.enabled = !collider.enabled;
             actionFrame.GetComponent<Rigidbody>().useGravity = true;
             actionFrame.GetComponent<Rigidbody>().isKinematic = false;
             Debug.Log("ga");
+            StartCoroutine("Sound");
+           
+
+
         }
     }
+    private IEnumerator Sound()
+    {
+
+        yield return new WaitForSeconds(0.4f);
+        AudioM.SeleccionAudioObjects(4, 0.2f);
+        yield return new WaitForSeconds(1.2f);
+        AudioM.SeleccionAudioObjects(4, 0.1f);
+        
+
+    }
+
 
 }

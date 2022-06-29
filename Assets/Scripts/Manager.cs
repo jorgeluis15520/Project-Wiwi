@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 using TMPro;
 public class Manager : MonoBehaviour
@@ -22,6 +24,10 @@ public class Manager : MonoBehaviour
     public GameObject optionsMenuPanel;
     public Slider slider;
     public float sliderValue;
+    //
+    public PlayableDirector Pd;
+    public TimelineClip clip;
+    
 
 
     public Toggle toggle;
@@ -33,9 +39,10 @@ public class Manager : MonoBehaviour
 
     private void Start()
     {
+        
         Scene currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
-        if (sceneName == "Tutorial" && isMainMenu)
+        if (sceneName == "Tutorial2" && isMainMenu)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -100,7 +107,7 @@ public class Manager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                SceneManager.LoadScene("Tutorial");
+                SceneManager.LoadScene("Tutorial2");
             }
         }
 
@@ -116,6 +123,7 @@ public class Manager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         isMainMenu = false;
+        Pd.Play();
     }
 
     public void ExitGame()
@@ -144,7 +152,7 @@ public class Manager : MonoBehaviour
     }
     public void Menu()
     {
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene("Tutorial2");
         isMainMenu = true;
     }
     public void Credits()
@@ -254,7 +262,7 @@ public class Manager : MonoBehaviour
     {
         PlayerController.isDeath = false;
         deathPanel.SetActive(false);
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene("Tutorial2");
     }
 
 
