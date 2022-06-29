@@ -23,7 +23,7 @@ public class Inventary : MonoBehaviour
     //Items
     public static bool haveItem = false;
     public AudioManager audioManager;
-
+    public GameObject Fire;
 
     // Start is called before the first frame update
     void Start()
@@ -138,11 +138,20 @@ public class Inventary : MonoBehaviour
             objects[0].GetComponent<Image>().enabled = false;
             haveItem = false;
         }
-        if (coll.gameObject.CompareTag("Grill") && haveItem)
+       
+    }
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Grill") && haveItem)
         {
-            objects[0].GetComponent<Image>().sprite = null;
-            objects[0].GetComponent<Image>().enabled = false;
-            haveItem = false;
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                objects[0].GetComponent<Image>().sprite = null;
+                objects[0].GetComponent<Image>().enabled = false;
+                haveItem = false;
+                Fire.SetActive(true);
+            }
+            
         }
     }
 
