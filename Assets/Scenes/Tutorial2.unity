@@ -1055,7 +1055,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7757009, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2108,7 +2108,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7757009, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2186,7 +2186,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7757009, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5179,7 +5179,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7757009, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -9141,7 +9141,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1422184043}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.041, z: 0}
+  m_LocalPosition: {x: 0, y: 0.049, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9901,7 +9901,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7757009, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -15354,10 +15354,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1114082858425105320, guid: 19c8ca804eea1a2448172f942756b0d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.289
+      objectReference: {fileID: 0}
     - target: {fileID: 1114082859143406245, guid: 19c8ca804eea1a2448172f942756b0d5, type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 2246966491283170897}
+    - target: {fileID: 1114082859143406245, guid: 19c8ca804eea1a2448172f942756b0d5, type: 3}
+      propertyPath: ledgeRayDistance
+      value: 0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 1114082859143406245, guid: 19c8ca804eea1a2448172f942756b0d5, type: 3}
       propertyPath: borderMask.m_Bits
       value: 2048
@@ -24379,7 +24387,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5279069423166775220}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ecd1533d1f9ba1c40b41e1f0aa7cbf3f, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
