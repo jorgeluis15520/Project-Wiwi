@@ -131,8 +131,6 @@ public class PlayerController : MonoBehaviour
                 Run();
             }
 
-            Climb();
-            UpLedge();
             Push();
             Push2();
 
@@ -140,6 +138,9 @@ public class PlayerController : MonoBehaviour
             {
                 Jump();
             }
+
+            Climb();
+            UpLedge();
 
             if (isPushing)
             {
@@ -203,6 +204,7 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+
     void Run()
     {
         if (Input.GetKey(KeyCode.LeftShift) && canRun && headCheck <= 0 && !isPushing)
@@ -228,7 +230,6 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("Jump", true);
             anim.SetBool("isRunning", false);
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
-
         }
     }
     public void Push()
@@ -385,7 +386,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit[] ray2 = Physics.BoxCastAll(headTop.position, headTop.lossyScale / 2, headTop.forward,headTop.rotation, ledgeRayDistance,borderMask);
 
         wallCheck = false;
-        checkBorder = true;
+        checkBorder = false;
 
         for (int i = 0; i < ray.Length; i++)
         {
@@ -395,11 +396,14 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < ray2.Length; i++)
+        if (wallCheck)
         {
-            if (ray2[i].collider.gameObject != null)
+            for (int i = 0; i < ray2.Length; i++)
             {
-                checkBorder = false;
+                if (ray2[i].collider.gameObject != null)
+                {
+                    checkBorder = true;
+                }
             }
         }
     }
@@ -442,6 +446,7 @@ public class PlayerController : MonoBehaviour
             isClimbing = false;
             isClimbLedge = false;
             once = false;
+            anim.SetBool("UpLedge", false);
         }
     }
 
@@ -532,25 +537,6 @@ public class PlayerController : MonoBehaviour
             Death();
         }
     }
-
-    /*public void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Object"))
-        {
-            Debug.Log("CHALEX");
-            Rigidbody rgbd = collision.collider.attachedRigidbody;
-            if (rgbd != null)
-            {
-                Vector3 forceDirection = collision.gameObject.transform.position - transform.position;
-                forceDirection.y = 0;
-                forceDirection.Normalize();
-                rgbd.AddForceAtPosition(forceDirection * forcePush, transform.position, ForceMode.Impulse);
-
-            }
-        }
-
-    }*/
-
 
 }
 
