@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public GameObject handPush;
     public GameObject handPush2;
     public bool isPushing;
- //public float forcePush;
+    //public float forcePush;
     
 
 
@@ -182,8 +182,6 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 dwn = transform.TransformDirection(Vector3.down);
         RaycastHit hit;
-
-
 
         if (Physics.Raycast(groundCheck.transform.position, dwn, out hit, raycastDetect, mask))
         {
@@ -361,21 +359,15 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-
             if (headCheck <= 0)
             {
                 anim.SetBool("isCrouching", false);
                 speed = speedInitial;
-
                 cap.height = startHeigh;
                 cap.center = new Vector3(cap.center.x, starPosY, cap.center.z);
                 canRun = true;
-
             }
-
-
         }
-
     }
 
 
