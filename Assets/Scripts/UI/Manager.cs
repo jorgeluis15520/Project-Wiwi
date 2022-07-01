@@ -27,19 +27,21 @@ public class Manager : MonoBehaviour
     //
     public PlayableDirector Pd;
     public TimelineClip clip;
-    
+
 
 
     public Toggle toggle;
-    public TMP_Dropdown resolutionsDropDown;
-    private Resolution[] resolutions;
+    //public TMP_Dropdown resolutionsDropDown;
+    //private Resolution[] resolutions;
+
+    public int width;
+    public int height;
 
     //audio
     //public AudioSource audioMenu;
 
     private void Start()
     {
-        
         Scene currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
         if (sceneName == "Tutorial2" && isMainMenu)
@@ -51,12 +53,12 @@ public class Manager : MonoBehaviour
             AudioListener.volume = slider.value;
         }
 
-        
 
-        if (sceneName != "Credits")
-        {
-            CheckResolution();
-        }
+
+        //if (sceneName != "Credits")
+        //{
+        //    CheckResolution();
+        //}
 
         if (sceneName != "Credits" && Screen.fullScreen)
         {
@@ -67,7 +69,7 @@ public class Manager : MonoBehaviour
         {
             toggle.isOn = false;
         }
-       
+
 
         //if (isMainMenu)
         //{
@@ -79,9 +81,10 @@ public class Manager : MonoBehaviour
     private void Update()
     {
 
+
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
-        
+
 
         //if (!isMainMenu)
         //{
@@ -108,10 +111,11 @@ public class Manager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 SceneManager.LoadScene("Tutorial2");
+                Time.timeScale = 0f;
             }
         }
 
-      
+
         Death();
     }
 
@@ -201,18 +205,18 @@ public class Manager : MonoBehaviour
 
     public void Death()
     {
-        if(PlayerController.isDeath == true)
+        if (PlayerController.isDeath == true)
         {
             deathPanel.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-        
+
     }
 
     public void BacktoCollectablePanel()
     {
-        if(collectable1Panel.activeSelf == true)
+        if (collectable1Panel.activeSelf == true)
         {
             collectable1Panel.SetActive(false);
             collectablePanel.SetActive(true);
@@ -245,7 +249,7 @@ public class Manager : MonoBehaviour
         sliderValue = valor;
         PlayerPrefs.SetFloat("volumenAudio", sliderValue);
         AudioListener.volume = slider.value;
-        
+
     }
 
     public void RestartLevel()
@@ -266,42 +270,62 @@ public class Manager : MonoBehaviour
     }
 
 
-    public void CheckResolution()
-    {
-        resolutions = Screen.resolutions;
-        resolutionsDropDown.ClearOptions();
-        List<string> options = new List<string>();
-        int resolutionActual = 0;
+    //public void CheckResolution()
+    //{
+    //    resolutions = Screen.resolutions;
+    //    resolutionsDropDown.ClearOptions();
+    //    List<string> options = new List<string>();
+    //    int resolutionActual = 0;
 
-        for(int i = 0; i<resolutions.Length; i++)
-        {
-            string option = resolutions[i].width + "x" + resolutions[i].height + " @ " + resolutions[i].refreshRate + "hz"; ;
-            options.Add(option);
+    //    for(int i = 0; i<resolutions.Length; i++)
+    //    {
+    //        string option = resolutions[i].width + "x" + resolutions[i].height + " @ " + resolutions[i].refreshRate + "hz"; ;
+    //        options.Add(option);
 
-            if(resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
-            {
-                resolutionActual = i;
-            }
-        }
+    //        if(resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+    //        {
+    //            resolutionActual = i;
+    //        }
+    //    }
 
-        resolutionsDropDown.AddOptions(options);
-        resolutionsDropDown.value = resolutionActual;
-        resolutionsDropDown.RefreshShownValue();
+    //    resolutionsDropDown.AddOptions(options);
+    //    resolutionsDropDown.value = resolutionActual;
+    //    resolutionsDropDown.RefreshShownValue();
 
-        resolutionsDropDown.value = PlayerPrefs.GetInt("numberResolution", 0);
-    }
-    
+    //    resolutionsDropDown.value = PlayerPrefs.GetInt("numberResolution", 0);
+    //}
+
     public void ActiveFullScreen(bool fullScreen)
     {
         Screen.fullScreen = fullScreen;
     }
 
-    public void ChangeResolution(int indexResolution)
-    {
-        PlayerPrefs.SetInt("numberResolution", resolutionsDropDown.value);
+    //public void ChangeResolution(int indexResolution)
+    //{
+    //    PlayerPrefs.SetInt("numberResolution", resolutionsDropDown.value);
 
-        Resolution resolution = resolutions[indexResolution];
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    //    Resolution resolution = resolutions[indexResolution];
+    //    Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    //}
+
+    public void SetWidth(int newWidth)
+    {
+        width = newWidth;
+
+    }
+
+    public void SetHeight(int newHeight)
+    {
+        height = newHeight;
+
+    }
+
+
+    public void ChangeResolution()
+    {
+
+        Screen.SetResolution(width, height, Screen.fullScreen);
+
     }
 
 }
