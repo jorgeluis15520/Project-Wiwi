@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -633,6 +633,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: bac3233701ddc7b43a9cd94528717ee1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9bd8fb75e20a0bf4d83d12f959626652, type: 2}
     - target: {fileID: 919132149155446097, guid: bac3233701ddc7b43a9cd94528717ee1, type: 3}
       propertyPath: m_Name
       value: FBX_BiomboMedico
@@ -1030,6 +1034,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3ba63c6600ee8244bbc8fe0d3a8ea078, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c2e4f90131ab96f4cac376680c94eeb0, type: 2}
     - target: {fileID: 919132149155446097, guid: 3ba63c6600ee8244bbc8fe0d3a8ea078, type: 3}
       propertyPath: m_Name
       value: FBX_Escalera_Medica
@@ -1345,6 +1353,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f572b9be99cf9dd428c1c8ca98cc4115, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6599ced07c26a8344a749e891a9b24e2, type: 2}
     - target: {fileID: 919132149155446097, guid: f572b9be99cf9dd428c1c8ca98cc4115, type: 3}
       propertyPath: m_Name
       value: FBX_Farolas
@@ -1601,6 +1613,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -723262651198358084, guid: bb60a3213446c5747b7904785d9879c1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 812999d37f9200d498bea11362f4bdb3, type: 2}
     - target: {fileID: 919132149155446097, guid: bb60a3213446c5747b7904785d9879c1, type: 3}
       propertyPath: m_Name
       value: FBX_CajaCerrada
@@ -1675,6 +1691,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5852857666110783523, guid: 441c6122d1c333444a219b1266faa2b4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7fb1e547f2df5944eb312b2086a48aad, type: 2}
     - target: {fileID: 919132149155446097, guid: 441c6122d1c333444a219b1266faa2b4, type: 3}
       propertyPath: m_Name
       value: FBX_CajaAbierta
@@ -1811,6 +1831,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c4cda8770c306c4419aad4d34613bc3c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b8c75edef1590b0479e151b4e19f621b, type: 2}
     - target: {fileID: 919132149155446097, guid: c4cda8770c306c4419aad4d34613bc3c, type: 3}
       propertyPath: m_Name
       value: FBX_Camilla_Medica
@@ -2734,6 +2758,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f572b9be99cf9dd428c1c8ca98cc4115, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6599ced07c26a8344a749e891a9b24e2, type: 2}
     - target: {fileID: 919132149155446097, guid: f572b9be99cf9dd428c1c8ca98cc4115, type: 3}
       propertyPath: m_Name
       value: FBX_Farolas (2)
@@ -3464,6 +3492,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f572b9be99cf9dd428c1c8ca98cc4115, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6599ced07c26a8344a749e891a9b24e2, type: 2}
     - target: {fileID: 919132149155446097, guid: f572b9be99cf9dd428c1c8ca98cc4115, type: 3}
       propertyPath: m_Name
       value: FBX_Farolas (1)
@@ -4022,7 +4054,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 733e00811dca11e4d9869b0bc767ffc8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.16521163
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 733e00811dca11e4d9869b0bc767ffc8, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4030,7 +4062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 733e00811dca11e4d9869b0bc767ffc8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.98625815
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 733e00811dca11e4d9869b0bc767ffc8, type: 3}
       propertyPath: m_LocalRotation.z
@@ -4042,12 +4074,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 733e00811dca11e4d9869b0bc767ffc8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -199.019
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 733e00811dca11e4d9869b0bc767ffc8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 733e00811dca11e4d9869b0bc767ffc8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4f62ba240a90f8d4ab7c60330a394996, type: 2}
     - target: {fileID: 919132149155446097, guid: 733e00811dca11e4d9869b0bc767ffc8, type: 3}
       propertyPath: m_Name
       value: "FBX_Mu\xF1eca"
@@ -4992,6 +5028,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f572b9be99cf9dd428c1c8ca98cc4115, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6599ced07c26a8344a749e891a9b24e2, type: 2}
     - target: {fileID: 919132149155446097, guid: f572b9be99cf9dd428c1c8ca98cc4115, type: 3}
       propertyPath: m_Name
       value: FBX_Farolas (3)
@@ -5116,6 +5156,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: bac3233701ddc7b43a9cd94528717ee1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9bd8fb75e20a0bf4d83d12f959626652, type: 2}
     - target: {fileID: 919132149155446097, guid: bac3233701ddc7b43a9cd94528717ee1, type: 3}
       propertyPath: m_Name
       value: FBX_BiomboMedico (1)
