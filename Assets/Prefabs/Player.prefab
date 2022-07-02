@@ -190,7 +190,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267803256592624796}
-  m_LocalRotation: {x: -0, y: 0.7282853, z: -0, w: 0.6852741}
+  m_LocalRotation: {x: 0, y: 0.7282873, z: 0, w: 0.685272}
   m_LocalPosition: {x: -1.128, y: 1.887, z: -0.287}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -266,7 +266,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1114082860290934460}
   mask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4608
   hand: {fileID: 1114082859340878040}
   handRay: 0.15
   handPush: {fileID: 1114082859277286580}
@@ -290,21 +290,21 @@ MonoBehaviour:
   body: {fileID: 1114082859412518073}
   layerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4608
   layerMask2:
     serializedVersion: 2
     m_Bits: 4096
-  checkDistance: 0.02
+  checkDistance: 0.002
   climbWallCheck: 0
   climbSpeed: 0.5
   climbRopeSpeed: 1.5
   isClimbing: 0
   headTop: {fileID: 1114082860317984444}
-  ledgeRayDistance: 0.05
+  ledgeRayDistance: 0.002
   checkBorder: 0
   borderMask:
     serializedVersion: 2
-    m_Bits: 6784
+    m_Bits: 2048
   isClimbLedge: 0
   toUp: {fileID: 1114082858425105320}
 --- !u!54 &6781455515226008671
@@ -316,7 +316,7 @@ Rigidbody:
   m_GameObject: {fileID: 267803256592624796}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -340,9 +340,6 @@ MonoBehaviour:
   inv: {fileID: 0}
   invImage: {fileID: 0}
   activeInv: 0
-  blockCollect1: {fileID: 0}
-  blockCollect2: {fileID: 0}
-  blockCollect3: {fileID: 0}
   audioManager: {fileID: 0}
   Fire: {fileID: 0}
 --- !u!114 &6781455515226008664
@@ -799,7 +796,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1114082858425105321}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.196, z: 0.171}
+  m_LocalPosition: {x: 0, y: 0.286, z: 0.145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -892,8 +889,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1114082859412518078}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.187, z: 0.054}
-  m_LocalScale: {x: 0.1, y: 0.07652341, z: 0.16289781}
+  m_LocalPosition: {x: 0, y: 0.187, z: 0.037}
+  m_LocalScale: {x: 0.071455, y: 0.057392556, z: 0.10632206}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 647600288497481254}
@@ -985,7 +982,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1114082860290934460}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.032999992, z: 0}
+  m_LocalPosition: {x: 0, y: 0.011, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1016,8 +1013,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1114082860317984445}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.309, z: 0.054}
-  m_LocalScale: {x: 0.1, y: 0.061249997, z: 0.10761449}
+  m_LocalPosition: {x: -0, y: 0.296, z: 0.054}
+  m_LocalScale: {x: 0.1, y: 0.020671874, z: 0.10761449}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 647600288497481254}
@@ -3346,7 +3343,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 0e0c41ef263d6094fb63fb76cdd2f790, type: 3}
+  - {fileID: 2100000, guid: 05f4c6b015582f24d98b3d87fd319177, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

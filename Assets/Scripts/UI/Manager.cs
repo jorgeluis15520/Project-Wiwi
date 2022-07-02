@@ -180,7 +180,7 @@ public class Manager : MonoBehaviour
 
     public void Collectable1()
     {
-        if (Inventary.haveCollect1)
+        if (CheckCollects.haveCollect1)
         {
             collectable1Panel.SetActive(true);
             collectablePanel.SetActive(false);
@@ -188,7 +188,7 @@ public class Manager : MonoBehaviour
     }
     public void Collectable2()
     {
-        if (Inventary.haveCollect2)
+        if (CheckCollects.haveCollect2)
         {
             collectable2Panel.SetActive(true);
             collectablePanel.SetActive(false);
@@ -196,7 +196,7 @@ public class Manager : MonoBehaviour
     }
     public void Collectable3()
     {
-        if (Inventary.haveCollect3)
+        if (CheckCollects.haveCollect3)
         {
             collectable3Panel.SetActive(true);
             collectablePanel.SetActive(false);
