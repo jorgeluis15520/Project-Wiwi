@@ -115,8 +115,8 @@ public class PlayerController : MonoBehaviour
             hor = Input.GetAxisRaw("Horizontal");
             ver = Input.GetAxisRaw("Vertical");
 
-            anim.SetFloat("VelX", hor);
-            anim.SetFloat("VelY", ver);
+            anim.SetFloat("VelX", hor, 0.2f, Time.deltaTime);
+            anim.SetFloat("VelY", ver, 0.2f, Time.deltaTime);
 
             DetectWalls();
 
