@@ -84,6 +84,11 @@ public class PlayerController : MonoBehaviour
     private bool isDying = false;
     public static bool isDeath;
 
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindObjectOfType<AudioManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -101,6 +106,11 @@ public class PlayerController : MonoBehaviour
         speedCrouch = speed * 0.5f;
         speedRun = speed * 2f;
         speedPushing = speed * 0.2f;
+
+        if(audioManager == null)
+        {
+            return;
+        }
     }
 
 
@@ -490,11 +500,17 @@ public class PlayerController : MonoBehaviour
     {
         rb.isKinematic = true;
         isDying = true;
-        audioManager.Death();
+        if (audioManager != null)
+        {
+            audioManager.Death();
+        }
         anim.SetBool("isDeath", true);
         yield return new WaitForSeconds(4.5f);
         isDeath = true;
-        audioManager.ScreenDeath();
+        if (audioManager != null)
+        {
+            audioManager.ScreenDeath();
+        }
     }
 
     public void Death()

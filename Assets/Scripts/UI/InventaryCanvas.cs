@@ -20,10 +20,6 @@ public class InventaryCanvas : MonoBehaviour
     void Update()
     {
         activeInv = true;
-        if (Inventary.haveItem==true)
-        {
-            starfadingItem();
-        }
     }
 
     IEnumerator FadeIn()

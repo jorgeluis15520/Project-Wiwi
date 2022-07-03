@@ -59,7 +59,7 @@ public class AudioManager : MonoBehaviour
 
     public void Death()
     {
-        audioControl.PlayOneShot(audioPlayer[1], 0.5f);
+        audioControl.PlayOneShot(audioPlayer[0], 0.5f);
     }
     public void ScreenDeath()
     {

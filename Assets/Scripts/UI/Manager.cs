@@ -127,7 +127,11 @@ public class Manager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         isMainMenu = false;
-        Pd.Play();
+        if(Pd != null)
+        {
+            Pd.Play();
+        }
+        
     }
 
     public void ExitGame()
@@ -266,6 +270,7 @@ public class Manager : MonoBehaviour
     {
         PlayerController.isDeath = false;
         deathPanel.SetActive(false);
+        Time.timeScale = 0f;
         SceneManager.LoadScene("Tutorial2");
     }
 
