@@ -39,7 +39,13 @@ public class Manager : MonoBehaviour
 
     //audio
     //public AudioSource audioMenu;
-
+    private void Awake()
+    {
+        if(mainMenuPanel.activeSelf)
+        {
+            Time.timeScale = 0f;
+        }
+    }
     private void Start()
     {
         Scene currentScene = SceneManager.GetActiveScene();
