@@ -126,6 +126,7 @@ public class PlayerController : MonoBehaviour
             }
 
             Crouch();
+
             if (anim.GetBool("Grounded"))
             {
                 Run();
