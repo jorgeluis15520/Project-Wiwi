@@ -989,7 +989,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7782102, y: 1}
+    m_SensorSize: {x: 1.7766991, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -20004,7 +20004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 187034681785943553, guid: 230fea4cf236c264db5866c97fac462b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.012863674
+      value: 0.012863671
       objectReference: {fileID: 0}
     - target: {fileID: 187034681785943553, guid: 230fea4cf236c264db5866c97fac462b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -20021,6 +20021,14 @@ PrefabInstance:
     - target: {fileID: 187034681785943556, guid: 230fea4cf236c264db5866c97fac462b, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 187034681785943558, guid: 230fea4cf236c264db5866c97fac462b, type: 3}
+      propertyPath: field of view
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 187034681785943558, guid: 230fea4cf236c264db5866c97fac462b, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 0.12941177
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 230fea4cf236c264db5866c97fac462b, type: 3}
@@ -22667,15 +22675,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4517115852645816909, guid: af4f629b1e3006d49a63a9d5a7ddc711, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70762104
+      value: 0.7076211
       objectReference: {fileID: 0}
     - target: {fileID: 4517115852645816909, guid: af4f629b1e3006d49a63a9d5a7ddc711, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.012886685
+      value: -0.012886683
       objectReference: {fileID: 0}
     - target: {fileID: 4517115852645816909, guid: af4f629b1e3006d49a63a9d5a7ddc711, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.012863673
+      value: 0.012863671
       objectReference: {fileID: 0}
     - target: {fileID: 4517115852730114998, guid: af4f629b1e3006d49a63a9d5a7ddc711, type: 3}
       propertyPath: m_FollowOffset.z
