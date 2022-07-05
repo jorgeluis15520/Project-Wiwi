@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
 
             if (anim.GetBool("Grounded"))
             {
-                Run();
+                //Run();
             }
 
             Push();

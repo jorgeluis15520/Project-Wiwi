@@ -9,6 +9,8 @@ using UnityEngine.Timeline;
 using TMPro;
 public class Manager : MonoBehaviour
 {
+    public AudioSource MenuAudio;
+    public AudioClip clipTuto;
     public static bool isPause = false;
     private Scene currentScene;
     private string sceneName;
@@ -48,6 +50,8 @@ public class Manager : MonoBehaviour
     }
     private void Start()
     {
+        
+
         Scene currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
         if (sceneName == "Tutorial2" && isMainMenu)
@@ -133,6 +137,8 @@ public class Manager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         isMainMenu = false;
+        MenuAudio.clip = clipTuto;
+        MenuAudio.Play();
         if(Pd != null)
         {
             Pd.Play();

@@ -19,6 +19,7 @@ TagManager:
   - Wall
   - Grill
   - Enemy
+  - Fire
   layers:
   - Default
   - TransparentFX
