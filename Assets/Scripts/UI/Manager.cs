@@ -130,7 +130,7 @@ public class Manager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "Credits")
+        if (sceneName == "Credits")
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
