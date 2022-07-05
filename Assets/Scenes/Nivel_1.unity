@@ -25364,7 +25364,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7827589800200587910}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -0.156, y: 41.224, z: -0.516}
 --- !u!65 &237128453
 BoxCollider:
@@ -31239,7 +31239,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.778761, y: 1}
+    m_SensorSize: {x: 1.7773438, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -44336,7 +44336,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.778761, y: 1}
+    m_SensorSize: {x: 1.7773438, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -52279,7 +52279,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.778761, y: 1}
+    m_SensorSize: {x: 1.7773438, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -71855,6 +71855,51 @@ Transform:
   m_Father: {fileID: 1801903398}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1615325555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1615325556}
+  - component: {fileID: 1615325557}
+  m_Layer: 12
+  m_Name: Climb (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1615325556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615325555}
+  m_LocalRotation: {x: -0, y: 0.37155154, z: -0, w: 0.9284123}
+  m_LocalPosition: {x: 3.22, y: 0, z: -0.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7827589800200587910}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 43.623, z: 0}
+--- !u!65 &1615325557
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615325555}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.30427268, y: 3.0698028, z: 0.07321409}
+  m_Center: {x: -0.16898379, y: 1.4018049, z: -0.10157578}
 --- !u!1 &1618149657
 GameObject:
   m_ObjectHideFlags: 0
@@ -72259,7 +72304,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.778761, y: 1}
+    m_SensorSize: {x: 1.7773438, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -101916,6 +101961,7 @@ Transform:
   m_Children:
   - {fileID: 7545952903100670539}
   - {fileID: 1449861656469852290}
+  - {fileID: 1615325556}
   - {fileID: 237128452}
   m_Father: {fileID: 0}
   m_RootOrder: 2
