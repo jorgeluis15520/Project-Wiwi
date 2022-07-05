@@ -8,6 +8,7 @@ public class DoorAnimations : MonoBehaviour
     public AudioClip doorOpen;
     public AudioSource audSource;
     public string parametersName;
+    public static bool endLevel = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,7 @@ public class DoorAnimations : MonoBehaviour
         if(other.CompareTag("Player") && Inventary.haveItem)
         {
             anim.SetBool(parametersName, true);
+            endLevel = true;
         }
     }
 }

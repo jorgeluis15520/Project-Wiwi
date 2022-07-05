@@ -21,6 +21,8 @@ public class Manager : MonoBehaviour
     public GameObject collectable2Panel;
     public GameObject collectable3Panel;
     public GameObject deathPanel;
+    public GameObject nextLevelPanel;
+    public GameObject panelLevelLoad;
     public static bool isMainMenu = true;
     //Opciones
     public GameObject optionsMenuPanel;
@@ -63,8 +65,20 @@ public class Manager : MonoBehaviour
             AudioListener.volume = slider.value;
         }
 
+        if (sceneName != "Tutorial2")
+        {
+            mainMenuPanel.SetActive(false);
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            isMainMenu = false;
 
+        }
 
+        if (sceneName == "Nivel_1")
+        {
+            StartCoroutine(Level1Ready());
+        }
         //if (sceneName != "Credits")
         //{
         //    CheckResolution();
@@ -285,6 +299,28 @@ public class Manager : MonoBehaviour
         Time.timeScale = 0f;
         SceneManager.LoadScene("Tutorial2");
     }
+
+    public void LoadLevel1()
+    {
+        StartCoroutine(Level1Load());
+    }
+
+
+    IEnumerator Level1Load()
+    {
+        yield return new WaitForSeconds(1f);
+        nextLevelPanel.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene("Nivel_1");
+    }
+
+    IEnumerator Level1Ready()
+    {
+        panelLevelLoad.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        panelLevelLoad.SetActive(false);
+    }
+
 
 
     //public void CheckResolution()
