@@ -6,10 +6,9 @@ using UnityEngine.UI;
 public class Inventary : MonoBehaviour
 {
     public InventaryCanvas inventaryCanvas;
-
     public static bool haveItem = false;
     public AudioManager audioManager;
-    public GameObject Fire;
+    private bool isEnter;
     private void Awake()
     {
         inventaryCanvas = GameObject.FindObjectOfType<InventaryCanvas>();
@@ -26,6 +25,20 @@ public class Inventary : MonoBehaviour
         if (audioManager == null)
         {
             return;
+        }
+    }
+
+    private void Update()
+    {
+        if (isEnter)
+        {
+            if (Input.GetKeyDown(KeyCode.E) && haveItem)
+            {
+                inventaryCanvas.objects[0].GetComponent<Image>().sprite = null;
+                inventaryCanvas.objects[0].GetComponent<Image>().enabled = false;
+                haveItem = false;
+                Grill.isActive = true;
+            }
         }
     }
 
@@ -74,20 +87,33 @@ public class Inventary : MonoBehaviour
             haveItem = false;
         }
 
+        if (coll.gameObject.CompareTag("Grill") && haveItem)
+        {
+            isEnter = true;
+        }
+
     }
-    public void OnTriggerStay(Collider other)
+
+    private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Grill") && haveItem)
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                inventaryCanvas.objects[0].GetComponent<Image>().sprite = null;
-                inventaryCanvas.objects[0].GetComponent<Image>().enabled = false;
-                haveItem = false;
-                Fire.SetActive(true);
-            }
-
+            isEnter = false;
         }
     }
+    //public void OnTriggerStay(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("Grill") && haveItem)
+    //    {
+    //        if (Input.GetKeyDown(KeyCode.E))
+    //        {
+    //            inventaryCanvas.objects[0].GetComponent<Image>().sprite = null;
+    //            inventaryCanvas.objects[0].GetComponent<Image>().enabled = false;
+    //            haveItem = false;
+    //            Grill.isActive = true;
+    //        }
+
+    //    }
+    //}
 }
 

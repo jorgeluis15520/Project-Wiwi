@@ -9,24 +9,15 @@ public class Objects : MonoBehaviour
     public bool active;
 
     public AudioClip clip;
-    public AudioSource audioSource;
-    private AudioSource fontAudio;
     private bool inArea = false;
     private bool end = false;
     public float timer;
     private int currentPart = 0;
 
-    private void Start()
-    {
-        fontAudio = efectSound.GetComponent<AudioSource>();
-    }
-
     private void Update()
     {
         if (inArea && Input.GetKeyDown(KeyCode.E) && !active)
         {
-            audioSource.PlayOneShot(clip);
-            fontAudio.Play();
             active = true;
             StartCoroutine(WaterActive());
         }
