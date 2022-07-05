@@ -153,10 +153,10 @@ public class Manager : MonoBehaviour
         isMainMenu = false;
         MenuAudio.clip = clipTuto;
         MenuAudio.Play();
-        if(Pd != null)
+        /*if(Pd != null)
         {
             Pd.Play();
-        }
+        }*/
         
     }
 
