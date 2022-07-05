@@ -31,6 +31,7 @@ public class EnemyController : MonoBehaviour
     private Animator anim;
     public Vector3 pos;
     private bool once = false;
+    public float dis;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +50,10 @@ public class EnemyController : MonoBehaviour
         {
             targetPlayer = fov.targetPlayer;
             once = false;
+        }
+        else
+        {
+            targetPlayer = null;
         }
 
         targetObject = fov.targetObject;
@@ -110,7 +115,9 @@ public class EnemyController : MonoBehaviour
 
         float dist = Vector3.Distance(transform.position, wayPoints[currentPoint].position);
 
-        if (dist <= 0.1f)
+        dis = dist;
+
+        if (dist <= 0.11f)
         {
             currentPoint++;
 
@@ -191,7 +198,7 @@ public class EnemyController : MonoBehaviour
 
         float dis = Vector3.Distance(transform.position, pos);
 
-        if (dis <= 0.1f)
+        if (dis <= 0.6f)
         {
             timer3 += Time.deltaTime;
         }
