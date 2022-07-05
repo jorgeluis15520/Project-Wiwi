@@ -14,11 +14,14 @@ public class Objects : MonoBehaviour
     public float timer;
     private int currentPart = 0;
 
+    public GameObject key;
+
     private void Update()
     {
         if (inArea && Input.GetKeyDown(KeyCode.E) && !active)
         {
             active = true;
+            key.SetActive(true);
             StartCoroutine(WaterActive());
         }
     }

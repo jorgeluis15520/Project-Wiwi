@@ -43095,6 +43095,7 @@ MonoBehaviour:
   active: 0
   clip: {fileID: 8300000, guid: 666c73683216b944c9abf3f6078a81d3, type: 3}
   timer: 0.2
+  key: {fileID: 1919315004}
 --- !u!65 &794416496
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -77277,6 +77278,11 @@ Transform:
   m_Father: {fileID: 1205728348}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1919315004 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5736287682935532392, guid: f56ea6caef6a68849974928b5fd78094, type: 3}
+  m_PrefabInstance: {fileID: 8691156754826593584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1919530967
 GameObject:
   m_ObjectHideFlags: 0
