@@ -442,7 +442,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a999be404594b1d40a0b2c764ee08960, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 407ca0ac5c65f5d44bf1514624b111ed, type: 2}
+      objectReference: {fileID: 2100000, guid: 470f62b0263154f4db685969ea9d7181, type: 2}
     - target: {fileID: 919132149155446097, guid: a999be404594b1d40a0b2c764ee08960, type: 3}
       propertyPath: m_Name
       value: FBX_ParedesNivel1 (1)
@@ -31239,7 +31239,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7773438, y: 1}
+    m_SensorSize: {x: 1.778761, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -31255,7 +31255,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 387860068}
-  m_LocalRotation: {x: -1.4058265e-22, y: 0.55172014, z: -4.3808617e-23, w: 0.8340294}
+  m_LocalRotation: {x: -0, y: -0.7236968, z: -0, w: 0.6901181}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -37013,15 +37013,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1043557997888335950, guid: 19c8ca804eea1a2448172f942756b0d5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.946
+      value: 8.75
       objectReference: {fileID: 0}
     - target: {fileID: 1043557997888335950, guid: 19c8ca804eea1a2448172f942756b0d5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.449
+      value: 0.176
       objectReference: {fileID: 0}
     - target: {fileID: 1043557997888335950, guid: 19c8ca804eea1a2448172f942756b0d5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.819
+      value: 1.994
       objectReference: {fileID: 0}
     - target: {fileID: 1043557997888335950, guid: 19c8ca804eea1a2448172f942756b0d5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -44141,7 +44141,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3e3a184a78911164fb50a69cf8af272f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.135
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -44336,7 +44336,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7773438, y: 1}
+    m_SensorSize: {x: 1.778761, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -44418,7 +44418,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 979593697}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.8980446, y: 1.7260001, z: 3.3573723}
+  m_LocalPosition: {x: 9.96667, y: 0.453, z: 2.0500195}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -51839,7 +51839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1424898141
 Light:
   m_ObjectHideFlags: 0
@@ -52279,7 +52279,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7773438, y: 1}
+    m_SensorSize: {x: 1.778761, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -52295,7 +52295,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482051922}
-  m_LocalRotation: {x: -0.015170567, y: 0.55162877, z: 0.0100355055, w: 0.8338914}
+  m_LocalRotation: {x: -0.012552895, y: -0.7235771, z: -0.013163676, w: 0.6900039}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -72259,7 +72259,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7773438, y: 1}
+    m_SensorSize: {x: 1.778761, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -72275,7 +72275,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705450670}
-  m_LocalRotation: {x: -0.030296074, y: 0.55135596, z: 0.020041205, w: 0.833479}
+  m_LocalRotation: {x: -0.025068508, y: -0.7232192, z: -0.026288249, w: 0.6896627}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -78383,31 +78383,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 187034681785943553, guid: 230fea4cf236c264db5866c97fac462b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.8980446
+      value: 9.96667
       objectReference: {fileID: 0}
     - target: {fileID: 187034681785943553, guid: 230fea4cf236c264db5866c97fac462b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7260001
+      value: 0.453
       objectReference: {fileID: 0}
     - target: {fileID: 187034681785943553, guid: 230fea4cf236c264db5866c97fac462b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.3573723
+      value: 2.0500195
       objectReference: {fileID: 0}
     - target: {fileID: 187034681785943553, guid: 230fea4cf236c264db5866c97fac462b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8338914
+      value: 0.69000393
       objectReference: {fileID: 0}
     - target: {fileID: 187034681785943553, guid: 230fea4cf236c264db5866c97fac462b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.015170569
+      value: -0.012552897
       objectReference: {fileID: 0}
     - target: {fileID: 187034681785943553, guid: 230fea4cf236c264db5866c97fac462b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.55162877
+      value: -0.7235771
       objectReference: {fileID: 0}
     - target: {fileID: 187034681785943553, guid: 230fea4cf236c264db5866c97fac462b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.010035507
+      value: -0.013163677
       objectReference: {fileID: 0}
     - target: {fileID: 187034681785943553, guid: 230fea4cf236c264db5866c97fac462b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
