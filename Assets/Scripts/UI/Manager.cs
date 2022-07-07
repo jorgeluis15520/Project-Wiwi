@@ -23,11 +23,15 @@ public class Manager : MonoBehaviour
     public GameObject deathPanel;
     public GameObject nextLevelPanel;
     public GameObject panelLevelLoad;
+    public GameObject pauseOptions;
     public static bool isMainMenu = true;
     //Opciones
     public GameObject optionsMenuPanel;
     public Slider slider;
     public float sliderValue;
+
+    public bool Menu_Options = false;
+    public bool Pause_Options = false;
     //
     public PlayableDirector Pd;
     public TimelineClip clip;
@@ -202,6 +206,13 @@ public class Manager : MonoBehaviour
         collectablePanel.SetActive(true);
     }
 
+    public void OptionsPause()
+    {
+        pauseOptions.SetActive(true);
+        pauseMenuPanel.SetActive(false);
+        Pause_Options = true;
+    }
+
     public void BackPauseMenu()
     {
         collectablePanel.SetActive(false);
@@ -267,11 +278,30 @@ public class Manager : MonoBehaviour
     {
         mainMenuPanel.SetActive(false);
         optionsMenuPanel.SetActive(true);
+        Menu_Options = true;
     }
     public void BackMainMenu()
     {
-        mainMenuPanel.SetActive(true);
-        optionsMenuPanel.SetActive(false);
+        if(Menu_Options == true)
+        {
+            mainMenuPanel.SetActive(true);
+            optionsMenuPanel.SetActive(false);
+            Menu_Options = false;
+        }
+
+        if(Pause_Options == true)
+        {
+            pauseMenuPanel.SetActive(true);
+            optionsMenuPanel.SetActive(false);
+            Pause_Options = false;
+        }
+        
+    }
+
+    public void BackMenuPause()
+    {
+        pauseMenuPanel.SetActive(true);
+        pauseOptions.SetActive(false);
     }
 
     public void ChangeSlider(float valor)
