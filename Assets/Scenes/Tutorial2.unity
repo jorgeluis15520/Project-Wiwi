@@ -1304,7 +1304,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7758621, y: 1}
+    m_SensorSize: {x: 1.7763714, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -7096,7 +7096,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7758621, y: 1}
+    m_SensorSize: {x: 1.7763714, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -8827,7 +8827,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7758621, y: 1}
+    m_SensorSize: {x: 1.7763714, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -15243,7 +15243,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7758621, y: 1}
+    m_SensorSize: {x: 1.7763714, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -26011,6 +26011,7 @@ MonoBehaviour:
   handRay: 0.15
   handPush: {fileID: 1446944387}
   handPush2: {fileID: 1037382004}
+  handPush3: {fileID: 0}
   isPushing: 0
   cam: {fileID: 2246966491283170897}
   rotationSpeed: 5

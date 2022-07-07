@@ -20,6 +20,7 @@ TagManager:
   - Grill
   - Enemy
   - Fire
+  - Object3
   layers:
   - Default
   - TransparentFX

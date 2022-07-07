@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
+
 
 public class Objects : MonoBehaviour
 {
@@ -14,15 +16,17 @@ public class Objects : MonoBehaviour
     public float timer;
     private int currentPart = 0;
 
-    public GameObject key;
+  
+    public PlayableDirector Cm;
 
     private void Update()
     {
         if (inArea && Input.GetKeyDown(KeyCode.E) && !active)
         {
             active = true;
-            key.SetActive(true);
+            
             StartCoroutine(WaterActive());
+            Cm.Play();
         }
     }
 
