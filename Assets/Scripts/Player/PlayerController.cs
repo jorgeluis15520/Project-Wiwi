@@ -85,6 +85,8 @@ public class PlayerController : MonoBehaviour
     private bool isDying = false;
     public static bool isDeath;
 
+    private AudioSource audioSource;
+    public AudioClip fallSound;
 
     private void Awake()
     {
@@ -93,6 +95,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         //haveKey = false;
         cap = GetComponent<CapsuleCollider>();
         Vector3 pos = cap.center;
@@ -567,6 +570,11 @@ public class PlayerController : MonoBehaviour
     public void Death()
     {
         StartCoroutine("DeathAnim");
+    }
+
+    public void FallSound()
+    {
+        audioSource.PlayOneShot(fallSound);
     }
     private void OnDrawGizmos()
     {
