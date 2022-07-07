@@ -24,6 +24,7 @@ public class Manager : MonoBehaviour
     public GameObject nextLevelPanel;
     public GameObject panelLevelLoad;
     public GameObject pauseOptions;
+    public GameObject selectNiveles;
     public static bool isMainMenu = true;
     //Opciones
     public GameObject optionsMenuPanel;
@@ -328,6 +329,51 @@ public class Manager : MonoBehaviour
         deathPanel.SetActive(false);
         Time.timeScale = 0f;
         SceneManager.LoadScene("Tutorial2");
+    }
+
+    public void EscenariosButton()
+    {
+        mainMenuPanel.SetActive(false);
+        selectNiveles.SetActive(true);
+
+    }
+
+    public void SelectTutorial()
+    {
+        selectNiveles.SetActive(false);
+        Time.timeScale = 1f;
+        isPause = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        isMainMenu = false;
+        MenuAudio.clip = clipTuto;
+        MenuAudio.Play();
+    }
+    public void SelectNivel1()
+    {
+        SceneManager.LoadScene("Nivel_1");
+        Time.timeScale = 1f;
+        isPause = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        isMainMenu = false;
+        MenuAudio.Play();
+    }
+    public void SelectNivel2()
+    {
+        SceneManager.LoadScene("Nivel_2");
+        Time.timeScale = 1f;
+        isPause = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        isMainMenu = false;
+        MenuAudio.Play();
+    }
+
+    public void SelectNiveles_Menu()
+    {
+        selectNiveles.SetActive(false);
+        mainMenuPanel.SetActive(true);
     }
 
     public void LoadLevel1()

@@ -307,7 +307,7 @@ MonoBehaviour:
     m_Bits: 2048
   isClimbLedge: 0
   toUp: {fileID: 716581437523131840}
-  fallSound: {fileID: 8300000, guid: 69a81b333f0c32f4fafb3d65e2a251bd, type: 3}
+  fallSound: {fileID: 8300000, guid: 61ebe11ff3df04343a6b53fcc5356013, type: 3}
 --- !u!54 &6384796595063040567
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -365,7 +365,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.513
   m_Pitch: 1
   Loop: 0
   Mute: 0
