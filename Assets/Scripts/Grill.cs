@@ -7,6 +7,12 @@ public class Grill : MonoBehaviour
 {
     public GameObject Fire;
     public static bool isActive;
+    private Objects objects;
+
+    private void Start()
+    {
+        objects = GetComponent<Objects>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -19,6 +25,8 @@ public class Grill : MonoBehaviour
         if (isActive)
         {
             Fire.SetActive(true);
+            objects.active = true;
+            isActive = false;
         }
     } 
 }

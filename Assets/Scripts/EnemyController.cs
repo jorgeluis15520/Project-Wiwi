@@ -32,6 +32,7 @@ public class EnemyController : MonoBehaviour
     public Vector3 pos;
     private bool once = false;
     public float dis;
+    public float dis2;
     // Start is called before the first frame update
     void Start()
     {
@@ -70,7 +71,7 @@ public class EnemyController : MonoBehaviour
             Move();
             detect = false;
         }
-        else if (targetPlayer == null && targetObject != null && lastPosition != null)
+        else if (targetPlayer == null && targetObject != null && lastPosition == null)
         {
             FollowObject();
             detect = false;
@@ -83,6 +84,12 @@ public class EnemyController : MonoBehaviour
             {
                 audioSource.PlayOneShot(detectSound);
                 detect = true;
+            }
+
+            if (targetObject != null)
+            {
+                targetObject.GetComponent<Objects>().active = false;
+                targetObject = null;
             }
 
             timer += Time.deltaTime;
@@ -117,7 +124,7 @@ public class EnemyController : MonoBehaviour
 
         dis = dist;
 
-        if (dist <= 0.11f)
+        if (dist <= 0.15f)
         {
             currentPoint++;
 
@@ -169,8 +176,9 @@ public class EnemyController : MonoBehaviour
         transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
 
         float dis = Vector3.Distance(transform.position, targetObject.position);
+        dis2 = dis;
 
-        if (dis <= 0.1f)
+        if (dis <= 1.75f)
         {
             timer2 += Time.deltaTime; 
         }
@@ -198,7 +206,7 @@ public class EnemyController : MonoBehaviour
 
         float dis = Vector3.Distance(transform.position, pos);
 
-        if (dis <= 0.6f)
+        if (dis <= 0.25f)
         {
             timer3 += Time.deltaTime;
         }

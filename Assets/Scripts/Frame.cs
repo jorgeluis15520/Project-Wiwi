@@ -24,7 +24,6 @@ public class Frame : MonoBehaviour
             collider.enabled = !collider.enabled;
             actionFrame.GetComponent<Rigidbody>().useGravity = true;
             actionFrame.GetComponent<Rigidbody>().isKinematic = false;
-            Debug.Log("ga");
             StartCoroutine("Sound");
            
 
