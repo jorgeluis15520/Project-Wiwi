@@ -122,8 +122,6 @@ public class EnemyController : MonoBehaviour
 
         float dist = Vector3.Distance(transform.position, wayPoints[currentPoint].position);
 
-        dis = dist;
-
         if (dist <= 0.15f)
         {
             currentPoint++;
@@ -204,9 +202,11 @@ public class EnemyController : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speedRotation * Time.deltaTime);
         transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
 
-        float dis = Vector3.Distance(transform.position, pos);
+        float dist = Vector3.Distance(transform.position, pos);
 
-        if (dis <= 0.25f)
+        dis = dist;
+
+        if (dist <= 1.5f)
         {
             timer3 += Time.deltaTime;
         }
