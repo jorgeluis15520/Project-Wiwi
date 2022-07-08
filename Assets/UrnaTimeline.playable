@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3734418387960921164
+--- !u!114 &-7815638409913114282
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: 
   VirtualCamera:
-    exposedName: 078f1533f6e2e5d4fb14b2191114bb2e
+    exposedName: c36ceeb4710348340bd5fbae6d3ac5e3
     defaultValue: {fileID: 0}
 --- !u!114 &-1760112963903951384
 MonoBehaviour:
@@ -40,14 +40,14 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: 4498264598661720132}
-    m_Duration: 12.65
+    m_Asset: {fileID: 516922913593704539}
+    m_Duration: 5.450000000000001
     m_TimeScale: 1
     m_ParentTrack: {fileID: -1760112963903951384}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
-    m_BlendOutDuration: 11.200000000000001
+    m_BlendOutDuration: 5.450000000000001
     m_MixInCurve:
       serializedVersion: 2
       m_Curve:
@@ -105,27 +105,63 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: Cam_Main
+    m_DisplayName: CM FreeLook1
   - m_Version: 1
-    m_Start: 1.45
+    m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: -3734418387960921164}
-    m_Duration: 13.466666666666658
+    m_Asset: {fileID: -7815638409913114282}
+    m_Duration: 10.83333333333334
     m_TimeScale: 1
     m_ParentTrack: {fileID: -1760112963903951384}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 11.200000000000001
-    m_BlendOutDuration: 2.266666666666657
+    m_BlendInDuration: 5.450000000000001
+    m_BlendOutDuration: 2.7500000000000053
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -140,15 +176,15 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Cam_Key
   - m_Version: 1
-    m_Start: 12.65
+    m_Start: 8.083333333333334
     m_ClipIn: 0
-    m_Asset: {fileID: 5525985260226548638}
-    m_Duration: 9.86666666666666
+    m_Asset: {fileID: 1646902117304699202}
+    m_Duration: 3.3166666666666664
     m_TimeScale: 1
     m_ParentTrack: {fileID: -1760112963903951384}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 2.266666666666657
+    m_BlendInDuration: 2.7500000000000053
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
@@ -189,7 +225,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: Cam_Main
+    m_DisplayName: CM FreeLook1
   m_Markers:
     m_Objects: []
 --- !u!114 &11400000
@@ -213,7 +249,7 @@ MonoBehaviour:
     m_ScenePreview: 1
   m_DurationMode: 0
   m_MarkerTrack: {fileID: 0}
---- !u!114 &4498264598661720132
+--- !u!114 &516922913593704539
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -227,9 +263,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: 
   VirtualCamera:
-    exposedName: 549116e89580aba4bb93fcfcf2d9d50f
+    exposedName: ed8ac1310d0bcd74194fd62ab0cb52c3
     defaultValue: {fileID: 0}
---- !u!114 &5525985260226548638
+--- !u!114 &1646902117304699202
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -243,5 +279,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: 
   VirtualCamera:
-    exposedName: 93b6f4206f96b444ba2856c8e503d265
+    exposedName: fda28f9727d05634084dcd81b841f151
     defaultValue: {fileID: 0}
