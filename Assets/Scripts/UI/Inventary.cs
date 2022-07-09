@@ -8,7 +8,7 @@ public class Inventary : MonoBehaviour
     public InventaryCanvas inventaryCanvas;
     public static bool haveItem = false;
     public AudioManager audioManager;
-    private bool isEnter;
+   public  bool isEnter;
     private void Awake()
     {
         inventaryCanvas = GameObject.FindObjectOfType<InventaryCanvas>();
@@ -38,6 +38,7 @@ public class Inventary : MonoBehaviour
                 inventaryCanvas.objects[0].GetComponent<Image>().enabled = false;
                 haveItem = false;
                 Grill.isActive = true;
+                
             }
         }
     }
@@ -90,13 +91,14 @@ public class Inventary : MonoBehaviour
         if (coll.gameObject.CompareTag("Grill") && haveItem)
         {
             isEnter = true;
+            
         }
 
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Grill") && haveItem)
+        if (other.gameObject.CompareTag("Grill") )
         {
             isEnter = false;
         }
