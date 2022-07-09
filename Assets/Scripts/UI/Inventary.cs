@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Inventary : MonoBehaviour
 {
     public InventaryCanvas inventaryCanvas;
+    public Manager manager;
     public static bool haveItem = false;
     public AudioManager audioManager;
    public  bool isEnter;
@@ -13,6 +14,7 @@ public class Inventary : MonoBehaviour
     {
         inventaryCanvas = GameObject.FindObjectOfType<InventaryCanvas>();
         audioManager = GameObject.FindObjectOfType<AudioManager>();
+        manager = GameObject.FindObjectOfType<Manager>();
     }
 
     public void Start()
@@ -22,7 +24,11 @@ public class Inventary : MonoBehaviour
             return;
         }
 
-        if (audioManager == null)
+        if (inventaryCanvas == null)
+        {
+            return;
+        }
+        if ( manager == null)
         {
             return;
         }
@@ -67,18 +73,30 @@ public class Inventary : MonoBehaviour
         {
             CheckCollects.haveCollect1 = true;
             Destroy(coll.gameObject);
+            manager.collectablePanel.SetActive(true);
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         if (coll.gameObject.CompareTag("Collect2"))
         {
             CheckCollects.haveCollect2 = true;
             Destroy(coll.gameObject);
+            manager.collectablePanel.SetActive(true);
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         if (coll.gameObject.CompareTag("Collect3"))
         {
             CheckCollects.haveCollect3 = true;
             Destroy(coll.gameObject);
+            manager.collectablePanel.SetActive(true);
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         if (coll.gameObject.CompareTag("Door") && haveItem)
