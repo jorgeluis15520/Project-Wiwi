@@ -188,6 +188,10 @@ public class Manager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         isMainMenu = true;
+        if (panelLevelLoad.activeSelf)
+        {
+            panelLevelLoad.SetActive(false);
+        }
     }
     public void Menu()
     {
