@@ -9,6 +9,7 @@ public class DoorAnimations : MonoBehaviour
     public AudioSource audSource;
     public string parametersName;
     public static bool endLevel = false;
+    public bool grid = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,10 @@ public class DoorAnimations : MonoBehaviour
         {
             anim.SetBool(parametersName, true);
             endLevel = true;
+            if (grid)
+            {
+                DoorAudio();
+            }
         }
     }
 }

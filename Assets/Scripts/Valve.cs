@@ -10,6 +10,7 @@ public class Valve : MonoBehaviour
     public GameObject efectSound;
     public bool active;
 
+    public AudioSource audioSource;
     public AudioClip clip;
     private bool inArea = false;
     private bool end = false;
@@ -22,6 +23,7 @@ public class Valve : MonoBehaviour
     private void Start()
     {
         objects = GetComponent<Objects>();
+        audioSource = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -29,6 +31,7 @@ public class Valve : MonoBehaviour
         {
             active = true;
             objects.active = true;
+            audioSource.PlayOneShot(clip);
             StartCoroutine(WaterActive());
             Cm.Play();
         }
