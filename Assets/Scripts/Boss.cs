@@ -32,24 +32,24 @@ public class Boss : MonoBehaviour
         if (computerActive && !urnActive)
         {
             currentPoint = 1;
-            anim.SetBool("Walk", true);
+            //anim.SetBool("Walk", true);
         }
 
         if (urnActive && !exitRoom)
         {
-            anim.SetBool("Walk", true);
-            currentPoint = 2;
+            //anim.SetBool("Walk", true);
+            currentPoint = 1;
         }
 
         if (dis <= 2f)
         {
-            anim.SetBool("Walk", false);
+            //anim.SetBool("Walk", false);
         }
 
         if (exitRoom)
         {
             nav.speed = 7f;
-            anim.SetBool("Run", true);
+            //anim.SetBool("Run", true);
             currentPoint = 3;
         }
     }

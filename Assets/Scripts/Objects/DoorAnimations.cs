@@ -26,7 +26,9 @@ public class DoorAnimations : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player") && Inventary.haveItem)
+        Debug.Log(other.name);
+
+        if (other.CompareTag("Player") && Inventary.haveItem)
         {
             anim.SetBool(parametersName, true);
             endLevel = true;
@@ -34,6 +36,26 @@ public class DoorAnimations : MonoBehaviour
             {
                 DoorAudio();
             }
+        }
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            anim.SetBool(parametersName, true);
+            DoorAudio();
+            Debug.Log("te amo");
+        }
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            anim.SetBool(parametersName, true);
+            DoorAudio();
+            Debug.Log("te amo");
         }
     }
 }
