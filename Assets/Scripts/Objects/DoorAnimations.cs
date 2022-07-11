@@ -26,7 +26,11 @@ public class DoorAnimations : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
+        if (other.CompareTag("Enemy"))
+        {
+            anim.SetBool("openBoss",true);
+            anim.SetBool("doorClose", false);
+        }
 
         if (other.CompareTag("Player") && Inventary.haveItem)
         {
@@ -37,25 +41,14 @@ public class DoorAnimations : MonoBehaviour
                 DoorAudio();
             }
         }
-
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            anim.SetBool(parametersName, true);
-            DoorAudio();
-            Debug.Log("te amo");
-        }
-
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        Debug.Log(collision.gameObject.name);
-
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
-            anim.SetBool(parametersName, true);
-            DoorAudio();
-            Debug.Log("te amo");
+            anim.SetBool("doorClose", true);
+            anim.SetBool("openBoss", false);
         }
     }
 }

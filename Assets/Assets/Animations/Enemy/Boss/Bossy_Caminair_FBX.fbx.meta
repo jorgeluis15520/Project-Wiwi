@@ -1,0 +1,883 @@
+fileFormatVersion: 2
+guid: d246e087ada410949b3438152b984612
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      74: 1827226128182048838
+    second: Take 001
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.75
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: Boss(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bossesito
+      parentName: Boss(Clone)
+      position: {x: 2.0321188, y: 0, z: 0.07052099}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RAIZ_grp
+      parentName: Boss(Clone)
+      position: {x: -0, y: -0.0012714026, z: -0.74799055}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RAIZ_ctrl
+      parentName: RAIZ_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CDG_grp
+      parentName: RAIZ_ctrl
+      position: {x: -0, y: 0.5820412, z: 0.45466965}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CDG_ctrl
+      parentName: CDG_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cuerpo1_grp
+      parentName: CDG_ctrl
+      position: {x: -0, y: 0.000000027322788, z: -0.0000000068895423}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cuerpo1_ctrl
+      parentName: Cuerpo1_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cuerpo2_grp
+      parentName: Cuerpo1_ctrl
+      position: {x: -0, y: 0.094255984, z: 0.09634506}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cuerpo2_ctrl
+      parentName: Cuerpo2_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cuerpo3_grp
+      parentName: Cuerpo2_ctrl
+      position: {x: -0, y: 0.051562447, z: 0.122654095}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cuerpo3_ctrl
+      parentName: Cuerpo3_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cuerpo4_grp
+      parentName: Cuerpo3_ctrl
+      position: {x: -0, y: 0.10731073, z: 0.15827797}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cuerpo4_ctrl
+      parentName: Cuerpo4_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cuerpo5_grp
+      parentName: Cuerpo4_ctrl
+      position: {x: -0, y: 0.047822658, z: 0.122850634}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cuerpo5_ctrl
+      parentName: Cuerpo5_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hombros_grp
+      parentName: Cuerpo5_ctrl
+      position: {x: -0, y: 0.064497665, z: 0.1338465}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hombros_ctrl
+      parentName: Hombros_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cuello_grp
+      parentName: Hombros_ctrl
+      position: {x: -0, y: -0.009780959, z: 0.0996504}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cuello_ctrl
+      parentName: Cuello_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cabeza_grp
+      parentName: Cuello_ctrl
+      position: {x: -0, y: 0.122012585, z: 0.08124557}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cabeza_ctrl
+      parentName: Cabeza_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boca_grp
+      parentName: Cabeza_ctrl
+      position: {x: -0, y: -0.18170476, z: 0.07615148}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boca_ctrl
+      parentName: Boca_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Brazo1_grp
+      parentName: Hombros_ctrl
+      position: {x: -0.1668643, y: -0.045068737, z: -0.06733275}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Brazo1_ctrl
+      parentName: Der_Brazo1_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Brazo2_grp
+      parentName: Der_Brazo1_ctrl
+      position: {x: -0.068546936, y: -0.041303437, z: -0.056344863}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Brazo2_ctrl
+      parentName: Der_Brazo2_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Brazo3_grp
+      parentName: Der_Brazo2_ctrl
+      position: {x: -0.10743498, y: -0.09417369, z: -0.12210647}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Brazo3_ctrl
+      parentName: Der_Brazo3_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Codo1_grp
+      parentName: Der_Brazo3_ctrl
+      position: {x: -0.14433528, y: -0.16286673, z: -0.16009434}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Codo1_ctrl
+      parentName: Der_Codo1_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Codo2_grp
+      parentName: Der_Codo1_ctrl
+      position: {x: 0.09205702, y: -0.26612085, z: 0.016918818}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Codo2_ctrl
+      parentName: Der_Codo2_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Codo3_grp
+      parentName: Der_Codo2_ctrl
+      position: {x: 0.11606439, y: -0.28520533, z: 0.050402}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Codo3_ctrl
+      parentName: Der_Codo3_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_AnteBrazo1_grp
+      parentName: Der_Codo3_ctrl
+      position: {x: 0.023247803, y: -0.018267084, z: -0.065368414}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_AnteBrazo1_ctrl
+      parentName: Der_AnteBrazo1_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_AnteBrazo2_grp
+      parentName: Der_AnteBrazo1_ctrl
+      position: {x: 0.039789326, y: 0.002273348, z: -0.16540508}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_AnteBrazo2_ctrl
+      parentName: Der_AnteBrazo2_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Der_Garra1_grp
+      parentName: Der_AnteBrazo2_ctrl
+      position: {x: -0.052240685, y: 0.051782206, z: -0.098710135}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Der_Garra1_ctrl
+      parentName: Der_Der_Garra1_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Der_Garra2_grp
+      parentName: Der_Der_Garra1_ctrl
+      position: {x: -0.027749466, y: 0.06780937, z: -0.013092112}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Der_Garra2_ctrl
+      parentName: Der_Der_Garra2_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Der_Garra3_grp
+      parentName: Der_Der_Garra2_ctrl
+      position: {x: -0.059405148, y: 0.12693915, z: -0.021626288}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Der_Garra3_ctrl
+      parentName: Der_Der_Garra3_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Der_Garra4_grp
+      parentName: Der_Der_Garra3_ctrl
+      position: {x: -0.015863119, y: 0.022241473, z: 0.028751174}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Der_Garra4_ctrl
+      parentName: Der_Der_Garra4_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Der_Garra5_grp
+      parentName: Der_Der_Garra4_ctrl
+      position: {x: -0.034030676, y: 0.037430774, z: 0.11572317}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Der_Garra5_ctrl
+      parentName: Der_Der_Garra5_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Der_Garra6_grp
+      parentName: Der_Der_Garra5_ctrl
+      position: {x: 0.003990129, y: -0.024411375, z: 0.029660126}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Der_Garra6_ctrl
+      parentName: Der_Der_Garra6_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Izq_Garra1_grp
+      parentName: Der_AnteBrazo2_ctrl
+      position: {x: 0.032270502, y: 0.09069261, z: -0.059398655}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Izq_Garra1_ctrl
+      parentName: Der_Izq_Garra1_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Izq_Garra2_grp
+      parentName: Der_Izq_Garra1_ctrl
+      position: {x: 0.006796695, y: 0.067098945, z: -0.03472311}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Izq_Garra2_ctrl
+      parentName: Der_Izq_Garra2_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Izq_Garra3_grp
+      parentName: Der_Izq_Garra2_ctrl
+      position: {x: 0.002436613, y: 0.13267964, z: -0.026829837}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Izq_Garra3_ctrl
+      parentName: Der_Izq_Garra3_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Izq_Garra4_grp
+      parentName: Der_Izq_Garra3_ctrl
+      position: {x: -0.014198169, y: 0.02495385, z: 0.020614048}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Izq_Garra4_ctrl
+      parentName: Der_Izq_Garra4_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Izq_Garra5_grp
+      parentName: Der_Izq_Garra4_ctrl
+      position: {x: -0.06980766, y: 0.05804482, z: 0.100357875}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Izq_Garra5_ctrl
+      parentName: Der_Izq_Garra5_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Izq_Garra6_grp
+      parentName: Der_Izq_Garra5_ctrl
+      position: {x: -0.011831808, y: -0.023868898, z: 0.0282087}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Izq_Garra6_ctrl
+      parentName: Der_Izq_Garra6_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Brazo1_grp
+      parentName: Hombros_ctrl
+      position: {x: 0.16783561, y: -0.045068737, z: -0.06733275}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Brazo1_ctrl
+      parentName: Izq_Brazo1_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Brazo2_grp
+      parentName: Izq_Brazo1_ctrl
+      position: {x: 0.06722252, y: -0.041303437, z: -0.056344863}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Brazo2_ctrl
+      parentName: Izq_Brazo2_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Brazo3_grp
+      parentName: Izq_Brazo2_ctrl
+      position: {x: 0.10857822, y: -0.09417369, z: -0.12210647}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Brazo3_ctrl
+      parentName: Izq_Brazo3_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Codo1_ctrl
+      parentName: Izq_Brazo3_ctrl
+      position: {x: 0.14472628, y: -0.16286673, z: -0.16009434}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Codo1_grp
+      parentName: Izq_Codo1_ctrl
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Codo2_ctrl
+      parentName: Izq_Codo1_grp
+      position: {x: -0.09029683, y: -0.26612085, z: 0.016918818}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Codo2_grp
+      parentName: Izq_Codo2_ctrl
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Codo3_ctrl
+      parentName: Izq_Codo2_grp
+      position: {x: -0.1219109, y: -0.28520533, z: 0.050402}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Codo3_grp
+      parentName: Izq_Codo3_ctrl
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_AnteBrazo1_grp
+      parentName: Izq_Codo3_grp
+      position: {x: -0.026820691, y: -0.018267084, z: -0.065368414}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_AnteBrazo1_ctrl
+      parentName: Izq_AnteBrazo1_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_AnteBrazo2_grp
+      parentName: Izq_AnteBrazo1_ctrl
+      position: {x: -0.036189448, y: 0.002273348, z: -0.16540508}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_AnteBrazo2_ctrl
+      parentName: Izq_AnteBrazo2_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Der_Garra1_grp
+      parentName: Izq_AnteBrazo2_ctrl
+      position: {x: -0.03194347, y: 0.09069261, z: -0.059398655}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Der_Garra1_ctrl
+      parentName: Izq_Der_Garra1_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Der_Garra2_grp
+      parentName: Izq_Der_Garra1_ctrl
+      position: {x: -0.0053833225, y: 0.067098945, z: -0.03472311}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Der_Garra2_ctrl
+      parentName: Izq_Der_Garra2_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Der_Garra3_grp
+      parentName: Izq_Der_Garra2_ctrl
+      position: {x: -0.0013228209, y: 0.13267964, z: -0.026829837}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Der_Garra3_ctrl
+      parentName: Izq_Der_Garra3_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Der_Garra4_grp
+      parentName: Izq_Der_Garra3_ctrl
+      position: {x: 0.011552473, y: 0.02495385, z: 0.020614048}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Der_Garra4_ctrl
+      parentName: Izq_Der_Garra4_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Der_Garra5_grp
+      parentName: Izq_Der_Garra4_ctrl
+      position: {x: 0.07049137, y: 0.05804482, z: 0.100357875}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Der_Garra5_ctrl
+      parentName: Izq_Der_Garra5_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Der_Garra6_grp
+      parentName: Izq_Der_Garra5_ctrl
+      position: {x: 0.015676849, y: -0.023868898, z: 0.0282087}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Der_Garra6_ctrl
+      parentName: Izq_Der_Garra6_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Izq_Garra1_grp
+      parentName: Izq_AnteBrazo2_ctrl
+      position: {x: 0.057962414, y: 0.051782206, z: -0.098710135}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Izq_Garra1_ctrl
+      parentName: Izq_Izq_Garra1_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Izq_Garra2_grp
+      parentName: Izq_Izq_Garra1_ctrl
+      position: {x: 0.023328124, y: 0.06780937, z: -0.013092112}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Izq_Garra2_ctrl
+      parentName: Izq_Izq_Garra2_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Izq_Garra3_grp
+      parentName: Izq_Izq_Garra2_ctrl
+      position: {x: 0.059083853, y: 0.12693915, z: -0.021626288}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Izq_Garra3_ctrl
+      parentName: Izq_Izq_Garra3_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Izq_Garra4_grp
+      parentName: Izq_Izq_Garra3_ctrl
+      position: {x: 0.018049369, y: 0.022241473, z: 0.028751174}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Izq_Garra4_ctrl
+      parentName: Izq_Izq_Garra4_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Izq_Garra5_grp
+      parentName: Izq_Izq_Garra4_ctrl
+      position: {x: 0.038447324, y: 0.037430774, z: 0.11572317}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Izq_Garra5_ctrl
+      parentName: Izq_Izq_Garra5_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Izq_Garra6_grp
+      parentName: Izq_Izq_Garra5_ctrl
+      position: {x: -0.006739385, y: -0.024411375, z: 0.029660126}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Izq_Garra6_ctrl
+      parentName: Izq_Izq_Garra6_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RAIZ
+      parentName: Boss(Clone)
+      position: {x: -0, y: -0.0012714022, z: -0.74799055}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CDG_J
+      parentName: RAIZ
+      position: {x: -0, y: 0.5820412, z: 0.45466962}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cuerpo1_J
+      parentName: CDG_J
+      position: {x: -0, y: 0.000000027322786, z: -0.000000006889542}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cuerpo2_J
+      parentName: Cuerpo1_J
+      position: {x: -0, y: 0.09425595, z: 0.096345074}
+      rotation: {x: -0.34659672, y: -0, z: -0, w: 0.93801427}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cuerpo3_J
+      parentName: Cuerpo2_J
+      position: {x: -0, y: 0.051562443, z: 0.122654095}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cuerpo4_J
+      parentName: Cuerpo3_J
+      position: {x: -0, y: 0.10731074, z: 0.15827796}
+      rotation: {x: -0.043751627, y: -0, z: -0, w: 0.9990425}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cuerpo5_J
+      parentName: Cuerpo4_J
+      position: {x: -0, y: 0.04782266, z: 0.12285059}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hombros_J
+      parentName: Cuerpo5_J
+      position: {x: -0, y: 0.064497665, z: 0.1338465}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cuello_J
+      parentName: Hombros_J
+      position: {x: -0, y: -0.00978096, z: 0.0996504}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cabeza_J
+      parentName: Cuello_J
+      position: {x: -0, y: 0.12201254, z: 0.08124555}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boca_J
+      parentName: Cabeza_J
+      position: {x: -0, y: -0.18170474, z: 0.076151475}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Brazo1_J
+      parentName: Hombros_J
+      position: {x: -0.16686435, y: -0.045068733, z: -0.06733275}
+      rotation: {x: -0.000000029802319, y: 0.19389533, z: -0.14213441, w: 0.9706711}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Brazo2_J
+      parentName: Der_Brazo1_J
+      position: {x: -0.068546936, y: -0.041303437, z: -0.056344867}
+      rotation: {x: 0.0041811545, y: 0.16088367, z: -0.12775901, w: 0.9786607}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Brazo3_J
+      parentName: Der_Brazo2_J
+      position: {x: -0.10743495, y: -0.09417367, z: -0.122106455}
+      rotation: {x: 0.022642411, y: 0.009133993, z: -0.029705763, w: 0.99926054}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Codo1_J
+      parentName: Der_Brazo3_J
+      position: {x: -0.14433533, y: -0.1628667, z: -0.16009432}
+      rotation: {x: 0.052253455, y: 0.3027396, z: -0.3550922, w: 0.8829088}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Codo2_J
+      parentName: Der_Codo1_J
+      position: {x: 0.09205703, y: -0.26612085, z: 0.016918814}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Codo3_J
+      parentName: Der_Codo2_J
+      position: {x: 0.11606438, y: -0.28520536, z: 0.050402}
+      rotation: {x: -0.55607224, y: -0.24894853, z: -0.12819426, w: 0.78254366}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_AnteBrazo1_J
+      parentName: Der_Codo3_J
+      position: {x: 0.0232478, y: -0.018267082, z: -0.065368414}
+      rotation: {x: -0.09853577, y: -0.038677797, z: -0.024235075, w: 0.99408627}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_AnteBrazo2_J
+      parentName: Der_AnteBrazo1_J
+      position: {x: 0.039789323, y: 0.0022733482, z: -0.16540508}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Der_Garra1_j
+      parentName: Der_AnteBrazo2_J
+      position: {x: -0.052240685, y: 0.051782206, z: -0.09871013}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Der_Garra2_j
+      parentName: Der_Der_Garra1_j
+      position: {x: -0.027749468, y: 0.06780937, z: -0.013092112}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Der_Garra3_j
+      parentName: Der_Der_Garra2_j
+      position: {x: -0.05940515, y: 0.12693915, z: -0.021626288}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Der_Garra4_j
+      parentName: Der_Der_Garra3_j
+      position: {x: -0.015863122, y: 0.022241473, z: 0.028751174}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Der_Garra5_j
+      parentName: Der_Der_Garra4_j
+      position: {x: -0.03403068, y: 0.037430774, z: 0.1157232}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Der_Garra6_j
+      parentName: Der_Der_Garra5_j
+      position: {x: 0.0039901286, y: -0.024411375, z: 0.02966013}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Izq_Garra1_j
+      parentName: Der_AnteBrazo2_J
+      position: {x: 0.032270502, y: 0.090692624, z: -0.059398655}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Izq_Garra2_j
+      parentName: Der_Izq_Garra1_j
+      position: {x: 0.006796695, y: 0.067098945, z: -0.034723107}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Izq_Garra3_j
+      parentName: Der_Izq_Garra2_j
+      position: {x: 0.0024366127, y: 0.13267966, z: -0.026829839}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Izq_Garra4_j
+      parentName: Der_Izq_Garra3_j
+      position: {x: -0.014198167, y: 0.02495385, z: 0.020614048}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Izq_Garra5_j
+      parentName: Der_Izq_Garra4_j
+      position: {x: -0.06980766, y: 0.05804482, z: 0.100357875}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Der_Izq_Garra6_j
+      parentName: Der_Izq_Garra5_j
+      position: {x: -0.011831805, y: -0.023868898, z: 0.0282087}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Brazo1_J
+      parentName: Hombros_J
+      position: {x: 0.1678356, y: -0.045068733, z: -0.06733275}
+      rotation: {x: -0, y: -0.19790044, z: 0.14507036, w: 0.9694277}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Brazo2_J
+      parentName: Izq_Brazo1_J
+      position: {x: 0.06722252, y: -0.041303437, z: -0.056344867}
+      rotation: {x: 0.0042097275, y: -0.15464894, z: 0.12301515, w: 0.98027205}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Brazo3_J
+      parentName: Izq_Brazo2_J
+      position: {x: 0.10857825, y: -0.09417367, z: -0.122106455}
+      rotation: {x: 0.023033012, y: -0.010147347, z: 0.031145042, w: 0.99919796}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Codo1_J
+      parentName: Izq_Brazo3_J
+      position: {x: 0.1447263, y: -0.1628667, z: -0.16009432}
+      rotation: {x: 0.051787686, y: -0.30101588, z: 0.35304487, w: 0.8843455}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Codo2_J
+      parentName: Izq_Codo1_J
+      position: {x: -0.09029685, y: -0.26612085, z: 0.016918814}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Codo3_J
+      parentName: Izq_Codo2_J
+      position: {x: -0.121910915, y: -0.28520536, z: 0.050402}
+      rotation: {x: -0.5378546, y: 0.2562503, z: 0.14907415, w: 0.7891927}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_AnteBrazo1_J
+      parentName: Izq_Codo3_J
+      position: {x: -0.02682069, y: -0.018267082, z: -0.065368414}
+      rotation: {x: -0.10087271, y: 0.06588816, z: 0.02297589, w: 0.99244934}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_AnteBrazo2_J
+      parentName: Izq_AnteBrazo1_J
+      position: {x: -0.03618945, y: 0.0022733482, z: -0.16540508}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Der_Garra1_j
+      parentName: Izq_AnteBrazo2_J
+      position: {x: -0.031943474, y: 0.090692624, z: -0.059398655}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Der_Garra2_j
+      parentName: Izq_Der_Garra1_j
+      position: {x: -0.005383323, y: 0.067098945, z: -0.034723107}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Der_Garra3_j
+      parentName: Izq_Der_Garra2_j
+      position: {x: -0.0013228208, y: 0.13267966, z: -0.026829839}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Der_Garra4_j
+      parentName: Izq_Der_Garra3_j
+      position: {x: 0.011552475, y: 0.02495385, z: 0.020614048}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Der_Garra5_j
+      parentName: Izq_Der_Garra4_j
+      position: {x: 0.07049137, y: 0.05804482, z: 0.100357875}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Der_Garra6_j
+      parentName: Izq_Der_Garra5_j
+      position: {x: 0.015676845, y: -0.023868898, z: 0.0282087}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Izq_Garra1_j
+      parentName: Izq_AnteBrazo2_J
+      position: {x: 0.057962414, y: 0.051782206, z: -0.09871013}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Izq_Garra2_j
+      parentName: Izq_Izq_Garra1_j
+      position: {x: 0.023328125, y: 0.06780937, z: -0.013092112}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Izq_Garra3_j
+      parentName: Izq_Izq_Garra2_j
+      position: {x: 0.059083853, y: 0.12693915, z: -0.021626288}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Izq_Garra4_j
+      parentName: Izq_Izq_Garra3_j
+      position: {x: 0.018049372, y: 0.022241473, z: 0.028751174}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Izq_Garra5_j
+      parentName: Izq_Izq_Garra4_j
+      position: {x: 0.038447324, y: 0.037430774, z: 0.1157232}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izq_Izq_Garra6_j
+      parentName: Izq_Izq_Garra5_j
+      position: {x: -0.0067393854, y: -0.024411375, z: 0.02966013}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 0.75
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: ea43a044df70c0d4f99805772fecbbde, type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 2
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
