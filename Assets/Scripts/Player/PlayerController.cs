@@ -556,10 +556,10 @@ public class PlayerController : MonoBehaviour
         isDying = true;
         if (audioManager != null)
         {
-            audioManager.Death();
+            //audioManager.Death();
         }
         anim.SetBool("isDeath", true);
-        yield return new WaitForSeconds(4.5f);
+        yield return new WaitForSeconds(3f);
         isDeath = true;
         if (audioManager != null)
         {
@@ -606,6 +606,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Death();
+        }
+    }
 }
 
 

@@ -28,8 +28,13 @@ public class DoorAnimations : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            anim.SetBool("openBoss",true);
-            anim.SetBool("doorClose", false);
+            Boss boss = other.GetComponent<Boss>();
+
+            if (boss.exitRoom)
+            {
+                anim.SetBool("openBoss", true);
+                anim.SetBool("doorClose", false);
+            }
         }
 
         if (other.CompareTag("Player") && Inventary.haveItem)
@@ -45,10 +50,16 @@ public class DoorAnimations : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+
         if (other.CompareTag("Enemy"))
         {
-            anim.SetBool("doorClose", true);
-            anim.SetBool("openBoss", false);
+            Boss boss = other.GetComponent<Boss>();
+
+            if (boss.exitRoom)
+            {
+                anim.SetBool("openBoss", false);
+                anim.SetBool("doorClose", true);
+            }
         }
     }
 }

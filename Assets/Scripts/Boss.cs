@@ -8,11 +8,13 @@ public class Boss : MonoBehaviour
     public Transform[] wayPoints;
     public int currentPoint = 0;
     private NavMeshAgent nav;
+    public float speedRotation;
     public bool computerActive;
     public bool urnActive;
     public bool exitRoom;
     private Animator anim;
-    private AudioClip roar;
+    public AudioClip idle;
+    public AudioClip roar;
     private AudioSource audioSource;
     public float dis;
     [SerializeField] private float maxDistance;
@@ -22,12 +24,16 @@ public class Boss : MonoBehaviour
     public float maxTimer;
     private bool once = false;
     public bool boxFall;
+    private FieldOfView fov;
+    private bool once2 = false;
+    public PlayerController player;
     // Start is called before the first frame update
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        fov = GetComponent<FieldOfView>();
     }
 
     // Update is called once per frame
@@ -35,53 +41,83 @@ public class Boss : MonoBehaviour
     {
         dis = Vector3.Distance(transform.position, wayPoints[currentPoint].position);
         
-        nav.destination = wayPoints[currentPoint].position;
 
-        if (computerActive && !urnActive)
+        if (fov.targetPlayer != null)
         {
-            if (!followComputer)
+            if (!once2)
             {
-                currentPoint = 1;
-                followComputer = true;
+                audioSource.PlayOneShot(roar);
+                once2 = true;
+            }
+            nav.destination = fov.targetPlayer.position;
+        }
+        else
+        {
+            nav.destination = wayPoints[currentPoint].position;
+
+            if (computerActive && !urnActive)
+            {   
+                if (!followComputer)
+                {
+                    currentPoint = 1;
+                    followComputer = true;
+                    audioSource.PlayOneShot(roar);
+                }
+
+                if (followComputer && !patrolling && dis <= maxDistance)
+                {
+
+                    patrolling = true;
+                }
+
+                if (patrolling)
+                {
+                    Search();
+                }
             }
 
-            if (followComputer && !patrolling && dis<= maxDistance)
+            if (urnActive && !exitRoom)
             {
-
-                patrolling = true;
+                //anim.SetBool("Walk", true);
+                currentPoint = 0;
             }
 
-            if (patrolling)
+            if (dis <= 2f)
             {
-                Search();
+                //anim.SetBool("Walk", false);
+            }
+
+            if (exitRoom)
+            {
+                nav.speed = 1.5f;
+                //anim.SetBool("Run", true);
+                if (!once)
+                {
+                    currentPoint = 3;
+                    once = true;
+                }
+
+                if (dis <= maxDistance && currentPoint < wayPoints.Length - 1)
+                {
+                    currentPoint++;
+                }
+            }
+
+            if (once2)
+            {
+                once2 = false;
             }
         }
 
-        if (urnActive && !exitRoom)
+        Rotate();
+
+        if (Manager.isPause)
         {
-            //anim.SetBool("Walk", true);
-            currentPoint = 0;
+            audioSource.Pause();
         }
-
-        if (dis <= 2f)
+        else
         {
-            //anim.SetBool("Walk", false);
-        }
-
-        if (exitRoom)
-        {
-            nav.speed = 1.5f;
-            //anim.SetBool("Run", true);
-            if (!once)
-            {
-                currentPoint = 3;
-                once = true;
-            }
-
-            if (dis <= maxDistance && currentPoint < wayPoints.Length - 1)
-            {
-                currentPoint++;
-            }
+            audioSource.UnPause();
         }
     }
 
@@ -108,6 +144,24 @@ public class Boss : MonoBehaviour
             timerSearch = 0;
             currentPoint = 0;
             patrolling = false;
+            audioSource.PlayOneShot(roar);
+            if (!urnActive)
+            {
+                player.Death();
+            }
+        }
+    }
+
+    void Rotate()
+    {
+        var dir = nav.destination - transform.position;
+
+        if (dir != new Vector3(0,0,0))
+        {
+            var rotation = Quaternion.LookRotation(dir);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speedRotation * Time.deltaTime);
+            transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
         }
     }
 
@@ -115,7 +169,10 @@ public class Boss : MonoBehaviour
     {
         if (other.CompareTag("Door"))
         {
-            boxFall = true;
+            if (exitRoom)
+            {
+                boxFall = true;
+            }
         }
     }
 }
