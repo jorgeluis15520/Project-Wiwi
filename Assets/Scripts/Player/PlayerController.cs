@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
         speedInitial = speed;
         speedCrouch = speed * 0.5f;
         speedRun = speed * 2f;
-        speedPushing = speed * 0.2f;
+        speedPushing = speed * 0.5f;
 
         if(audioManager == null)
         {
@@ -188,8 +188,16 @@ public class PlayerController : MonoBehaviour
 
         move = ver * m_CharForward * w_speed + hor * m_CharRight * speed;
 
+        if (isPushing && Input.GetKey(KeyCode.W))
+        {
+            move = 1 * m_CharForward * w_speed * speed;
+        }
 
-        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, move, rotationSpeed, 0.0f));
+        if (!isPushing)
+        {
+            transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, move, rotationSpeed, 0.0f));
+        }
+
 
         transform.position += move * Time.deltaTime;
 
