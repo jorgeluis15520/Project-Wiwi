@@ -934,6 +934,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ac02536d79e2cf143be0dc44232570bc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 569413d0fc03e6540b499ad1ca2b4943, type: 2}
     - target: {fileID: 919132149155446097, guid: ac02536d79e2cf143be0dc44232570bc, type: 3}
       propertyPath: m_Name
       value: FBX_Escritorio (4)
@@ -1174,7 +1178,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7772727, y: 1}
+    m_SensorSize: {x: 1.7790263, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2073,7 +2077,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7772727, y: 1}
+    m_SensorSize: {x: 1.7790263, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3258,7 +3262,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775695870}
-  m_LocalRotation: {x: -0.018189054, y: -0.0069397353, z: -0.00012625115, w: 0.99981046}
+  m_LocalRotation: {x: -0.018189054, y: -0.006939701, z: -0.0001262505, w: 0.99981046}
   m_LocalPosition: {x: -0.021549646, y: 0.277, z: 1.5522629}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3777,6 +3781,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ac02536d79e2cf143be0dc44232570bc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 569413d0fc03e6540b499ad1ca2b4943, type: 2}
     - target: {fileID: 919132149155446097, guid: ac02536d79e2cf143be0dc44232570bc, type: 3}
       propertyPath: m_Name
       value: FBX_Escritorio (5)
@@ -5598,7 +5606,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7772727, y: 1}
+    m_SensorSize: {x: 1.7790263, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5614,7 +5622,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232997355}
-  m_LocalRotation: {x: -0.018189052, y: -0.006939734, z: -0.00012625109, w: 0.9998105}
+  m_LocalRotation: {x: -0.018189052, y: -0.0069396994, z: -0.00012625047, w: 0.9998105}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5830,6 +5838,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ac02536d79e2cf143be0dc44232570bc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 569413d0fc03e6540b499ad1ca2b4943, type: 2}
     - target: {fileID: 919132149155446097, guid: ac02536d79e2cf143be0dc44232570bc, type: 3}
       propertyPath: m_Name
       value: FBX_Escritorio (1)
@@ -6150,7 +6162,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7772727, y: 1}
+    m_SensorSize: {x: 1.7790263, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
