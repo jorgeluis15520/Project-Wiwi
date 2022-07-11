@@ -30,6 +30,15 @@ public class Computer : MonoBehaviour
             mesh.enabled = !mesh.enabled;
             audioSource.PlayOneShot(clip);
         }
+
+        if (Manager.isPause)
+        {
+            audioSource.Pause();
+        }
+        else
+        {
+            audioSource.UnPause();
+        }
     }
 
     private void OnTriggerEnter(Collider other)

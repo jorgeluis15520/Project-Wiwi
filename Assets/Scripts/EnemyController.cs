@@ -112,6 +112,15 @@ public class EnemyController : MonoBehaviour
             audioSource.PlayOneShot(detectSound);
             timer = 0;
         }
+
+        if (Manager.isPause)
+        {
+            audioSource.Pause();
+        }
+        else
+        {
+            audioSource.UnPause();
+        }
     }
 
     void Move()
