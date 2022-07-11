@@ -9,11 +9,14 @@ public class Computer : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip clip;
     public Boss boss;
+    public GameObject computerEmission;
+    private MeshRenderer mesh;
     // Start is called before the first frame update
     void Start()
     {
         objects = GetComponent<Objects>();
         audioSource = GetComponent<AudioSource>();
+        mesh = GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
@@ -23,6 +26,8 @@ public class Computer : MonoBehaviour
         {
             objects.active = true;
             boss.computerActive = true;
+            computerEmission.SetActive(true);
+            mesh.enabled = !mesh.enabled;
             audioSource.PlayOneShot(clip);
         }
     }

@@ -46,6 +46,8 @@ public class Manager : MonoBehaviour
     public int width;
     public int height;
 
+    public int sceneIndex;
+
     //audio
     //public AudioSource audioMenu;
     private void Awake()
@@ -391,7 +393,7 @@ public class Manager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         nextLevelPanel.SetActive(true);
         yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene("Nivel_1");
+        SceneManager.LoadScene(sceneIndex);
     }
 
     IEnumerator Level1Ready()
@@ -401,45 +403,10 @@ public class Manager : MonoBehaviour
         panelLevelLoad.SetActive(false);
     }
 
-
-
-    //public void CheckResolution()
-    //{
-    //    resolutions = Screen.resolutions;
-    //    resolutionsDropDown.ClearOptions();
-    //    List<string> options = new List<string>();
-    //    int resolutionActual = 0;
-
-    //    for(int i = 0; i<resolutions.Length; i++)
-    //    {
-    //        string option = resolutions[i].width + "x" + resolutions[i].height + " @ " + resolutions[i].refreshRate + "hz"; ;
-    //        options.Add(option);
-
-    //        if(resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
-    //        {
-    //            resolutionActual = i;
-    //        }
-    //    }
-
-    //    resolutionsDropDown.AddOptions(options);
-    //    resolutionsDropDown.value = resolutionActual;
-    //    resolutionsDropDown.RefreshShownValue();
-
-    //    resolutionsDropDown.value = PlayerPrefs.GetInt("numberResolution", 0);
-    //}
-
     public void ActiveFullScreen(bool fullScreen)
     {
         Screen.fullScreen = fullScreen;
     }
-
-    //public void ChangeResolution(int indexResolution)
-    //{
-    //    PlayerPrefs.SetInt("numberResolution", resolutionsDropDown.value);
-
-    //    Resolution resolution = resolutions[indexResolution];
-    //    Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-    //}
 
     public void SetWidth(int newWidth)
     {
