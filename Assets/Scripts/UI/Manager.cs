@@ -25,6 +25,7 @@ public class Manager : MonoBehaviour
     public GameObject panelLevelLoad;
     public GameObject pauseOptions;
     public GameObject selectNiveles;
+    public GameObject continuePanel;
     public static bool isMainMenu = true;
     //Opciones
     public GameObject optionsMenuPanel;
@@ -335,6 +336,7 @@ public class Manager : MonoBehaviour
         deathPanel.SetActive(false);
         Time.timeScale = 0f;
         SceneManager.LoadScene("Tutorial2");
+        continuePanel.SetActive(false);
     }
 
     public void EscenariosButton()
@@ -401,6 +403,12 @@ public class Manager : MonoBehaviour
         panelLevelLoad.SetActive(true);
         yield return new WaitForSeconds(1f);
         panelLevelLoad.SetActive(false);
+    }
+
+    public void Continue()
+    {
+        Time.timeScale = 0f;
+        continuePanel.SetActive(true);
     }
 
     public void ActiveFullScreen(bool fullScreen)

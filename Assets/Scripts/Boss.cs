@@ -21,6 +21,7 @@ public class Boss : MonoBehaviour
     public float timerSearch;
     public float maxTimer;
     private bool once = false;
+    public bool boxFall;
     // Start is called before the first frame update
     void Start()
     {
@@ -107,6 +108,14 @@ public class Boss : MonoBehaviour
             timerSearch = 0;
             currentPoint = 0;
             patrolling = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Door"))
+        {
+            boxFall = true;
         }
     }
 }
