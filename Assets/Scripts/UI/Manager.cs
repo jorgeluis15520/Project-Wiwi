@@ -87,6 +87,10 @@ public class Manager : MonoBehaviour
         {
             StartCoroutine(Level1Ready());
         }
+        if ( sceneName == "Nivel_2")
+        {
+            StartCoroutine(Level1Ready());
+        }
         //if (sceneName != "Credits")
         //{
         //    CheckResolution();

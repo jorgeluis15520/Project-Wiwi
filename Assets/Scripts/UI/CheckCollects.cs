@@ -5,9 +5,13 @@ using UnityEngine.UI;
 
 public class CheckCollects : MonoBehaviour
 {
-    public RawImage blockCollect1;
-    public RawImage blockCollect2;
-    public RawImage blockCollect3;
+    public GameObject blockCollect1;
+    public GameObject blockCollect2;
+    public GameObject blockCollect3;
+
+    public GameObject unblockCollect1;
+    public GameObject unblockCollect2;
+    public GameObject unblockCollect3;
 
     public static bool haveCollect1 = false;
     public static bool haveCollect2 = false;
@@ -28,29 +32,32 @@ public class CheckCollects : MonoBehaviour
     {
         if (!haveCollect1)
         {
-            blockCollect1.enabled = true;
+            blockCollect1.SetActive(true);
         }
-        else if (haveCollect1)
+        if (haveCollect1)
         {
-            blockCollect1.enabled = false;
+            blockCollect1.SetActive(false);
+            unblockCollect1.SetActive(true);
         }
 
         if (!haveCollect2)
         {
-            blockCollect2.enabled = true;
+            blockCollect2.SetActive(true);
         }
-        else if (haveCollect2)
+        if (haveCollect2)
         {
-            blockCollect2.enabled = false;
+            blockCollect2.SetActive(false);
+            unblockCollect2.SetActive(true);
         }
 
         if (!haveCollect3)
         {
-            blockCollect3.enabled = true;
+            blockCollect3.SetActive(true);
         }
-        else if (haveCollect3)
+        if (haveCollect3)
         {
-            blockCollect3.enabled = false;
+            blockCollect3.SetActive(false);
+            unblockCollect3.SetActive(true);
         }
     }
 }

@@ -71,32 +71,32 @@ public class Inventary : MonoBehaviour
 
         if (coll.gameObject.CompareTag("Collect1"))
         {
-            CheckCollects.haveCollect1 = true;
             Destroy(coll.gameObject);
             manager.collectablePanel.SetActive(true);
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            CheckCollects.haveCollect1 = true;
         }
 
         if (coll.gameObject.CompareTag("Collect2"))
         {
-            CheckCollects.haveCollect2 = true;
             Destroy(coll.gameObject);
             manager.collectablePanel.SetActive(true);
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            CheckCollects.haveCollect2 = true;
         }
 
         if (coll.gameObject.CompareTag("Collect3"))
         {
-            CheckCollects.haveCollect3 = true;
             Destroy(coll.gameObject);
             manager.collectablePanel.SetActive(true);
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            CheckCollects.haveCollect3 = true;
         }
 
         if (coll.gameObject.CompareTag("Door") && haveItem)
