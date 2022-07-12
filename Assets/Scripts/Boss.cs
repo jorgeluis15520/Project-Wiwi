@@ -29,6 +29,7 @@ public class Boss : MonoBehaviour
     private bool once3 = false;
     public PlayerController player;
     public BrokenObj obj;
+    private Quaternion rotation;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +42,6 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        dis = Vector3.Distance(transform.position, wayPoints[currentPoint].position);
         urnActive = obj.soul;
 
         if (fov.targetPlayer != null)
@@ -52,9 +52,12 @@ public class Boss : MonoBehaviour
                 once2 = true;
             }
             nav.destination = fov.targetPlayer.position;
+            anim.SetBool("Run", true);
+            anim.SetBool("Walk", false);
         }
         else
         {
+            dis = Vector3.Distance(transform.position, wayPoints[currentPoint].position);
             nav.destination = wayPoints[currentPoint].position;
 
             if (computerActive && !urnActive)
@@ -67,7 +70,7 @@ public class Boss : MonoBehaviour
                     anim.SetBool("Run", true);
                 }
 
-                if (followComputer && !patrolling && dis <= maxDistance)
+                if (followComputer && !patrolling && dis <= maxDistance && currentPoint == 1)
                 {
 
                     patrolling = true;
@@ -119,8 +122,8 @@ public class Boss : MonoBehaviour
             {
                 if (urnActive && fov.targetPlayer == null && !exitRoom)
                 {
-                    exitRoom = true;
                     audioSource.PlayOneShot(roar);
+                    exitRoom = true;
                 }
 
                 if (currentPoint == 4)
@@ -132,7 +135,7 @@ public class Boss : MonoBehaviour
            
         }
 
-        Rotate();
+        //Rotate();
 
         if (Manager.isPause)
         {
@@ -179,7 +182,8 @@ public class Boss : MonoBehaviour
             audioSource.PlayOneShot(roar);
             if (!urnActive)
             {
-                player.Death();
+                nav.speed = 2.5f;
+                fov.viewRadius = 5.25f;
             }
         }
     }
@@ -190,11 +194,9 @@ public class Boss : MonoBehaviour
 
         if (dir != new Vector3(0,0,0))
         {
-            var rotation = Quaternion.LookRotation(dir);
-
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speedRotation * Time.deltaTime);
-            transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+            rotation = Quaternion.LookRotation(dir);
         }
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speedRotation * Time.deltaTime);
     }
 
     private void OnTriggerExit(Collider other)
