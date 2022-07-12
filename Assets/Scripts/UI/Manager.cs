@@ -413,6 +413,8 @@ public class Manager : MonoBehaviour
     {
         Time.timeScale = 0f;
         continuePanel.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void ActiveFullScreen(bool fullScreen)
@@ -440,4 +442,8 @@ public class Manager : MonoBehaviour
 
     }
 
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("Tutorial2");
+    }
 }
