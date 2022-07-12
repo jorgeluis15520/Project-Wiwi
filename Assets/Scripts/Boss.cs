@@ -26,7 +26,9 @@ public class Boss : MonoBehaviour
     public bool boxFall;
     private FieldOfView fov;
     private bool once2 = false;
+    private bool once3 = false;
     public PlayerController player;
+    public BrokenObj obj;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +42,7 @@ public class Boss : MonoBehaviour
     void Update()
     {
         dis = Vector3.Distance(transform.position, wayPoints[currentPoint].position);
-        
+        urnActive = obj.soul;
 
         if (fov.targetPlayer != null)
         {
@@ -78,13 +80,13 @@ public class Boss : MonoBehaviour
 
             if (urnActive && !exitRoom)
             {
-                //anim.SetBool("Walk", true);
+                if (!once3)
+                {
+                    audioSource.PlayOneShot(roar);
+                    once3 = true;
+                }
                 currentPoint = 0;
-            }
-
-            if (dis <= 2f)
-            {
-                //anim.SetBool("Walk", false);
+                fov.viewRadius = 5.25f;
             }
 
             if (exitRoom)
@@ -107,6 +109,22 @@ public class Boss : MonoBehaviour
             {
                 once2 = false;
             }
+
+            if (dis <= maxDistance)
+            {
+                if (urnActive && fov.targetPlayer == null && !exitRoom)
+                {
+                    exitRoom = true;
+                    audioSource.PlayOneShot(roar);
+                }
+
+                if (currentPoint == 4)
+                {
+                    fov.viewRadius = 0f;
+                    audioSource.Stop();
+                }
+            }
+           
         }
 
         Rotate();

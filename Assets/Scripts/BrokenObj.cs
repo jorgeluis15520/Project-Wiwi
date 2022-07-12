@@ -15,7 +15,7 @@ public class BrokenObj : MonoBehaviour
     private BoxCollider colliderObj;
     private Rigidbody RBD;
     public PlayableDirector Cm;
-
+    public bool soul = false;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -42,6 +42,7 @@ public class BrokenObj : MonoBehaviour
             colliderObj.isTrigger = true;
             Urna1.SetActive(false);
             Cm.Play();
+            soul = true;
         }
     }
     public void KeyCreate()

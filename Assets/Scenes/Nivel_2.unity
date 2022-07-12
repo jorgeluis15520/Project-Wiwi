@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 0.27
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.09
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -1326,6 +1326,7 @@ MonoBehaviour:
   audioSource: {fileID: 242311634}
   BrokenSound: {fileID: 8300000, guid: 9fb77557758321a4d865ffcb499ef699, type: 3}
   Cm: {fileID: 242311633}
+  soul: 0
 --- !u!320 &242311633
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -1894,7 +1895,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7756654, y: 1}
+    m_SensorSize: {x: 1.7793428, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2807,7 +2808,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7756654, y: 1}
+    m_SensorSize: {x: 1.7793428, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3537,8 +3538,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bac3233701ddc7b43a9cd94528717ee1, type: 3}
   m_PrefabInstance: {fileID: 277574992}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &726390145
-MeshCollider:
+--- !u!65 &726390148
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3547,10 +3548,35 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2843489682202501795, guid: bac3233701ddc7b43a9cd94528717ee1, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.09069991, y: 1.9001218, z: 0.33274025}
+  m_Center: {x: 0.91840756, y: 0.9499391, z: -0.003973514}
+--- !u!65 &726390149
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726390142}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3438447, y: 1.9001218, z: 0.33274025}
+  m_Center: {x: -0.25933373, y: 0.9499391, z: -0.003973514}
+--- !u!65 &726390150
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726390142}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8950136, y: 1.658975, z: 0.33274025}
+  m_Center: {x: 0.01625073, y: 1.0705124, z: -0.003973514}
 --- !u!1 &732881716 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2bef6a2b49cb3b248a3b7f01abc55343, type: 3}
@@ -3974,6 +4000,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FBX_CajaCerrada
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bb60a3213446c5747b7904785d9879c1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6578816565782129732, guid: bb60a3213446c5747b7904785d9879c1, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -4167,7 +4197,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775695870}
-  m_LocalRotation: {x: -0.018187609, y: -0.014396425, z: -0.00026190683, w: 0.99973094}
+  m_LocalRotation: {x: -0.018187609, y: -0.014396461, z: -0.00026190747, w: 0.99973094}
   m_LocalPosition: {x: 0.033977695, y: 0.277, z: 3.1564894}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6351,7 +6381,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7756654, y: 1}
+    m_SensorSize: {x: 1.7793428, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -6367,7 +6397,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232997355}
-  m_LocalRotation: {x: -0.018187601, y: -0.014396424, z: -0.00026190685, w: 0.99973094}
+  m_LocalRotation: {x: -0.018187601, y: -0.014396459, z: -0.0002619075, w: 0.99973094}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7042,7 +7072,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7756654, y: 1}
+    m_SensorSize: {x: 1.7793428, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -7311,6 +7341,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bossy_Caminair_FBX
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d246e087ada410949b3438152b984612, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d246e087ada410949b3438152b984612, type: 3}
 --- !u!1 &1511484704
@@ -7336,15 +7370,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511484704}
-  m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: -1.85, y: 1.8, z: 4.7}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.331, y: 2.113, z: 4.162}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 543450653185156903}
   m_Father: {fileID: 1192965706}
   m_RootOrder: 26
-  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1547946850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8372,7 +8406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1913581509}
   m_Layer: 0
-  m_Name: 6 (1)
+  m_Name: 7
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -10453,7 +10487,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450652791125041}
   m_Layer: 13
-  m_Name: Bossy_FBX (1)
+  m_Name: Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13924,7 +13958,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736785295680802360}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.8, y: -7, z: -13.19}
+  m_LocalPosition: {x: -1.35, y: -1.88, z: -8.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14913,6 +14947,7 @@ MonoBehaviour:
   maxTimer: 42
   boxFall: 0
   player: {fileID: 1087706352}
+  obj: {fileID: 242311632}
 --- !u!114 &8002417041330770604
 MonoBehaviour:
   m_ObjectHideFlags: 0
