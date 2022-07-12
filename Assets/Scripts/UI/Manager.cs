@@ -137,7 +137,16 @@ public class Manager : MonoBehaviour
                 }
                 else if (!isPause && pauseMenuPanel != null)
                 {
-                    PauseGame();
+                    if(CloseVideo.videoPlaying == true)
+
+                    {
+
+                    }
+                    else
+                    {
+                        PauseGame();
+                    }
+                    
                 }
             }
         }
