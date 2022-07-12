@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Playables;
 
 public class Boss : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class Boss : MonoBehaviour
     public PlayerController player;
     public BrokenObj obj;
     private Quaternion rotation;
+    public PlayableDirector Pb;
+    private int once4=0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +46,10 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (once4 == 1)
+        {
+            Pb.Play();
+        }
         urnActive = obj.soul;
 
         if (fov.targetPlayer != null)
@@ -100,6 +108,8 @@ public class Boss : MonoBehaviour
                 nav.speed = 1.5f;
                 anim.SetBool("Run", true);
                 anim.SetBool("Walk", false);
+                once4++;
+           
                 //anim.SetBool("Run", true);
                 if (!once)
                 {
