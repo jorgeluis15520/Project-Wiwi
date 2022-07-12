@@ -709,7 +709,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Volver  aJugar
+  m_text: Volver  a Jugar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5fdda02920becbf42abf36e1f85fa222, type: 2}
   m_sharedMaterial: {fileID: 4816154517081124850, guid: 5fdda02920becbf42abf36e1f85fa222, type: 2}
@@ -1398,7 +1398,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -9.8, y: 51.7}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 170, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1388861585
 CanvasRenderer:
