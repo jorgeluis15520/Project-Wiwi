@@ -64,6 +64,7 @@ public class Boss : MonoBehaviour
                     currentPoint = 1;
                     followComputer = true;
                     audioSource.PlayOneShot(roar);
+                    anim.SetBool("Run", true);
                 }
 
                 if (followComputer && !patrolling && dis <= maxDistance)
@@ -87,11 +88,15 @@ public class Boss : MonoBehaviour
                 }
                 currentPoint = 0;
                 fov.viewRadius = 5.25f;
+                anim.SetBool("Run", true);
+                anim.SetBool("Walk", false);
             }
 
             if (exitRoom)
             {
                 nav.speed = 1.5f;
+                anim.SetBool("Run", true);
+                anim.SetBool("Walk", false);
                 //anim.SetBool("Run", true);
                 if (!once)
                 {
@@ -145,17 +150,26 @@ public class Boss : MonoBehaviour
 
         if (timerSearch <= maxTimer)
         {
+           
+            dis = Vector3.Distance(transform.position, wayPoints[currentPoint].position);
+
             if (dis <= maxDistance)
             {
                 if (currentPoint == 1)
                 {
+                    anim.SetBool("Run", false);
+                    anim.SetBool("Walk", true);
                     currentPoint++;
+                    dis = Vector3.Distance(transform.position, wayPoints[currentPoint].position);
                 }
                 else
                 {
                     currentPoint--;
                 }
             }
+
+
+            
         }
         else
         {
