@@ -14,6 +14,14 @@ public class CloseVideo : MonoBehaviour
         
     }
 
+    private void Update()
+    {
+        if (videoPlaying)
+        {
+            SkipVideo();
+        }
+    }
+
     public void PlayVideo()
     {
         Time.timeScale = 0f;
@@ -30,5 +38,17 @@ public class CloseVideo : MonoBehaviour
         Time.timeScale = 1f;
         gameObject.SetActive(false);
         videoPlaying = false;
+    }
+
+    public void SkipVideo()
+    {
+        if (Input.GetKey(KeyCode.Return))
+        {
+            videoPlaying = false;
+            Time.timeScale = 1f;
+            gameObject.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 }
