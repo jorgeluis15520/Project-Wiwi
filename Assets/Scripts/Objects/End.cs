@@ -10,7 +10,14 @@ public class End : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            manager.Continue();
+            StartCoroutine(Continue());
         }
+    }
+
+    IEnumerator Continue()
+    {
+        manager.nextLevelPanel.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        manager.Continue();
     }
 }
